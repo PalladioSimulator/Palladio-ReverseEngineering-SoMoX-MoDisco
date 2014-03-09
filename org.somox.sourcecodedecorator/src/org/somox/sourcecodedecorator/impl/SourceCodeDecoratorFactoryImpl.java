@@ -27,7 +27,7 @@ public class SourceCodeDecoratorFactoryImpl extends EFactoryImpl implements Sour
 	 */
 	public static SourceCodeDecoratorFactory init() {
 		try {
-			SourceCodeDecoratorFactory theSourceCodeDecoratorFactory = (SourceCodeDecoratorFactory)EPackage.Registry.INSTANCE.getEFactory("http://q-impress.eu/sourcecodedecorator"); 
+			SourceCodeDecoratorFactory theSourceCodeDecoratorFactory = (SourceCodeDecoratorFactory)EPackage.Registry.INSTANCE.getEFactory(SourceCodeDecoratorPackage.eNS_URI);
 			if (theSourceCodeDecoratorFactory != null) {
 				return theSourceCodeDecoratorFactory;
 			}
