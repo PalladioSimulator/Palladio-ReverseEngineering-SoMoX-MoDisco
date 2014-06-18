@@ -301,10 +301,10 @@ public class ComponentDetectionByClustering implements IDetectionStrategy {
             LOG.trace("graph in mode = " + currentMode + " contains " + projectedGraph.edgeSet().size() + " edges, " + projectedGraph.vertexSet().size() +
                     " vertices / orig graph: " + componentIndicatingGraph.edgeSet().size() + " edges, " + projectedGraph.vertexSet().size() + " vertices");
 
-            GraphPrinter.dumpGraph(this.componentToImplementingClassHelper,componentIndicatingGraph, somoxConfiguration.getFileLocations().getAnalyserInputFile(), iteration, 1);
+            GraphPrinter.dumpGraph(this.componentToImplementingClassHelper,componentIndicatingGraph, somoxConfiguration.getFileLocations().getAnalyserInputFile(), iteration, GraphPrinter.ORIGINAL_GRAPH);
 
             if (projectedGraph.edgeSet().size() > 0) {
-                GraphPrinter.dumpGraph(this.componentToImplementingClassHelper,projectedGraph, somoxConfiguration.getFileLocations().getAnalyserInputFile(), iteration, 0);
+                GraphPrinter.dumpGraph(this.componentToImplementingClassHelper,projectedGraph, somoxConfiguration.getFileLocations().getAnalyserInputFile(), iteration, GraphPrinter.PROJECTED_GRAPH);
             }
         }
     }
