@@ -5,7 +5,6 @@ import java.util.List;
 import org.somox.filter.BaseFilter;
 import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
-
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 
 /**
@@ -16,31 +15,31 @@ import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
  */
 public class VertexTypeAndEdgeThresholdFilter extends BaseFilter<ClusteringRelation> {
 
-	private final MetricID metric;
-	private final double threshold;
+    private final MetricID metric;
+    private final double threshold;
 
-	public VertexTypeAndEdgeThresholdFilter(MetricID metric, double threshold) {
-		super();
-		this.metric = metric;
-		this.threshold = threshold;
-	}
+    public VertexTypeAndEdgeThresholdFilter(final MetricID metric, final double threshold) {
+        super();
+        this.metric = metric;
+        this.threshold = threshold;
+    }
 
-	@Override
-	public boolean passes(ClusteringRelation object) {
-		assert object.getResult().containsKey(metric);
-		double relationValue = object.getResult().get(metric);
-		
-		return (relationValue > threshold) &&
-			onlyPrimitiveComponents(object.getComponents());				
-	}
-	
-	private boolean onlyPrimitiveComponents(List<ComponentImplementingClassesLink> componentLinks) {
-		
-		for(ComponentImplementingClassesLink compLink : componentLinks) {
-			if(!compLink.isInitialComponent()) {
-				return false;
-			}
-		}
-		return true;
-	}
+    @Override
+    public boolean passes(final ClusteringRelation clusteringRelation) {
+        assert clusteringRelation.getResult().containsKey(metric);
+        final double relationValue = clusteringRelation.getResult().get(metric);
+
+        return (relationValue > threshold) &&
+                onlyPrimitiveComponents(clusteringRelation.getComponents());
+    }
+
+    private boolean onlyPrimitiveComponents(final List<ComponentImplementingClassesLink> componentLinks) {
+
+        for(final ComponentImplementingClassesLink compLink : componentLinks) {
+            if(!compLink.isInitialComponent()) {
+                return false;
+            }
+        }
+        return true;
+    }
 };
