@@ -17,6 +17,7 @@ import org.eclipse.gmt.modisco.java.ForStatement;
 import org.eclipse.gmt.modisco.java.IfStatement;
 import org.eclipse.gmt.modisco.java.Statement;
 import org.eclipse.gmt.modisco.java.SwitchStatement;
+import org.eclipse.gmt.modisco.java.SynchronizedStatement;
 import org.eclipse.gmt.modisco.java.TryStatement;
 import org.eclipse.gmt.modisco.java.VariableDeclarationStatement;
 import org.eclipse.gmt.modisco.java.WhileStatement;
@@ -30,15 +31,19 @@ import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
 
+import de.uka.ipd.sdq.pcm.core.CoreFactory;
 import de.uka.ipd.sdq.pcm.repository.BasicComponent;
 import de.uka.ipd.sdq.pcm.repository.OperationRequiredRole;
 import de.uka.ipd.sdq.pcm.repository.OperationSignature;
+import de.uka.ipd.sdq.pcm.repository.PassiveResource;
+import de.uka.ipd.sdq.pcm.repository.RepositoryFactory;
 import de.uka.ipd.sdq.pcm.repository.RequiredRole;
 import de.uka.ipd.sdq.pcm.repository.Role;
 import de.uka.ipd.sdq.pcm.repository.Signature;
 import de.uka.ipd.sdq.pcm.seff.ExternalCallAction;
 import de.uka.ipd.sdq.pcm.seff.InternalAction;
 import de.uka.ipd.sdq.pcm.seff.SeffFactory;
+import de.uka.ipd.sdq.pcm.seff.SynchronisationPoint;
 
 //import eu.qimpress.samm.staticstructure.InterfacePort;
 //import eu.qimpress.samm.staticstructure.Operation;
@@ -409,6 +414,46 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
         return this.handleFormerSimpleStatement(object);
     }
 
+    
+    @Override
+	public Object caseSynchronizedStatement(SynchronizedStatement input) {
+
+    	PassiveResource passiveResource = RepositoryFactory.eINSTANCE.createPassiveResource();
+    	passiveResource.setEntityName(this.positionToString(KDMHelper
+				.getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
+
+    	passiveResource.setCapacity_PassiveResource(CoreFactory.eINSTANCE.createPCMRandomVariable());
+    	this.primitiveComponent.getPassiveResource_BasicComponent().add(passiveResource);
+    	passiveResource.getCapacity_PassiveResource().setSpecification("1");
+    	
+    	logger.debug("start handling synchronized statement");
+		final de.uka.ipd.sdq.pcm.seff.AcquireAction acquireAction = SeffFactory.eINSTANCE
+				.createAcquireAction();
+		logger.debug("create acquireAction");
+
+		this.seff.getSteps_Behaviour().add(acquireAction);
+
+		acquireAction.setPassiveresource_AcquireAction(passiveResource);
+		acquireAction.setEntityName(this.positionToString(KDMHelper
+				.getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
+
+		new GastStatementVisitor(this.functionClassificationAnnotation,
+				this.seff, this.sourceCodeDecoratorRepository,
+				this.primitiveComponent).doSwitch(input.getBody());
+		logger.debug("create releaseAction");
+		final de.uka.ipd.sdq.pcm.seff.ReleaseAction releaseAction = SeffFactory.eINSTANCE
+				.createReleaseAction();
+
+		this.seff.getSteps_Behaviour().add(releaseAction);
+		releaseAction.setPassiveResource_ReleaseAction(passiveResource);
+		releaseAction.setEntityName(this.positionToString(KDMHelper
+				.getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
+
+		return null;
+	}
+    
+    
+    
     /**
      * Returns true if the statement with thisType should not generate an action in the newly
      * generated SEFF.

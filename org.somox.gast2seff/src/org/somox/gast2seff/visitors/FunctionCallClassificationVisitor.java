@@ -19,6 +19,7 @@ import org.eclipse.gmt.modisco.java.ForStatement;
 import org.eclipse.gmt.modisco.java.IfStatement;
 import org.eclipse.gmt.modisco.java.Statement;
 import org.eclipse.gmt.modisco.java.SwitchStatement;
+import org.eclipse.gmt.modisco.java.SynchronizedStatement;
 import org.eclipse.gmt.modisco.java.TryStatement;
 import org.eclipse.gmt.modisco.java.VariableDeclarationStatement;
 import org.eclipse.gmt.modisco.java.WhileStatement;
@@ -178,6 +179,11 @@ public class FunctionCallClassificationVisitor extends JavaSwitch<BitSet> {// GA
     @Override
     public BitSet caseWhileStatement(final WhileStatement object) {
         return this.createBitSetLoop(object, object.getBody());
+    }
+    
+    @Override
+    public BitSet caseSynchronizedStatement(final SynchronizedStatement synchronizedStatement) {
+        return this.createBitSetLoop(synchronizedStatement, synchronizedStatement.getBody());
     }
 
     @Override
