@@ -37,7 +37,7 @@ public interface SourceCodeDecoratorPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://q-impress.eu/sourcecodedecorator";
+	String eNS_URI = "http://somox.org/SourceCodeDecorator/2.0";
 
 	/**
 	 * The package namespace name.
