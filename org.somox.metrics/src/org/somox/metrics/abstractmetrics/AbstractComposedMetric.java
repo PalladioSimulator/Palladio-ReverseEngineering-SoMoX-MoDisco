@@ -1,4 +1,4 @@
-package org.somox.metrics;
+package org.somox.metrics.abstractmetrics;
 
 import java.util.Map;
 
@@ -7,6 +7,10 @@ import org.eclipse.gmt.modisco.java.Type;
 import org.jgrapht.DirectedGraph;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.kdmhelper.metamodeladdition.Root;
+import org.somox.metrics.ClusteringRelation;
+import org.somox.metrics.ICompositionFunction;
+import org.somox.metrics.IMetric;
+import org.somox.metrics.MetricID;
 import org.somox.metrics.helper.ClassAccessGraphEdge;
 import org.somox.metrics.helper.ComponentToImplementingClassesHelper;
 

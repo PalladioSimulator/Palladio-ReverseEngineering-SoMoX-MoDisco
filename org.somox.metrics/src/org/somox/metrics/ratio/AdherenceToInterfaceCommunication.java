@@ -1,7 +1,7 @@
 package org.somox.metrics.ratio;
 
-import org.somox.metrics.AbstractRatioMetric;
 import org.somox.metrics.MetricID;
+import org.somox.metrics.abstractmetrics.AbstractRatioMetric;
 import org.somox.metrics.basic.InterfaceAccessesCount;
 import org.somox.metrics.basic.InternalAccessesCount;
 

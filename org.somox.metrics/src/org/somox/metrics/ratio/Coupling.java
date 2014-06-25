@@ -1,8 +1,8 @@
 package org.somox.metrics.ratio;
 
 
-import org.somox.metrics.AbstractRatioMetric;
 import org.somox.metrics.MetricID;
+import org.somox.metrics.abstractmetrics.AbstractRatioMetric;
 import org.somox.metrics.basic.ExternalAccessesCount;
 import org.somox.metrics.basic.InternalAccessesCount;
 import org.somox.metrics.tabs.BlacklistTab;

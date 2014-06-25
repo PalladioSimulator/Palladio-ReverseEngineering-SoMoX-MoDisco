@@ -1,8 +1,11 @@
-package org.somox.metrics;
+package org.somox.metrics.abstractmetrics;
 
 import java.util.Map;
 
 import org.somox.configuration.SoMoXConfiguration;
+import org.somox.metrics.ICompositionFunction;
+import org.somox.metrics.IMetric;
+import org.somox.metrics.MetricID;
 
 /**
  * A metric which computes itself by dividing a nominator metric by a denominator metric

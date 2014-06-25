@@ -10,7 +10,7 @@ import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
 import org.somox.analyzer.ModelAnalyzerTabGroupBlackboard;
-import org.somox.metrics.AbstractMetric;
+import org.somox.metrics.abstractmetrics.AbstractMetric;
 import org.somox.metrics.tabs.BlacklistTab;
 import org.somox.metrics.tabs.MetricTab;
 import org.somox.ui.Activator;

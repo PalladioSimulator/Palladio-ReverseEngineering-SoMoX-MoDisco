@@ -5,9 +5,9 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmt.modisco.java.Type;
 import org.somox.kdmhelper.KDMHelper;
-import org.somox.metrics.AbstractMetric;
 import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
+import org.somox.metrics.abstractmetrics.AbstractMetric;
 
 //import de.fzi.gast.types.GASTClass;
 

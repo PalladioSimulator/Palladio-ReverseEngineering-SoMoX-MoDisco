@@ -7,9 +7,9 @@ import org.eclipse.gmt.modisco.java.Type;
 import org.somox.filter.BaseFilter;
 import org.somox.filter.FilteredCollectionsFactory;
 import org.somox.kdmhelper.KDMHelper;
-import org.somox.metrics.AbstractCountingMetric;
 import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
+import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
 
 //import de.fzi.gast.types.GASTClass;
 

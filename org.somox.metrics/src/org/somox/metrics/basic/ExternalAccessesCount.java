@@ -1,8 +1,8 @@
 package org.somox.metrics.basic;
 
-import org.somox.metrics.AbstractCountingMetric;
 import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
+import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
 
 /**
  * Counts accesses from component1 to all classes besides those of component1

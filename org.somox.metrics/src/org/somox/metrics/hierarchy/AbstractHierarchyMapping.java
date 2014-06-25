@@ -9,8 +9,8 @@ import org.apache.log4j.Logger;
 import org.eclipse.gmt.modisco.java.ASTNode;
 import org.eclipse.gmt.modisco.java.Type;
 import org.eclipse.gmt.modisco.omg.kdm.source.AbstractInventoryElement;
-import org.somox.metrics.AbstractMetric;
 import org.somox.metrics.ClusteringRelation;
+import org.somox.metrics.abstractmetrics.AbstractMetric;
 
 //import de.fzi.gast.core.ModelElement;
 //import de.fzi.gast.types.GASTClass;
