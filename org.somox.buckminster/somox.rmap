@@ -33,7 +33,7 @@
   </rm:searchPath>
   <rm:searchPath name="somoxsvn">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="svn" source="true">
-      <rm:uri format="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/SoMoX/trunk/{0}">
+      <rm:uri format="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/trunk/{0}">
       	<bc:propertyRef key="buckminster.component" />
       </rm:uri>
     </rm:provider>
