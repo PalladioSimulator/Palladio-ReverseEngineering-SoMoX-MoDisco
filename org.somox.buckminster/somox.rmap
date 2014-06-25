@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
 
-  <rm:locator searchPathRef="localresources" failOnError="false"/>
+  <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.somox\..*" />
+  <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.jgrapht.*" />
+  <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^uk\.ac\.shef\.dcs\..*" />
+  <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.eclipse\.gmt\.modisco\..*\.edit.*" />
   <rm:locator searchPathRef="palladio-core" failOnError="false"/>
-  <rm:locator searchPathRef="emf" failOnError="false" pattern="^org\.eclipse\.emf\..*" />
-  <rm:locator searchPathRef="juno"/>
+  <rm:locator searchPathRef="kepler"/>
   
-  <rm:searchPath name="indigo-updatesite">
+  <rm:searchPath name="kepler">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature,buckminster" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="http://download.eclipse.org/releases/indigo/"/>
+      <rm:uri format="http://download.eclipse.org/releases/kepler/"/>
     </rm:provider>
   </rm:searchPath>
   
@@ -23,31 +25,16 @@
   </rm:searchPath>
   
   <rm:searchPath name="xtext">
-  <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
- 	<rm:property key="buckminster.source" value="false"/>
-    <rm:property key="buckminster.mutable" value="false"/>
-  	<rm:uri format="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
-  </rm:provider></rm:searchPath>
-  <rm:searchPath name="emf">
-  <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
- 	<rm:property key="buckminster.source" value="false"/>
-    <rm:property key="buckminster.mutable" value="false"/>
-  	<rm:uri format="http://download.eclipse.org/modeling/emf/emf/updates/releases/"/>
-  </rm:provider></rm:searchPath>
-  <rm:searchPath name="juno">
-    <rm:provider componentTypes="osgi.bundle,eclipse.feature,buckminster" readerType="p2" source="false" mutable="false">
-      <rm:property key="buckminster.source" value="false"/>
-      <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="http://download.eclipse.org/releases/juno/"/>
-    </rm:provider>
+  	<rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
+ 		<rm:property key="buckminster.source" value="false"/>
+    	<rm:property key="buckminster.mutable" value="false"/>
+  		<rm:uri format="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+  	</rm:provider>
   </rm:searchPath>
-  <rm:searchPath name="localresources">
-    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="local">
-      <rm:uri format="file:///{0}/{1}/">
-        <bc:propertyRef key="workspace.root"/>
-      	<bc:replace>
-       		<bc:propertyRef key="buckminster.component" />
-     	</bc:replace>
+  <rm:searchPath name="somoxsvn">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="svn" source="true">
+      <rm:uri format="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/SoMoX/trunk/{0}">
+      	<bc:propertyRef key="buckminster.component" />
       </rm:uri>
     </rm:provider>
   </rm:searchPath>
