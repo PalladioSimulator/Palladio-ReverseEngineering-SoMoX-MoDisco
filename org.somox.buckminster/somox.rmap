@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
 
+  <rm:locator pattern="^de\.uka\.ipd\.sdq\..*" searchPathRef="SDQ_Commons" failOnError="false"/>
+  <rm:locator pattern="^edu\.kit\.ipd\.sdq\..*" searchPathRef="SDQ_Commons" failOnError="false"/>
+  <rm:locator pattern="^org\.palladiosimulator\..*" searchPathRef="SDQ_Commons" failOnError="false"/>
+  <rm:locator pattern="^de\.uka\.ipd\.sdq\..*" searchPathRef="WorkflowEngine" failOnError="false"/>
   <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.somox\..*" />
   <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.jgrapht.*" />
   <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^uk\.ac\.shef\.dcs\..*" />
   <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.eclipse\.gmt\.modisco\..*\.edit.*" />
   <rm:locator searchPathRef="palladio-core" failOnError="false"/>
   <rm:locator searchPathRef="kepler"/>
+
+  <rm:searchPath name="WorkflowEngine">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature,buckminster" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="http://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/2.0.3/"/>
+    </rm:provider>
+  </rm:searchPath>
+  
+  <rm:searchPath name="SDQ_Commons">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature,buckminster" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="http://sdqweb.ipd.kit.edu/eclipse/commons/releases/1.4.0/"/>
+    </rm:provider>
+  </rm:searchPath>
   
   <rm:searchPath name="kepler">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature,buckminster" readerType="p2" source="false" mutable="false">
