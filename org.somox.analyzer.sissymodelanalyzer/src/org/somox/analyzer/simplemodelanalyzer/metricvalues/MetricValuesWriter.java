@@ -170,8 +170,8 @@ public class MetricValuesWriter
         for (final ClusteringRelation clusteringRelation : edges)
         {
             final ComponentCandidate compCandidate = MetricvaluesFactory.eINSTANCE.createComponentCandidate();
-            final RepositoryComponent compA = clusteringRelation.getComponentA().getComponent();
-            final RepositoryComponent compB = clusteringRelation.getComponentB().getComponent();
+            final RepositoryComponent compA = clusteringRelation.getSourceComponent().getComponent();
+            final RepositoryComponent compB = clusteringRelation.getTargetComponent().getComponent();
 
             for (final Component component : currentIteration.getComponents())//REALLYCHANGEMF
             {

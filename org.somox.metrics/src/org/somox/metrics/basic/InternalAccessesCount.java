@@ -11,28 +11,27 @@ import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
 
 public class InternalAccessesCount extends AbstractCountingMetric {
 
-	public final static MetricID METRIC_ID = new MetricID("org.somox.metrics.basic.InternalAccessesCount");
-	
-	@Override
-	protected ClusteringRelation internalComputeDirected (
-			ClusteringRelation relationToCompute) {
-		Set<Type> classes1 = this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getComponentA());
-		Set<Type> classes2 = this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getComponentB());
-			
-		relationToCompute.setResultMetric(getMID(), 
-			(double)getAccessGraphCache().calculateNumberOfAccessesToClassesInSet(
-							classes1, classes2));
-		return relationToCompute;
-	}
+    public final static MetricID METRIC_ID = new MetricID("org.somox.metrics.basic.InternalAccessesCount");
 
-	@Override
-	public MetricID getMID() {
-		return METRIC_ID;
-	}
+    @Override
+    protected void internalComputeDirected (
+            final ClusteringRelation relationToCompute) {
+        final Set<Type> classes1 = this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getSourceComponent());
+        final Set<Type> classes2 = this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getTargetComponent());
 
-	@Override
-	public boolean isCommutative() {
-		return false;
-	}
+        relationToCompute.setResultMetric(getMID(),
+                getAccessGraphCache().calculateNumberOfAccessesToClassesInSet(
+                        classes1, classes2));
+    }
+
+    @Override
+    public MetricID getMID() {
+        return METRIC_ID;
+    }
+
+    @Override
+    public boolean isCommutative() {
+        return false;
+    }
 
 }

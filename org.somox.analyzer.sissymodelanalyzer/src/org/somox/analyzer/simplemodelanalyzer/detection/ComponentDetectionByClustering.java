@@ -399,7 +399,7 @@ public class ComponentDetectionByClustering implements IDetectionStrategy {
             for (int stepNo = 0; stepNo < totalCount; stepNo++) {
                 final ClusteringRelation[] computedRelationPair = completionService.take().get();
                 for (final ClusteringRelation relation : computedRelationPair) {
-                    previousGraph.addEdge(relation.getComponentA(),relation.getComponentB(),relation);
+                    previousGraph.addEdge(relation.getSourceComponent(),relation.getTargetComponent(),relation);
                 }
                 LOG.debug(stepNo * 100 / totalCount + "% of clustering done.");
             }

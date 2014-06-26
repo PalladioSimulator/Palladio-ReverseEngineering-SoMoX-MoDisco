@@ -3,11 +3,11 @@ extern org.somox.metrics.basic.ExternalAccessesCount;
 
 Metrics {
 
-	Metric org.somox.metrics.Coupling ("Coupling","A coupling metric") {
+	Metric org.somox.metrics.testing.Coupling ("Coupling","A coupling metric") {
 		Ratio { org.somox.metrics.basic.InternalAccessesCount / org.somox.metrics.basic.ExternalAccessesCount }
 	};
 	
-	Metric org.somox.metrics.Dummy ("","") {
+	Metric org.somox.metrics.testing.WeightedDummy ("","") {
 		parameters {
 			Parameter w1 ( "DummyWeight", "A superb dummy weight", 0.1 );
 			Parameter w2 ( "DummyWeight", "A superb dummy weight", 0.1 );

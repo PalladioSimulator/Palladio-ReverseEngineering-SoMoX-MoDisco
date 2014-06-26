@@ -19,7 +19,7 @@ public class DSLValueVisitor extends MetricDSLSwitch<Double> {
      */
     @Override
     public Double caseParameter(final Parameter object) {
-        // TODO Auto-generated method stub
-        return super.caseParameter(object);
+        // TODO: Read value from configuration!!!
+        return object.getDefaultValue();
     }
 }

@@ -10,24 +10,23 @@ import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
  */
 public class ExternalAccessesCount extends AbstractCountingMetric {
 
-	public static final MetricID METRIC_ID = new MetricID("org.somox.metrics.basic.ExternalAccessesCount");
+    public static final MetricID METRIC_ID = new MetricID("org.somox.metrics.basic.ExternalAccessesCount");
 
-	@Override
-	protected ClusteringRelation internalComputeDirected (
-			ClusteringRelation relationToCompute) {
-		relationToCompute.setResultMetric(getMID(), 
-				(double)getAccessGraphCache().calculateNumberOfExternalAccesses(
-						this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getComponentA())));
-		return relationToCompute;
-	}
-	
-	@Override
-	public MetricID getMID() {
-		return METRIC_ID;
-	}
-	
-	@Override
-	public boolean isCommutative() {
-		return false;
-	}
+    @Override
+    protected void internalComputeDirected (
+            final ClusteringRelation relationToCompute) {
+        relationToCompute.setResultMetric(getMID(),
+                getAccessGraphCache().calculateNumberOfExternalAccesses(
+                        this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getSourceComponent())));
+    }
+
+    @Override
+    public MetricID getMID() {
+        return METRIC_ID;
+    }
+
+    @Override
+    public boolean isCommutative() {
+        return false;
+    }
 }
