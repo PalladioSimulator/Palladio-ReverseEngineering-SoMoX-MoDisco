@@ -12,47 +12,62 @@ import org.somox.metrics.MetricID;
  * @author Steffen Becker
  */
 public abstract class AbstractRatioMetric extends AbstractComposedMetric implements
-		IMetric {
-	
-	private final ICompositionFunction ratioFunction = new ICompositionFunction() {
-		
-		@Override
-		public double computeOverallDirectedMetricValue(
-				Map<MetricID, Double> metricValues) {
-			double denominator = metricValues.get(getDenominatorMetricID());
-			if (denominator == 0.0) {
-				return 0;
-			}
-			return metricValues.get(getNumeratorMetricID()) / denominator;
-		}
-		
-	}; 
-	
-	@Override
-	protected IMetric[] getChildMetrics(
-			Map<MetricID, IMetric> allMetrics) {
-		return new IMetric[] {
-				getMetric(allMetrics, getNumeratorMetricID()),
-				getMetric(allMetrics, getDenominatorMetricID())
-		};
-	}
+IMetric {
 
-	protected abstract MetricID getNumeratorMetricID();
+    private final ICompositionFunction ratioFunction = new ICompositionFunction() {
 
-	protected abstract MetricID getDenominatorMetricID();
-	
-	@Override
-	protected ICompositionFunction getCompositionFunction(
-			SoMoXConfiguration somoxConfiguration) {
-		return ratioFunction;
-	}
+        @Override
+        public double computeOverallDirectedMetricValue(
+                final Map<MetricID, Double> metricValues) {
+            final double denominator = metricValues.get(getDenominatorMetricID());
+            if (denominator == 0.0) {
+                return 0;
+            }
+            return metricValues.get(getNumeratorMetricID()) / denominator;
+        }
 
-	/* (non-Javadoc)
-	 * @see org.somox.metrics.IMetric#isNormalised()
-	 */
-	@Override
-	public boolean isNormalised() {
-		return true;
-	}
+    };
+
+    @Override
+    protected IMetric[] getChildMetrics(
+            final Map<MetricID, IMetric> allMetrics) {
+        return new IMetric[] {
+                getMetric(allMetrics, getNumeratorMetricID()),
+                getMetric(allMetrics, getDenominatorMetricID())
+        };
+    }
+
+    protected abstract MetricID getNumeratorMetricID();
+
+    protected abstract MetricID getDenominatorMetricID();
+
+    @Override
+    protected ICompositionFunction getCompositionFunction(
+            final SoMoXConfiguration somoxConfiguration) {
+        return ratioFunction;
+    }
+
+    /* (non-Javadoc)
+     * @see org.somox.metrics.IMetric#isNormalised()
+     */
+    @Override
+    public boolean isNormalised() {
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isCommutative () {
+        boolean result = true;
+        for (final IMetric childMetric : getAllChildMetrics()) {
+            if (!childMetric.isCommutative()) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
 
 }

@@ -3,6 +3,8 @@ package org.somox.metrics.basic;
 import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
 import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
+import org.somox.metrics.tabs.BlacklistTab;
+import org.somox.metrics.tabs.MetricTab;
 
 /**
  * Counts accesses from component1 to all classes besides those of component1
@@ -11,6 +13,15 @@ import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
 public class ExternalAccessesCount extends AbstractCountingMetric {
 
     public static final MetricID METRIC_ID = new MetricID("org.somox.metrics.basic.ExternalAccessesCount");
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public MetricTab getLaunchConfigurationTab() {
+        // TODO: Move to general SoMoX config as this is not specific for a single metric...
+        return new BlacklistTab();
+    }
 
     @Override
     protected void internalComputeDirected (
