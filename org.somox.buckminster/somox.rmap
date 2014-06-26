@@ -7,7 +7,7 @@
   <rm:locator pattern="^de\.uka\.ipd\.sdq\..*" searchPathRef="WorkflowEngine" failOnError="false"/>
   <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.somox\..*" />
   <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.jgrapht.*" />
-  <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^uk\.ac\.shef\.dcs\..*" />
+  <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^net\.sourceforge\.secondstring.*" />
   <rm:locator searchPathRef="somoxsvn" failOnError="false" pattern="^org\.eclipse\.gmt\.modisco\..*\.edit.*" />
   <rm:locator searchPathRef="palladio-core" failOnError="false"/>
   <rm:locator searchPathRef="kepler"/>
