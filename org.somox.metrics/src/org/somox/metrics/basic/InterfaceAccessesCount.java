@@ -11,8 +11,6 @@ import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
 import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
 
-//import de.fzi.gast.types.GASTClass;
-
 public class InterfaceAccessesCount extends AbstractCountingMetric {
 
     private static final Logger logger = Logger.getLogger(InterfaceAccessesCount.class);
@@ -30,17 +28,6 @@ public class InterfaceAccessesCount extends AbstractCountingMetric {
     @Override
     protected void internalComputeDirected (
             final ClusteringRelation relationToCompute) {
-
-        //removelater
-        //		java.util.List<Type> type1 = relationToCompute.getComponentA().getImplementingClasses();
-        //		java.util.List<Type> type2 = relationToCompute.getComponentB().getImplementingClasses();
-        //		if(type1!= null & type2!=null & type1.size()>0 & type2.size()>0){
-        //			if(type1.get(0).getName().equals("EnterpriseQueryImpl") &
-        //					type2.get(0).getName().equals("PersistenceContextImpl")){
-        //				String fileName = "interfacecount.txt";;
-        ////				org.somox.changetest.Helper.writeToFile(fileName, "---" +type1.get(0).getName() + " " + type2.get(0).getName());
-        //			}
-        //		}
 
         final Set<Type> classes1 = this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getSourceComponent());
         final Set<Type> classes2 = this.getComponentToClassHelper().deriveImplementingClasses(relationToCompute.getTargetComponent());

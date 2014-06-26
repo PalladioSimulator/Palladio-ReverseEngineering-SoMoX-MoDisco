@@ -7,8 +7,6 @@ import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
 import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
 
-//import de.fzi.gast.types.GASTClass;
-
 public class TotalTypesCount extends AbstractCountingMetric {
 
     public static final MetricID METRIC_ID = new MetricID("org.somox.metrics.basic.TotalTypesCount");

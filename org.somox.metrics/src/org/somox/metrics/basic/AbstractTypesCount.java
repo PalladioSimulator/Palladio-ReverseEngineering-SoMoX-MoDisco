@@ -10,8 +10,6 @@ import org.somox.metrics.ClusteringRelation;
 import org.somox.metrics.MetricID;
 import org.somox.metrics.abstractmetrics.AbstractCountingMetric;
 
-//import de.fzi.gast.types.GASTClass;
-
 public class AbstractTypesCount extends AbstractCountingMetric {
 
     public static final MetricID METRIC_ID = new MetricID("org.somox.metric.basic.AbstractTypesCount");
@@ -28,16 +26,6 @@ public class AbstractTypesCount extends AbstractCountingMetric {
     @Override
     protected void internalComputeDirected (
             final ClusteringRelation relationToCompute) {
-
-        //removelater
-        //		java.util.List<Type> type1 = relationToCompute.getComponentA().getImplementingClasses();
-        //		java.util.List<Type> type2 = relationToCompute.getComponentB().getImplementingClasses();
-        //		if(type1!= null & type2!=null & type1.size()>0 & type2.size()>0){
-        //			if(type1.get(0).getName().equals("GUIEventHandlerImpl") &
-        //					type2.get(0).getName().equals("StoreImpl")){
-        //				System.out.println("a");
-        //			}
-        //		}
 
         final Set<Type> allClasses = calculateUnion(relationToCompute.getSourceComponent(), relationToCompute.getTargetComponent());
         relationToCompute.setResultMetric(getMID(), FilteredCollectionsFactory.getFilteredHashSet(abstractClassesFilter, allClasses).size());
