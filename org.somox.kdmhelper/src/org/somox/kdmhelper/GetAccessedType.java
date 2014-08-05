@@ -16,6 +16,7 @@ import org.eclipse.gmt.modisco.java.SuperFieldAccess;
 import org.eclipse.gmt.modisco.java.ThisExpression;
 import org.eclipse.gmt.modisco.java.Type;
 import org.eclipse.gmt.modisco.java.TypeAccess;
+import org.eclipse.gmt.modisco.java.emf.impl.ModelImpl;
 import org.eclipse.gmt.modisco.java.emf.util.JavaSwitch;
 
 /**
@@ -74,7 +75,11 @@ public class GetAccessedType extends JavaSwitch<Type> {
 	private static Type getAbstractTypeDeclarationContainer(ASTNode input) {
 		ASTNode node = input;
 		while (!(node.eContainer() instanceof AbstractTypeDeclaration)) {
-			node = (ASTNode) node.eContainer();
+			if(node.eContainer() instanceof ModelImpl)
+			{
+				return null;
+			}
+			else node = (ASTNode) node.eContainer();
 		}
 		return (Type) node.eContainer();
 	}
