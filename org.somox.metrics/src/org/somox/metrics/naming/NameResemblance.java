@@ -112,16 +112,19 @@ public class NameResemblance extends AbstractMetric {
         this.excludedPrefixes = tokenizeString(somoxConfiguration.getExcludedPrefixesForNameResemblance());
         this.excludedSuffixes = tokenizeString(somoxConfiguration.getExcludedSuffixesForNameResemblance());
 
+
         for (final Type class1 : accessGraph.vertexSet()) {
             for (final Type class2 : accessGraph.vertexSet()) {
                 Double resemblance = nameResemblanceMap.get(new NamePair(class1,class2));
                 if (resemblance == null) {
                     resemblance = resemblanceMetric.score(trimString(class1.getName()), trimString(class2.getName()));
-                    nameResemblanceMap.put(new NamePair(class1, class2), resemblance);
+                    NamePair pair = new NamePair(class1, class2);
+                    nameResemblanceMap.put(pair, resemblance);
                 }
             }
         }
-        nameResemblanceMap = Collections.unmodifiableMap(nameResemblanceMap);
+        
+        //nameResemblanceMap = Collections.unmodifiableMap(nameResemblanceMap);
     }
 
     /**
