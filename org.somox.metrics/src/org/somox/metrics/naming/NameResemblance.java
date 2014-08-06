@@ -124,7 +124,7 @@ public class NameResemblance extends AbstractMetric {
             }
         }
         
-        //nameResemblanceMap = Collections.unmodifiableMap(nameResemblanceMap);
+        nameResemblanceMap = Collections.unmodifiableMap(nameResemblanceMap);
     }
 
     /**
