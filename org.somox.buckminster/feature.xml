@@ -14,7 +14,7 @@
    </copyright>
 
    <url>
-      <discovery label="Palladio" url="http://sdqweb.ipd.kit.edu/eclipse/palladio/releases/3.5.0/"/>
+      <discovery label="Palladio" url="http://sdqweb.ipd.kit.edu/eclipse/palladio/nightly"/>
    </url>
 
    <includes
