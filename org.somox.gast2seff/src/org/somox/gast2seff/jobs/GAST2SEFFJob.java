@@ -324,33 +324,16 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
 			// removelater
 			
 			
-			//handle synchronizedstatement
-			//actually we have to handel each statement individually in order to get a complete SEFF!!! more statements to come 
-			Boolean isSync = false;
-			for (Statement st: body.getStatements()){
-				if (st instanceof SynchronizedStatement){
-
-					java.lang.System.out.println("found sync block!");
-					isSync = true;
-					typeVisitor.doSwitch(st);
-
-					GastStatementVisitor visitor = new GastStatementVisitor(typeVisitor.getAnnotations(), seff,
-							this.sourceCodeDecoratorModel, basicComponent);
-					visitor.doSwitch(st);
-					
-					
-				}
-			}
-			
-			if(!isSync)
-			
-			{
-			typeVisitor.doSwitch(body);
-
+			// handle each statement 
+		
 			GastStatementVisitor visitor = new GastStatementVisitor(typeVisitor.getAnnotations(), seff,
 					this.sourceCodeDecoratorModel, basicComponent);
-			visitor.doSwitch(body);
-			}
+			
+			for (Statement st: body.getStatements()){
+					typeVisitor.doSwitch(st);
+					visitor.doSwitch(st);
+				}
+			
 		} else {
 			logger.warn("Found GAST behaviour (" + seff.getId() + ") without a method body... Skipping it...");
 		}
