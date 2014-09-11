@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
 import org.eclipse.gmt.modisco.java.Block;
+import org.eclipse.gmt.modisco.java.Statement;
+import org.eclipse.gmt.modisco.java.SynchronizedStatement;
 import org.somox.analyzer.AnalysisResult;
 import org.somox.analyzer.simplemodelanalyzer.jobs.SoMoXBlackboard;
 import org.somox.configuration.SoMoXConfiguration;
@@ -320,11 +322,35 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
 				a = a + 1;
 			}
 			// removelater
+			
+			
+			//handle synchronizedstatement
+			//actually we have to handel each statement individually in order to get a complete SEFF!!! more statements to come 
+			Boolean isSync = false;
+			for (Statement st: body.getStatements()){
+				if (st instanceof SynchronizedStatement){
+
+					java.lang.System.out.println("found sync block!");
+					isSync = true;
+					typeVisitor.doSwitch(st);
+
+					GastStatementVisitor visitor = new GastStatementVisitor(typeVisitor.getAnnotations(), seff,
+							this.sourceCodeDecoratorModel, basicComponent);
+					visitor.doSwitch(st);
+					
+					
+				}
+			}
+			
+			if(!isSync)
+			
+			{
 			typeVisitor.doSwitch(body);
 
 			GastStatementVisitor visitor = new GastStatementVisitor(typeVisitor.getAnnotations(), seff,
 					this.sourceCodeDecoratorModel, basicComponent);
 			visitor.doSwitch(body);
+			}
 		} else {
 			logger.warn("Found GAST behaviour (" + seff.getId() + ") without a method body... Skipping it...");
 		}
