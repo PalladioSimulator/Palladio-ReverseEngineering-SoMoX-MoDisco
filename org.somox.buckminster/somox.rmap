@@ -6,7 +6,7 @@
   <rm:locator searchPathRef="somoxsvn" failOnError="true" pattern="^net\.sourceforge\.secondstring.*" />
   <rm:locator searchPathRef="somoxsvn" failOnError="true" pattern="^org\.eclipse\.gmt\.modisco\..*\.edit.*" />
 
-  <rm:redirect pattern=".*" href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Build/trunk/org.palladiosimulator.targetPlatformBuild/pcm_base.rmap"/>
+  <rm:redirect pattern=".*" href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.buckminster/editors.rmap"/>
 
   <rm:searchPath name="somoxsvn">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="svn" source="true">
