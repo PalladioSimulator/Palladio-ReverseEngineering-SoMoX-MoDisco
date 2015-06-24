@@ -13,7 +13,6 @@
 package org.eclipse.gmt.modisco.omg.kdm.core.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

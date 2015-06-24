@@ -5,11 +5,8 @@ package org.somox.metrics.dsl.metricDSL.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.somox.metrics.dsl.metricDSL.BoundAndWeight;
 import org.somox.metrics.dsl.metricDSL.Constant;
 import org.somox.metrics.dsl.metricDSL.ExternalMetric;

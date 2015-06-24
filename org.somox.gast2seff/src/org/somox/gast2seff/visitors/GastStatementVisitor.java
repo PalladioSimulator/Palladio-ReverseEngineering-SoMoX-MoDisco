@@ -23,6 +23,24 @@ import org.eclipse.gmt.modisco.java.VariableDeclarationStatement;
 import org.eclipse.gmt.modisco.java.WhileStatement;
 import org.eclipse.gmt.modisco.java.emf.util.JavaSwitch;
 import org.eclipse.modisco.java.composition.javaapplication.JavaNodeSourceRegion;
+import org.palladiosimulator.pcm.core.CoreFactory;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.OperationSignature;
+import org.palladiosimulator.pcm.repository.PassiveResource;
+import org.palladiosimulator.pcm.repository.RepositoryFactory;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.repository.Role;
+import org.palladiosimulator.pcm.repository.Signature;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
+import org.palladiosimulator.pcm.seff.AcquireAction;
+import org.palladiosimulator.pcm.seff.BranchAction;
+import org.palladiosimulator.pcm.seff.ExternalCallAction;
+import org.palladiosimulator.pcm.seff.InternalAction;
+import org.palladiosimulator.pcm.seff.LoopAction;
+import org.palladiosimulator.pcm.seff.ReleaseAction;
+import org.palladiosimulator.pcm.seff.ResourceDemandingBehaviour;
+import org.palladiosimulator.pcm.seff.SeffFactory;
 import org.somox.gast2seff.jobs.GAST2SEFFJob;
 import org.somox.gast2seff.visitors.FunctionCallClassificationVisitor.FunctionCallType;
 import org.somox.kdmhelper.GetAccessedType;
@@ -30,20 +48,6 @@ import org.somox.kdmhelper.KDMHelper;
 import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
-
-import de.uka.ipd.sdq.pcm.core.CoreFactory;
-import de.uka.ipd.sdq.pcm.repository.BasicComponent;
-import de.uka.ipd.sdq.pcm.repository.OperationRequiredRole;
-import de.uka.ipd.sdq.pcm.repository.OperationSignature;
-import de.uka.ipd.sdq.pcm.repository.PassiveResource;
-import de.uka.ipd.sdq.pcm.repository.RepositoryFactory;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
-import de.uka.ipd.sdq.pcm.repository.Role;
-import de.uka.ipd.sdq.pcm.repository.Signature;
-import de.uka.ipd.sdq.pcm.seff.ExternalCallAction;
-import de.uka.ipd.sdq.pcm.seff.InternalAction;
-import de.uka.ipd.sdq.pcm.seff.SeffFactory;
-import de.uka.ipd.sdq.pcm.seff.SynchronisationPoint;
 
 //import eu.qimpress.samm.staticstructure.InterfacePort;
 //import eu.qimpress.samm.staticstructure.Operation;
@@ -73,7 +77,7 @@ import de.uka.ipd.sdq.pcm.seff.SynchronisationPoint;
  * and internal service calls. <br>
  * <code>functionClassificationAnnotation</code> classifies which elements to hold when traversing
  * the GAST behaviour.
- * 
+ *
  * @author Steffen Becker, Klaus Krogmann
  */
 public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
@@ -83,7 +87,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     /**
      * The RD-Behaviour to generate
      */
-    private final de.uka.ipd.sdq.pcm.seff.ResourceDemandingBehaviour seff;
+    private final ResourceDemandingBehaviour seff;
 
     /**
      * Mapping to SAMM repository (for external call lookup)
@@ -110,7 +114,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
 
     /**
      * Constructor
-     * 
+     *
      * @param functionClassificationAnnotations
      *            A map containing the type annotations for the nodes of the GAST model. Generated
      *            by a {@link FunctionCallClassificationVisitor}.
@@ -121,7 +125,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
      * @param primitiveComponent
      */
     public GastStatementVisitor(final Map<Statement, BitSet> functionClassificationAnnotations,
-			final de.uka.ipd.sdq.pcm.seff.ResourceDemandingBehaviour resourceDemandingBehaviour,
+            final ResourceDemandingBehaviour resourceDemandingBehaviour,
             final SourceCodeDecoratorRepository gastBehaviourRepository, final BasicComponent primitiveComponent) {
         super();
 
@@ -136,8 +140,8 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
         for (final Statement s : object.getStatements()) {
             final BitSet thisType = this.functionClassificationAnnotation.get(s);
             if (!this.shouldSkip(this.lastType, thisType)) { // Only generate elements for
-                                                             // statements which should not be
-                                                             // abstracted away
+                // statements which should not be
+                // abstracted away
                 // avoid infinite recursion
                 if (!this.isVisitedStatement(thisType)) {
                     this.setVisited(thisType);
@@ -152,18 +156,18 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     @Override
     public Object caseSwitchStatement(final SwitchStatement switchStatement) {
         if (this.containsExternalCall(switchStatement)) {
-            final de.uka.ipd.sdq.pcm.seff.BranchAction branchAction = SeffFactory.eINSTANCE.createBranchAction();
+            final BranchAction branchAction = SeffFactory.eINSTANCE.createBranchAction();
             this.seff.getSteps_Behaviour().add(branchAction);
             branchAction.setEntityName(this.positionToString(KDMHelper.getJavaNodeSourceRegion(switchStatement)));
             // TODO DONE TEST
-//            branchAction.setDocumentation(statementsToString(switchStatement.getStatements()));
-//            branchAction.set("created from a switch statement");
+            //            branchAction.setDocumentation(statementsToString(switchStatement.getStatements()));
+            //            branchAction.set("created from a switch statement");
 
             final ArrayList<ArrayList<Statement>> branches = SwitchStatementHelper
                     .createBlockListFromSwitchStatement(switchStatement);
 
             for (final ArrayList<Statement> branch : branches) {
-                final de.uka.ipd.sdq.pcm.seff.AbstractBranchTransition bt = SeffFactory.eINSTANCE.createProbabilisticBranchTransition();
+                final AbstractBranchTransition bt = SeffFactory.eINSTANCE.createProbabilisticBranchTransition();
                 bt.setBranchBehaviour_BranchTransition(SeffFactory.eINSTANCE.createResourceDemandingBehaviour());
                 bt.getBranchBehaviour_BranchTransition().getSteps_Behaviour().add(SeffFactory.eINSTANCE.createStartAction());
                 bt.setEntityName("parent "
@@ -184,8 +188,8 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
                     // copied from caseBlock
                     final BitSet thisType = this.functionClassificationAnnotation.get(statement);
                     if (!this.shouldSkip(this.lastType, thisType)) { // Only generate elements for
-                                                                     // statements which should not
-                                                                     // be abstracted away
+                        // statements which should not
+                        // be abstracted away
                         // avoid infinite recursion
                         // if(!isVisitedStatement(thisType)) {
                         // setVisited(thisType);
@@ -196,7 +200,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
                         // in order to allow a a multiple use of a statement
                         // because of the new behaviour for switch statements (case without break)
                         visitor.doSwitch(statement); // here visitor. was added in contrast to
-                                                     // caseBlock
+                        // caseBlock
                     }
                     this.lastType = thisType;
                     // end of copy
@@ -215,7 +219,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     @Override
     public Object caseIfStatement(final IfStatement input) {
         if (this.containsExternalCall(input)) {
-            final de.uka.ipd.sdq.pcm.seff.BranchAction branch = SeffFactory.eINSTANCE.createBranchAction();
+            final BranchAction branch = SeffFactory.eINSTANCE.createBranchAction();
             this.seff.getSteps_Behaviour().add(branch);
             branch.setEntityName(this.positionToString(KDMHelper.getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
 
@@ -234,7 +238,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
 
     /**
      * Handles the branch/block of an if or else block.
-     * 
+     *
      * @param input
      *            the whole IfStatement
      * @param branch
@@ -242,14 +246,14 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
      * @param ifElseStatement
      *            the if or else Statement/Block
      */
-    private void handleIfOrElseBranch(final IfStatement input, final de.uka.ipd.sdq.pcm.seff.BranchAction branch,
+    private void handleIfOrElseBranch(final IfStatement input, final BranchAction branch,
             final Statement ifElseStatement) {
-        final de.uka.ipd.sdq.pcm.seff.AbstractBranchTransition bt = SeffFactory.eINSTANCE.createProbabilisticBranchTransition();
+        final AbstractBranchTransition bt = SeffFactory.eINSTANCE.createProbabilisticBranchTransition();
         bt.setBranchBehaviour_BranchTransition(SeffFactory.eINSTANCE.createResourceDemandingBehaviour());
         bt.getBranchBehaviour_BranchTransition().getSteps_Behaviour().add(SeffFactory.eINSTANCE.createStartAction());
         bt.setEntityName("parent " + this.positionToString(KDMHelper.getJavaNodeSourceRegion(input)) + "/"
-                + this.positionToString(KDMHelper.getJavaNodeSourceRegion(ifElseStatement))); 
-		// use parent position since branch position is empty//GAST2SEFFCHANGE//GAST2SEFFCHANGE
+                + this.positionToString(KDMHelper.getJavaNodeSourceRegion(ifElseStatement)));
+        // use parent position since branch position is empty//GAST2SEFFCHANGE//GAST2SEFFCHANGE
         branch.getBranches_Branch().add(bt);
         final GastStatementVisitor visitor = new GastStatementVisitor(this.functionClassificationAnnotation,
                 bt.getBranchBehaviour_BranchTransition(), this.sourceCodeDecoratorRepository, this.primitiveComponent);
@@ -277,7 +281,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     /**
      * Handles loop statement. In the SISSy metamodel there was only one metamodel element, in the
      * MoDisco Java there are three.
-     * 
+     *
      * @param loopStatement
      *            the loop statement
      * @param body
@@ -286,14 +290,14 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
      */
     private Object handleLoopStatement(final Statement loopStatement, final Statement body) {
         if (this.containsExternalCall(loopStatement)) {
-            final de.uka.ipd.sdq.pcm.seff.LoopAction loop = SeffFactory.eINSTANCE.createLoopAction();
+            final LoopAction loop = SeffFactory.eINSTANCE.createLoopAction();
             loop.setBodyBehaviour_Loop(SeffFactory.eINSTANCE.createResourceDemandingBehaviour());
             this.seff.getSteps_Behaviour().add(loop);
             loop.getBodyBehaviour_Loop().getSteps_Behaviour().add(SeffFactory.eINSTANCE.createStartAction());
             loop.setEntityName(this.positionToString(KDMHelper.getJavaNodeSourceRegion(loopStatement))); // GAST2SEFFCHANGE
             // TODO DONE
-//            loop.setDocumentation(blockToString(body));
-//            loop.setDocumentation("created from a loop statement");
+            //            loop.setDocumentation(blockToString(body));
+            //            loop.setDocumentation("created from a loop statement");
 
             new GastStatementVisitor(this.functionClassificationAnnotation, loop.getBodyBehaviour_Loop(),
                     this.sourceCodeDecoratorRepository, this.primitiveComponent).doSwitch(body);
@@ -414,50 +418,50 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
         return this.handleFormerSimpleStatement(object);
     }
 
-    
+
     @Override
-	public Object caseSynchronizedStatement(SynchronizedStatement input) {
+    public Object caseSynchronizedStatement(final SynchronizedStatement input) {
 
-    	PassiveResource passiveResource = RepositoryFactory.eINSTANCE.createPassiveResource();
-    	passiveResource.setEntityName(this.positionToString(KDMHelper
-				.getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
+        final PassiveResource passiveResource = RepositoryFactory.eINSTANCE.createPassiveResource();
+        passiveResource.setEntityName(this.positionToString(KDMHelper
+                .getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
 
-    	passiveResource.setCapacity_PassiveResource(CoreFactory.eINSTANCE.createPCMRandomVariable());
-    	this.primitiveComponent.getPassiveResource_BasicComponent().add(passiveResource);
-    	passiveResource.getCapacity_PassiveResource().setSpecification("1");
-    	
-    	logger.debug("start handling synchronized statement");
-		final de.uka.ipd.sdq.pcm.seff.AcquireAction acquireAction = SeffFactory.eINSTANCE
-				.createAcquireAction();
-		logger.debug("create acquireAction");
+        passiveResource.setCapacity_PassiveResource(CoreFactory.eINSTANCE.createPCMRandomVariable());
+        this.primitiveComponent.getPassiveResource_BasicComponent().add(passiveResource);
+        passiveResource.getCapacity_PassiveResource().setSpecification("1");
 
-		this.seff.getSteps_Behaviour().add(acquireAction);
+        logger.debug("start handling synchronized statement");
+        final AcquireAction acquireAction = SeffFactory.eINSTANCE
+                .createAcquireAction();
+        logger.debug("create acquireAction");
 
-		acquireAction.setPassiveresource_AcquireAction(passiveResource);
-		acquireAction.setEntityName(this.positionToString(KDMHelper
-				.getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
+        this.seff.getSteps_Behaviour().add(acquireAction);
 
-		new GastStatementVisitor(this.functionClassificationAnnotation,
-				this.seff, this.sourceCodeDecoratorRepository,
-				this.primitiveComponent).doSwitch(input.getBody());
-		logger.debug("create releaseAction");
-		final de.uka.ipd.sdq.pcm.seff.ReleaseAction releaseAction = SeffFactory.eINSTANCE
-				.createReleaseAction();
+        acquireAction.setPassiveresource_AcquireAction(passiveResource);
+        acquireAction.setEntityName(this.positionToString(KDMHelper
+                .getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
 
-		this.seff.getSteps_Behaviour().add(releaseAction);
-		releaseAction.setPassiveResource_ReleaseAction(passiveResource);
-		releaseAction.setEntityName(this.positionToString(KDMHelper
-				.getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
+        new GastStatementVisitor(this.functionClassificationAnnotation,
+                this.seff, this.sourceCodeDecoratorRepository,
+                this.primitiveComponent).doSwitch(input.getBody());
+        logger.debug("create releaseAction");
+        final ReleaseAction releaseAction = SeffFactory.eINSTANCE
+                .createReleaseAction();
 
-		return null;
-	}
-    
-    
-    
+        this.seff.getSteps_Behaviour().add(releaseAction);
+        releaseAction.setPassiveResource_ReleaseAction(passiveResource);
+        releaseAction.setEntityName(this.positionToString(KDMHelper
+                .getJavaNodeSourceRegion(input))); // GAST2SEFFCHANGE
+
+        return null;
+    }
+
+
+
     /**
      * Returns true if the statement with thisType should not generate an action in the newly
      * generated SEFF.
-     * 
+     *
      * @param lastType
      *            The type of the preceeding statement
      * @param thisType
@@ -480,45 +484,45 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     }
 
     private void createExternalCallAction(final Statement object) {// GAST2SEFFCHANGE
-		final ExternalCallAction call = SeffFactory.eINSTANCE.createExternalCallAction();
+        final ExternalCallAction call = SeffFactory.eINSTANCE.createExternalCallAction();
         final AbstractMethodInvocation access = this.getFunctionAccess(object); // GAST2SEFFCHANGE
         call.setEntityName(access.getMethod().getName()); // GAST2SEFFCHANGE//GAST2SEFFCHANGE
         final InterfacePortOperationTuple ifOperationTuple = this.getCalledInterfacePort(access);
         call.setRole_ExternalService((OperationRequiredRole) ifOperationTuple.role);
         call.setCalledService_ExternalService((OperationSignature) ifOperationTuple.signature);
-//        call.setDocumentation(this.positionToString(KDMHelper.getJavaNodeSourceRegion(object))); // GAST2SEFFCHANGE
+        //        call.setDocumentation(this.positionToString(KDMHelper.getJavaNodeSourceRegion(object))); // GAST2SEFFCHANGE
         this.seff.getSteps_Behaviour().add(call);
     }
 
     /**
      * Query the interface port for the function access using the source code decorator.
-     * 
+     *
      * @param access
      *            The access to find in the SAMM
      * @return interface port and operation for corresponding to the access.
      */
     private InterfacePortOperationTuple getCalledInterfacePort(final AbstractMethodInvocation access) { // GAST2SEFFCHANGE
 
-		final InterfacePortOperationTuple interfacePortOperationTuple = new InterfacePortOperationTuple();
+        final InterfacePortOperationTuple interfacePortOperationTuple = new InterfacePortOperationTuple();
 
-		for (final RequiredRole requiredRole : primitiveComponent.getRequiredRoles_InterfaceRequiringEntity()) {
-			for (final InterfaceSourceCodeLink ifLink : sourceCodeDecoratorRepository.getInterfaceSourceCodeLink()) {
-				if (requiredRole instanceof OperationRequiredRole) {
-					OperationRequiredRole operReqRole = (OperationRequiredRole) requiredRole;
-					if (operReqRole.getRequiredInterface__OperationRequiredRole().equals(ifLink.getInterface())) {
-						if (ifLink.getGastClass().equals(GetAccessedType.getAccessedType(access))) { // GAST2SEFFCHANGE
+        for (final RequiredRole requiredRole : primitiveComponent.getRequiredRoles_InterfaceRequiringEntity()) {
+            for (final InterfaceSourceCodeLink ifLink : sourceCodeDecoratorRepository.getInterfaceSourceCodeLink()) {
+                if (requiredRole instanceof OperationRequiredRole) {
+                    final OperationRequiredRole operReqRole = (OperationRequiredRole) requiredRole;
+                    if (operReqRole.getRequiredInterface__OperationRequiredRole().equals(ifLink.getInterface())) {
+                        if (ifLink.getGastClass().equals(GetAccessedType.getAccessedType(access))) { // GAST2SEFFCHANGE
 
-							logger.trace("accessed interface port " + operReqRole.getEntityName());
-							interfacePortOperationTuple.role = operReqRole;
-							// query operation:
-							interfacePortOperationTuple.signature = queryInterfaceOperation(access);
+                            logger.trace("accessed interface port " + operReqRole.getEntityName());
+                            interfacePortOperationTuple.role = operReqRole;
+                            // query operation:
+                            interfacePortOperationTuple.signature = queryInterfaceOperation(access);
 
-							return interfacePortOperationTuple;
-						}
-					}
-				}
-			}
-		}
+                            return interfacePortOperationTuple;
+                        }
+                    }
+                }
+            }
+        }
 
         logger.warn("found no if port for " + GetAccessedType.getAccessedType(access).getName()); // GAST2SEFFCHANGE//GAST2SEFFCHANGE
 
@@ -526,15 +530,15 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     }
 
     /**
-	 * Signature query
-	 * 
-	 * @param methodInvocation
-	 *            The method invocation to find in the SAMM
-	 * @return Signature corresponding to function access
-	 */
+     * Signature query
+     *
+     * @param methodInvocation
+     *            The method invocation to find in the SAMM
+     * @return Signature corresponding to function access
+     */
     private Signature queryInterfaceOperation(final AbstractMethodInvocation methodInvocation) { // GAST2SEFFCHANGE
 
-		for (final MethodLevelSourceCodeLink methodLink : this.sourceCodeDecoratorRepository
+        for (final MethodLevelSourceCodeLink methodLink : this.sourceCodeDecoratorRepository
                 .getMethodLevelSourceCodeLink()) {
 
             if (methodLink.getFunction().equals(methodInvocation.getMethod())) { // GAST2SEFFCHANGE
@@ -575,16 +579,16 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     }
 
     private void createInternalAction(final Statement statement) {
-		final InternalAction internalAction = SeffFactory.eINSTANCE.createInternalAction();
+        final InternalAction internalAction = SeffFactory.eINSTANCE.createInternalAction();
 
         internalAction.setEntityName("IA " + this.positionToString(KDMHelper.getJavaNodeSourceRegion(statement))); // GAST2SEFFCHANGE
         // TODO
-//        if (statement instanceof Block) { // GAST2SEFFADDED
-//            ia.setDocumentation(this.blockToString((Block) statement) + "; Statement SISSyID: "
-//                    + KDMHelper.getSISSyID(statement)); // GAST2SEFFCHANGE
-//        } else { // GAST2SEFFADDED
-//            ia.setDocumentation("not a block" + "; Statement SISSyID: " + KDMHelper.getSISSyID(statement)); // GAST2SEFFCHANGE//GAST2SEFFADDED
-//        } // GAST2SEFFADDED
+        //        if (statement instanceof Block) { // GAST2SEFFADDED
+        //            ia.setDocumentation(this.blockToString((Block) statement) + "; Statement SISSyID: "
+        //                    + KDMHelper.getSISSyID(statement)); // GAST2SEFFCHANGE
+        //        } else { // GAST2SEFFADDED
+        //            ia.setDocumentation("not a block" + "; Statement SISSyID: " + KDMHelper.getSISSyID(statement)); // GAST2SEFFCHANGE//GAST2SEFFADDED
+        //        } // GAST2SEFFADDED
         this.seff.getSteps_Behaviour().add(internalAction);
     }
 
@@ -594,7 +598,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
             blockString.append(blockstatement.toString());
             if (KDMHelper.getAllAccesses(blockstatement) != null && // GAST2SEFFCHANGE
                     KDMHelper.getAllAccesses(blockstatement).size() >= 1// GAST2SEFFCHANGE
-            ) {
+                    ) {
                 final ASTNode firstAccess = KDMHelper.getAllAccesses(blockstatement).get(0); // GAST2SEFFCHANGE//GAST2SEFFCHANGE
                 if (firstAccess instanceof ASTNode) { // GAST2SEFFCHANGE
                     final ASTNode access = firstAccess; // GAST2SEFFCHANGE//GAST2SEFFCHANGE
@@ -615,7 +619,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
             final StringBuilder blockString = new StringBuilder("Block: ");
             blockString.append(statements.toString());
 
-            for (Statement statement : statements) {
+            for (final Statement statement : statements) {
 
                 if (KDMHelper.getAllAccesses(statement) != null && // GAST2SEFFCHANGE
                         KDMHelper.getAllAccesses(statement).size() >= 1// GAST2SEFFCHANGE
@@ -632,7 +636,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
                 }
             }
             return blockString.toString();
-            
+
 
         } else {
             return "No blockstatement";
@@ -648,7 +652,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
                 // KDMHelper.getSourceFile(position).getName());//GAST2SEFFCHANGE
                 positionString.append(KDMHelper.computeFullQualifiedName(position.getJavaNode())); // GAST2SEFFCHANGE
             }
-			// TODO burkha 24.04.2013 If numbers are equal than write only one
+            // TODO burkha 24.04.2013 If numbers are equal than write only one
             positionString.append(" from " + position.getStartLine());
             positionString.append(" to " + position.getEndLine());
         } else {
@@ -670,7 +674,7 @@ public class GastStatementVisitor extends JavaSwitch<Object> {// GAST2SEFFCHANGE
     /**
      * Returns true if the statement or one of its child statements (e.g., for loops or branches) is
      * an external service call
-     * 
+     *
      * @param object
      *            The statement to check
      * @return true if the statement or one of its child statements is an external service call

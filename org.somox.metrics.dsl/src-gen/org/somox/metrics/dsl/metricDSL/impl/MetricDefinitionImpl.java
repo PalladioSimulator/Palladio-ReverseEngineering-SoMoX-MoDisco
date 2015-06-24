@@ -3,9 +3,7 @@
 package org.somox.metrics.dsl.metricDSL.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.somox.metrics.dsl.metricDSL.MetricDSLPackage;
 import org.somox.metrics.dsl.metricDSL.MetricDefinition;
 

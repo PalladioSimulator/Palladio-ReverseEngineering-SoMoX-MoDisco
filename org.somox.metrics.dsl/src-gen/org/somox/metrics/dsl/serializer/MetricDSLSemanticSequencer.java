@@ -1,17 +1,9 @@
 package org.somox.metrics.dsl.serializer;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
-import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
-import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
-import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.somox.metrics.dsl.metricDSL.BoundAndWeight;
 import org.somox.metrics.dsl.metricDSL.Constant;
@@ -25,6 +17,8 @@ import org.somox.metrics.dsl.metricDSL.RatioMetric;
 import org.somox.metrics.dsl.metricDSL.StepwiseMetric;
 import org.somox.metrics.dsl.metricDSL.WeightedMetric;
 import org.somox.metrics.dsl.services.MetricDSLGrammarAccess;
+
+import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class MetricDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {

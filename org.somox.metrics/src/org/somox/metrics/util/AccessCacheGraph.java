@@ -8,7 +8,6 @@ import org.eclipse.gmt.modisco.java.Type;
 import org.jgrapht.DirectedGraph;
 import org.somox.filter.BaseFilter;
 import org.somox.filter.NotFilter;
-import org.somox.kdmhelper.KDMHelper;
 import org.somox.metrics.helper.ClassAccessGraphEdge;
 import org.somox.metrics.helper.SourceClassEdgeFilter;
 import org.somox.metrics.helper.TargetClassEdgeFilter;

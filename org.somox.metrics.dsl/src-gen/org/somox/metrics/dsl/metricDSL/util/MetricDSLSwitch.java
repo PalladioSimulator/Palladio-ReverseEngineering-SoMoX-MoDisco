@@ -4,9 +4,7 @@ package org.somox.metrics.dsl.metricDSL.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.somox.metrics.dsl.metricDSL.BoundAndWeight;
 import org.somox.metrics.dsl.metricDSL.Constant;
 import org.somox.metrics.dsl.metricDSL.ExternalMetric;

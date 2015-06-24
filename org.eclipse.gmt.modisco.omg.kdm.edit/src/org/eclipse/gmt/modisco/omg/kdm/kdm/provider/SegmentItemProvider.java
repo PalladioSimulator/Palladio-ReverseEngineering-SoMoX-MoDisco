@@ -18,9 +18,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -28,27 +26,17 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.gmt.modisco.omg.kdm.build.BuildFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.code.CodeFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.conceptual.ConceptualFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.data.DataFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.event.EventFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.kdm.KdmFactory;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.KdmPackage;
 import org.eclipse.gmt.modisco.omg.kdm.kdm.Segment;
-
 import org.eclipse.gmt.modisco.omg.kdm.platform.PlatformFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.source.SourceFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.structure.StructureFactory;
-
 import org.eclipse.gmt.modisco.omg.kdm.ui.UiFactory;
 
 /**

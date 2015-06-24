@@ -2,10 +2,9 @@ package org.somox.analyzer.simplemodelanalyzer.builder;
 
 import java.util.List;
 
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
-
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.OperationRequiredRole;
 
 /**
  * Interface for strategies assigning / creating interface providing roles

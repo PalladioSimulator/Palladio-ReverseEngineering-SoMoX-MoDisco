@@ -4,18 +4,17 @@
 package org.somox.metrics.dsl.ui.contentassist.antlr;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.antlr.runtime.RecognitionException;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.AbstractContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
+import org.somox.metrics.dsl.services.MetricDSLGrammarAccess;
 
 import com.google.inject.Inject;
-
-import org.somox.metrics.dsl.services.MetricDSLGrammarAccess;
 
 public class MetricDSLParser extends AbstractContentAssistParser {
 	

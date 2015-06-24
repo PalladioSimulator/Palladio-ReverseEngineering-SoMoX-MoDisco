@@ -3,7 +3,6 @@ package org.somox.metrics.helper;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmt.modisco.java.ASTNode;
 import org.eclipse.gmt.modisco.java.Type;
@@ -16,8 +15,8 @@ import org.somox.configuration.SoMoXConfiguration;
 import org.somox.filter.AccessedTargetBlacklistFilter;
 import org.somox.filter.BaseFilter;
 import org.somox.filter.EClassBasedFilter;
-import org.somox.kdmhelper.KDMHelper;
 import org.somox.kdmhelper.GetAccessedType;
+import org.somox.kdmhelper.KDMHelper;
 import org.somox.metrics.util.GraphPrinter;
 
 //import de.fzi.gast.accesses.Access;

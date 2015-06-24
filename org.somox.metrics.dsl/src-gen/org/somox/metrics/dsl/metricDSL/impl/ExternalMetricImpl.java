@@ -3,7 +3,6 @@
 package org.somox.metrics.dsl.metricDSL.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.somox.metrics.dsl.metricDSL.ExternalMetric;
 import org.somox.metrics.dsl.metricDSL.MetricDSLPackage;
 

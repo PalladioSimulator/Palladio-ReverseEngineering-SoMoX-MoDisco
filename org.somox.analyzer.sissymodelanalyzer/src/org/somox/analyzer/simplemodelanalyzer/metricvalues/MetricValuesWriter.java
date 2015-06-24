@@ -10,13 +10,6 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
-import metricvalues.Component;
-import metricvalues.ComponentCandidate;
-import metricvalues.Iteration;
-import metricvalues.MetricValue;
-import metricvalues.MetricValuesModel;
-import metricvalues.MetricvaluesFactory;
-
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -24,6 +17,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gmt.modisco.java.Type;
 import org.jgrapht.DirectedGraph;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.somox.analyzer.simplemodelanalyzer.Activator;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.metrics.ClusteringRelation;
@@ -31,7 +25,12 @@ import org.somox.metrics.MetricID;
 //import de.fzi.gast.types.GASTClass;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
+import metricvalues.Component;
+import metricvalues.ComponentCandidate;
+import metricvalues.Iteration;
+import metricvalues.MetricValue;
+import metricvalues.MetricValuesModel;
+import metricvalues.MetricvaluesFactory;
 
 
 public class MetricValuesWriter

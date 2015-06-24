@@ -6,11 +6,7 @@ package org.somox.gast2seff.visitors;
 import org.apache.log4j.Logger;
 import org.eclipse.gmt.modisco.java.AbstractMethodInvocation;
 import org.eclipse.gmt.modisco.java.Type;
-
-import de.uka.ipd.sdq.pcm.repository.BasicComponent;
-//import de.fzi.gast.accesses.FunctionAccess;//GAST2SEFFCHANGE
-//import de.fzi.gast.types.GASTClass;//GAST2SEFFCHANGE
-
+import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.somox.kdmhelper.GetAccessedType;
 import org.somox.kdmhelper.KDMHelper;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;

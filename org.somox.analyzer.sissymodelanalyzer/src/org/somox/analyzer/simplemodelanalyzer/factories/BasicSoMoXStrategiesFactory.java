@@ -16,7 +16,6 @@ import org.somox.analyzer.simplemodelanalyzer.detection.IPostComponentDetectionS
 import org.somox.analyzer.simplemodelanalyzer.detection.NoGastClassToPrimitiveComponentInitializationStrategy;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.kdmhelper.metamodeladdition.Root;
-
 //import de.fzi.gast.core.Root;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 

@@ -5,6 +5,7 @@ package org.somox.metrics.dsl.validation;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EPackage;
 
 public class AbstractMetricDSLValidator extends org.eclipse.xtext.validation.AbstractDeclarativeValidator {

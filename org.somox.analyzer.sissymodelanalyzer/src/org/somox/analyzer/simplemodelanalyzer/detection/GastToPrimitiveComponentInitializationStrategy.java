@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gmt.modisco.java.Type;
-import org.eclipse.gmt.modisco.java.emf.JavaPackage;
 import org.somox.analyzer.simplemodelanalyzer.builder.ComponentBuilder;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.filter.ComposedFilter;
 import org.somox.filter.EClassBasedFilter;
-import org.somox.kdmhelper.KDMHelper;
 import org.somox.kdmhelper.metamodeladdition.Root;
-
 //import de.fzi.gast.core.Root;
 //import de.fzi.gast.types.GASTClass;
 //import de.fzi.gast.types.typesPackage;

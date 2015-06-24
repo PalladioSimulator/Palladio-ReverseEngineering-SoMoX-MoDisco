@@ -1,9 +1,7 @@
 package org.somox.analyzer.simplemodelanalyzer.detection.util;
 
 import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
-import org.eclipse.gmt.modisco.java.ConstructorDeclaration;
 import org.eclipse.gmt.modisco.java.MethodDeclaration;
-import org.eclipse.gmt.modisco.java.Type;
 import org.eclipse.gmt.modisco.java.TypeAccess;
 
 //import de.fzi.gast.functions.Function;

@@ -5,10 +5,9 @@ package org.somox.metrics.dsl.ui;
 
 import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory;
 import org.osgi.framework.Bundle;
+import org.somox.metrics.dsl.ui.internal.MetricDSLActivator;
 
 import com.google.inject.Injector;
-
-import org.somox.metrics.dsl.ui.internal.MetricDSLActivator;
 
 /**
  * This class was generated. Customizations should only happen in a newly

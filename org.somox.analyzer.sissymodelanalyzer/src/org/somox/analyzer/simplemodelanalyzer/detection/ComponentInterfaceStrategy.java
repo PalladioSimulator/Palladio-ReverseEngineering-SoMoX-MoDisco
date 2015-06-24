@@ -3,7 +3,6 @@ package org.somox.analyzer.simplemodelanalyzer.detection;
 import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.eclipse.gmt.modisco.java.Type;
 import org.somox.kdmhelper.KDMHelper;
-
 //import de.fzi.gast.functions.Method;
 //import de.fzi.gast.types.GASTClass;
 import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;

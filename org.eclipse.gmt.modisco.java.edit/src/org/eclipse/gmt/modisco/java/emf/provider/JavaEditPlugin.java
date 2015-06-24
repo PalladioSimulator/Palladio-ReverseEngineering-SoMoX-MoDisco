@@ -18,7 +18,6 @@
 package org.eclipse.gmt.modisco.java.emf.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

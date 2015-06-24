@@ -6,30 +6,32 @@
 
 <plugin>
 
+
    <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated seff2java_ast -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.somox.qimpressgast.presentation.somoxgastModelWizardID"
-            name="%_UI_somoxgastModelWizard_label"
-            class="org.somox.qimpressgast.presentation.somoxgastModelWizard"
+            id="org.somox.seff2javaast.presentation.Seff2methodModelWizardID"
+            name="%_UI_Seff2methodModelWizard_label"
+            class="org.somox.seff2javaast.presentation.Seff2methodModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/somoxgastModelFile.gif">
-         <description>%_UI_somoxgastModelWizard_description</description>
+            icon="icons/full/obj16/Seff2methodModelFile.gif">
+         <description>%_UI_Seff2methodModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
 
    <extension point="org.eclipse.ui.editors">
+      <!-- @generated seff2java_ast -->
       <editor
-            id="org.somox.qimpressgast.presentation.somoxgastEditorID"
-            name="%_UI_somoxgastEditor_label"
-            icon="icons/full/obj16/somoxgastModelFile.gif"
-            extensions="samm_gastbehaviour"
-            class="org.somox.qimpressgast.presentation.somoxgastEditor"
-            contributorClass="org.somox.qimpressgast.presentation.somoxgastActionBarContributor">
+            id="org.somox.seff2javaast.presentation.Seff2methodEditorID"
+            name="%_UI_Seff2methodEditor_label"
+            icon="icons/full/obj16/Seff2methodModelFile.gif"
+            extensions="seff2method"
+            class="org.somox.seff2javaast.presentation.Seff2methodEditor"
+            contributorClass="org.somox.seff2javaast.presentation.Seff2methodActionBarContributor">
       </editor>
    </extension>
-
 </plugin>

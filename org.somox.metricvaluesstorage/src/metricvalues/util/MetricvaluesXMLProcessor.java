@@ -8,11 +8,11 @@ package metricvalues.util;
 
 import java.util.Map;
 
-import metricvalues.MetricvaluesPackage;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import metricvalues.MetricvaluesPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

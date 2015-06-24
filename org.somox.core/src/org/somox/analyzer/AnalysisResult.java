@@ -2,14 +2,12 @@ package org.somox.analyzer;
 
 import java.util.List;
 
+import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.qosannotations.QoSAnnotations;
+import org.palladiosimulator.pcm.repository.Repository;
 import org.somox.common.Message;
 import org.somox.seff2javaast.SEFF2JavaAST;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
-
-import de.uka.ipd.sdq.pcm.allocation.Allocation;
-import de.uka.ipd.sdq.pcm.qosannotations.QoSAnnotations;
-import de.uka.ipd.sdq.pcm.repository.Repository;
-import de.uka.ipd.sdq.pcm.system.System;
 
 /**
  * The result of an analysis iteration.
@@ -22,93 +20,93 @@ import de.uka.ipd.sdq.pcm.system.System;
  */
 public interface AnalysisResult {
 
-	// ---------------------------------
-	// Static Data Fields
-	// ---------------------------------
+    // ---------------------------------
+    // Static Data Fields
+    // ---------------------------------
 
-	/**
-	 * The result status of the analysis step
-	 */
-	public enum ResultStatus {/**
-	 * @uml.property  name="nOT_EXECUTED"
-	 * @uml.associationEnd  
-	 */
-	NOT_EXECUTED,/**
-	 * @uml.property  name="sUCCESS"
-	 * @uml.associationEnd  
-	 */
-	SUCCESS,/**
-	 * @uml.property  name="fAILED"
-	 * @uml.associationEnd  
-	 */
-	FAILED}
+    /**
+     * The result status of the analysis step
+     */
+    public enum ResultStatus {/**
+     * @uml.property  name="nOT_EXECUTED"
+     * @uml.associationEnd
+     */
+        NOT_EXECUTED,/**
+         * @uml.property  name="sUCCESS"
+         * @uml.associationEnd
+         */
+        SUCCESS,/**
+         * @uml.property  name="fAILED"
+         * @uml.associationEnd
+         */
+        FAILED}
 
-	// ---------------------------------
-	// Business Methods
-	// ---------------------------------
+    // ---------------------------------
+    // Business Methods
+    // ---------------------------------
 
-	// ---------------------------------
-	// Getters / Setters
-	// ---------------------------------
+    // ---------------------------------
+    // Getters / Setters
+    // ---------------------------------
 
-	/**
-	 * The result status of the extraction.
-	 * Will be one of the constants AnalysisResult.ResultStatus
-	 * @return The status of the analysis
-	 */
-	public AnalysisResult.ResultStatus getResultStatus();
+    /**
+     * The result status of the extraction.
+     * Will be one of the constants AnalysisResult.ResultStatus
+     * @return The status of the analysis
+     */
+    public AnalysisResult.ResultStatus getResultStatus();
 
 
-	/**
-	 * Get the PCM allocation model
-	 * @return the PCM allocation
-	 */
-	public Allocation getAllocation();
-	
-	/**
-	 * Get  the Model Analyzer that was performed
-	 * @return The model analyzer that has been executed
-	 */
-	public ModelAnalyzer getModelAnalyzer();
+    /**
+     * Get the PCM allocation model
+     * @return the PCM allocation
+     */
+    public Allocation getAllocation();
 
-	/**
-	 * Get the resulting internal architectural model
-	 * @return PCM model repository.
-	 */
-	public Repository getInternalArchitectureModel();
-	
-	/**
-	 * SEFF2JavaAST repository to create
-	 */
-	public SEFF2JavaAST getSeff2JavaAST();
+    /**
+     * Get  the Model Analyzer that was performed
+     * @return The model analyzer that has been executed
+     */
+    public ModelAnalyzer getModelAnalyzer();
 
-	/**
-	 * Source code decorator to update
-	 * @return
-	 */
-	public SourceCodeDecoratorRepository getSourceCodeDecoratorRepository();
+    /**
+     * Get the resulting internal architectural model
+     * @return PCM model repository.
+     */
+    public Repository getInternalArchitectureModel();
 
-	/**
-	 * PCM System (outer most component encapsulated).
-	 */
-	public System getSystemModel();
-	
-	/**
-	 * QoS Annotation model
-	 */
-	public QoSAnnotations getQosAnnotationModel();
+    /**
+     * SEFF2JavaAST repository to create
+     */
+    public SEFF2JavaAST getSeff2JavaAST();
 
-	/**
-	 * Add a message object to the result
-	 *
-	 * @param message The message object
-	 */
-	public void addMessage(Message message);
+    /**
+     * Source code decorator to update
+     * @return
+     */
+    public SourceCodeDecoratorRepository getSourceCodeDecoratorRepository();
 
-	/**
-	 * Get a list of all message objects assigned to this result
-	 * @return List of all assigned message objects
-	 */
-	public List<Message> getMessages();
+    /**
+     * PCM System (outer most component encapsulated).
+     */
+    public org.palladiosimulator.pcm.system.System getSystemModel();
+
+    /**
+     * QoS Annotation model
+     */
+    public QoSAnnotations getQosAnnotationModel();
+
+    /**
+     * Add a message object to the result
+     *
+     * @param message The message object
+     */
+    public void addMessage(Message message);
+
+    /**
+     * Get a list of all message objects assigned to this result
+     * @return List of all assigned message objects
+     */
+    public List<Message> getMessages();
 
 }

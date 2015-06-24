@@ -8,7 +8,6 @@ import java.util.List;
 import org.somox.analyzer.simplemodelanalyzer.detection.IDetectionStrategy;
 import org.somox.analyzer.simplemodelanalyzer.detection.IInitializationStrategy;
 import org.somox.analyzer.simplemodelanalyzer.detection.IPostComponentDetectionStrategy;
-
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 
 /**

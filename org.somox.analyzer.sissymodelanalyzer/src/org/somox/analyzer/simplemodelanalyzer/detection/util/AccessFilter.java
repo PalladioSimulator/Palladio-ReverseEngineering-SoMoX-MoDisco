@@ -5,14 +5,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.gmt.modisco.java.ASTNode;
-import org.eclipse.gmt.modisco.java.ClassInstanceCreation;
-import org.eclipse.gmt.modisco.java.EnumConstantDeclaration;
-import org.eclipse.gmt.modisco.java.SingleVariableAccess;
 import org.eclipse.gmt.modisco.java.Type;
 import org.eclipse.gmt.modisco.java.TypeAccess;
 import org.somox.filter.EClassBasedFilter;
-import org.somox.kdmhelper.KDMHelper;
 import org.somox.kdmhelper.GetAccessedType;
+import org.somox.kdmhelper.KDMHelper;
 
 //import de.fzi.gast.accesses.Access;
 //import de.fzi.gast.accesses.CompositeAccess;

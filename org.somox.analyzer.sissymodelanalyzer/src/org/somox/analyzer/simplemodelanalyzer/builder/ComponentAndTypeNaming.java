@@ -6,11 +6,10 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.gmt.modisco.java.Type;
+import org.palladiosimulator.pcm.repository.Interface;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.somox.kdmhelper.KDMHelper;
 import org.somox.kdmhelper.metamodeladdition.Root;
-
-import de.uka.ipd.sdq.pcm.repository.Interface;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 
 /**

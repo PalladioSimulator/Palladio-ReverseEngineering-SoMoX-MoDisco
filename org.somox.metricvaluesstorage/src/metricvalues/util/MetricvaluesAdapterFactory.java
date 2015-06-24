@@ -6,17 +6,17 @@
  */
 package metricvalues.util;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+import org.eclipse.emf.ecore.EObject;
+
 import metricvalues.Component;
 import metricvalues.ComponentCandidate;
 import metricvalues.Iteration;
 import metricvalues.MetricValue;
 import metricvalues.MetricValuesModel;
 import metricvalues.MetricvaluesPackage;
-
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

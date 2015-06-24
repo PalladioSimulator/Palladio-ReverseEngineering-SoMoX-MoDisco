@@ -8,9 +8,6 @@ package metricvalues.impl;
 
 import java.util.Collection;
 
-import metricvalues.Component;
-import metricvalues.MetricvaluesPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
@@ -23,6 +20,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.gmt.modisco.java.Type;
+
+import metricvalues.Component;
+import metricvalues.MetricvaluesPackage;
 
 /**
  * <!-- begin-user-doc -->

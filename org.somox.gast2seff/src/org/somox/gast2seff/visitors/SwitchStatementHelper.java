@@ -2,7 +2,6 @@ package org.somox.gast2seff.visitors;
 
 import java.util.ArrayList;
 
-import org.eclipse.emf.ecore.util.Switch;
 import org.eclipse.gmt.modisco.java.BreakStatement;
 import org.eclipse.gmt.modisco.java.Statement;
 import org.eclipse.gmt.modisco.java.SwitchCase;

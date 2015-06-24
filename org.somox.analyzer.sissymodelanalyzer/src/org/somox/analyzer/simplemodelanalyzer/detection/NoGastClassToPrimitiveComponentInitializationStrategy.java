@@ -10,7 +10,6 @@ import org.somox.configuration.SoMoXConfiguration;
 import org.somox.filter.ComposedFilter;
 import org.somox.filter.EClassBasedFilter;
 import org.somox.kdmhelper.metamodeladdition.Root;
-
 //import de.fzi.gast.core.Root;
 //import de.fzi.gast.types.GASTClass;
 //import de.fzi.gast.types.typesPackage;

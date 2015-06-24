@@ -6,6 +6,13 @@
  */
 package metricvalues.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.gmt.modisco.java.emf.JavaPackage;
+
 import metricvalues.Component;
 import metricvalues.ComponentCandidate;
 import metricvalues.Iteration;
@@ -13,13 +20,6 @@ import metricvalues.MetricValue;
 import metricvalues.MetricValuesModel;
 import metricvalues.MetricvaluesFactory;
 import metricvalues.MetricvaluesPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.gmt.modisco.java.emf.JavaPackage;
 
 /**
  * <!-- begin-user-doc -->

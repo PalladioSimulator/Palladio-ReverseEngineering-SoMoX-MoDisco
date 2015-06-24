@@ -2,10 +2,10 @@ package org.somox.ui.runconfig.configbuilder;
 
 import java.util.Map;
 
-import org.somox.common.SoMoXProjectPreferences;
 import org.somox.configuration.SOMOXConfigurationBuilderByPreferences;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.ui.runconfig.ModelAnalyzerConfiguration;
+
 import de.uka.ipd.sdq.workflow.launchconfig.configbuilder.AbstractUIBasedConfigurationBuilder;
 
 public class UIBasedSomoxConfigurationBuilder extends

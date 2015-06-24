@@ -6,16 +6,16 @@
  */
 package metricvalues.util;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
+
 import metricvalues.Component;
 import metricvalues.ComponentCandidate;
 import metricvalues.Iteration;
 import metricvalues.MetricValue;
 import metricvalues.MetricValuesModel;
 import metricvalues.MetricvaluesPackage;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->

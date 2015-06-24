@@ -6,6 +6,12 @@
  */
 package metricvalues.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import metricvalues.Component;
 import metricvalues.ComponentCandidate;
 import metricvalues.Iteration;
@@ -13,12 +19,6 @@ import metricvalues.MetricValue;
 import metricvalues.MetricValuesModel;
 import metricvalues.MetricvaluesFactory;
 import metricvalues.MetricvaluesPackage;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->

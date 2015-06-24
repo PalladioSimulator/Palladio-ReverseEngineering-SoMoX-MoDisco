@@ -7,18 +7,18 @@
       <details key="documentation" value="Human readable information for the source code link"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="repositoryComponent" ordered="false"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="file" ordered="false" eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.omg.kdm/model/kdm.ecore#//source/SourceFile"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MethodLevelSourceCodeLink" eSuperTypes="#//FileLevelSourceCodeLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" ordered="false"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/Signature"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/Signature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="function" ordered="false"
         eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.java/model/java.ecore#//AbstractMethodDeclaration"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControlFlowLevelSourceCodeLink" eSuperTypes="#//MethodLevelSourceCodeLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstractAction" ordered="false"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//seff/AbstractAction"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//seff/AbstractAction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statement" ordered="false"
         eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.java/model/java.ecore#//Statement"/>
   </eClassifiers>
@@ -38,7 +38,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InterfaceSourceCodeLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="interface" ordered="false"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/Interface"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/Interface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="gastClass" ordered="false"
         eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.java/model/java.ecore#//Type"/>
   </eClassifiers>
@@ -47,7 +47,7 @@
         unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" transient="true" unsettable="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        lowerBound="1" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="implementingClasses" ordered="false"
         lowerBound="1" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.java/model/java.ecore#//Type"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subComponents" ordered="false"
@@ -66,6 +66,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="PCMSystemImplementatingClassesLink"
       eSuperTypes="#//ComponentImplementingClassesLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemModel" ordered="false"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//system/System"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//system/System"/>
   </eClassifiers>
 </ecore:EPackage>
