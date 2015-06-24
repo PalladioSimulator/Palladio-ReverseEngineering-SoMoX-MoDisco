@@ -7,6 +7,7 @@ import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.gmt.modisco.java.emf.provider.JavaEditPlugin;
 import org.eclipse.gmt.modisco.omg.kdm.core.provider.KdmEditPlugin;
+import org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierEditPlugin;
 import de.uka.ipd.sdq.probfunction.provider.ProbabilityFunctionEditPlugin;
@@ -40,9 +41,16 @@ public final class SourcecodedecoratorEditorPlugin extends EMFPlugin {
      * @generated
      */
     public SourcecodedecoratorEditorPlugin() {
-        super(new ResourceLocator[] { IdentifierEditPlugin.INSTANCE, JavaEditPlugin.INSTANCE, KdmEditPlugin.INSTANCE,
-                org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin.INSTANCE,
-                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE, });
+        super(new ResourceLocator[]
+                {
+                IdentifierEditPlugin.INSTANCE,
+                JavaEditPlugin.INSTANCE,
+                KdmEditPlugin.INSTANCE,
+                PalladioComponentModelEditPlugin.INSTANCE,
+                ProbabilityFunctionEditPlugin.INSTANCE,
+                StoexEditPlugin.INSTANCE,
+                UnitsEditPlugin.INSTANCE,
+                });
     }
 
     /**

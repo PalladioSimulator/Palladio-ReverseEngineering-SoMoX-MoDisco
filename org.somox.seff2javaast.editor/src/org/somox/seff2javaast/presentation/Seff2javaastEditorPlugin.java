@@ -6,6 +6,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.gmt.modisco.java.emf.provider.JavaEditPlugin;
+import org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierEditPlugin;
 import de.uka.ipd.sdq.probfunction.provider.ProbabilityFunctionEditPlugin;
@@ -39,9 +40,15 @@ public final class Seff2javaastEditorPlugin extends EMFPlugin {
      * @generated
      */
     public Seff2javaastEditorPlugin() {
-        super(new ResourceLocator[] { IdentifierEditPlugin.INSTANCE, JavaEditPlugin.INSTANCE,
-                org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin.INSTANCE,
-                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE, });
+        super(new ResourceLocator[]
+                {
+                IdentifierEditPlugin.INSTANCE,
+                JavaEditPlugin.INSTANCE,
+                PalladioComponentModelEditPlugin.INSTANCE,
+                ProbabilityFunctionEditPlugin.INSTANCE,
+                StoexEditPlugin.INSTANCE,
+                UnitsEditPlugin.INSTANCE,
+                });
     }
 
     /**
