@@ -31,9 +31,9 @@ import org.palladiosimulator.pcm.resourcetype.SchedulingPolicy;
  */
 public class DefaultResourceEnvironment {
 
-    private static final String RESOURCETYPE_URI = "platform:/plugin/de.uka.ipd.sdq.pcm.resources/defaultModels/Palladio.resourcetype";
+    private static final String RESOURCETYPE_URI = "pathmap://PCM_MODELS/Palladio.resourcetype";
 
-    private static final String PRIMITIVETYPES_URI = "platform:/plugin/de.uka.ipd.sdq.pcm.resources/defaultModels/PrimitiveTypes.repository";
+    private static final String PRIMITIVETYPES_URI = "pathmap://PCM_MODELS/PrimitiveTypes.repository";
 
 
     /** cached instance of default resource environment.  */
