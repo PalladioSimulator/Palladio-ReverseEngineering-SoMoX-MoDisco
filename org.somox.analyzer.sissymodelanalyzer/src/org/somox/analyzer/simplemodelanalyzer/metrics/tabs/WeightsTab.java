@@ -1,4 +1,6 @@
 package org.somox.analyzer.simplemodelanalyzer.metrics.tabs;
+import java.awt.Dialog;
+import java.awt.MouseInfo;
 /**
  * @author Oliver Burkhardt, Klaus Krogmann
  */
@@ -6,6 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.CoreException;
@@ -18,6 +23,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -57,7 +63,7 @@ public class WeightsTab extends MetricTab {
 	public void createControl(Composite parent) {		
 		
 		control = new Composite(parent, SWT.BORDER);
-		control.setLayout(new GridLayout(3,false));
+		control.setLayout(new GridLayout(4,false));
 
 //		final ScrolledComposite scrollContainer = new ScrolledComposite(control,
 //		SWT.BORDER | SWT.V_SCROLL);
@@ -75,7 +81,7 @@ public class WeightsTab extends MetricTab {
 		for(MetricsDetails metricDetail : projectPreferences.orderedMetricDetails){
 			Label keyLabel = new Label(control,SWT.NONE);
 			keyLabel.setText(metricDetail.metricLabel); // metric label			
-			keyLabel.setToolTipText(metricDetail.metricExplanantion); // metric explanation text		
+			//keyLabel.setToolTipText(metricDetail.metricExplanantion); // metric explanation text		
 			keyLabels.add(keyLabel);
 			
 			final Label valueLabel = new Label(control,SWT.BORDER);
@@ -104,7 +110,30 @@ public class WeightsTab extends MetricTab {
 				}
 			});
 			valueSliders.add(slider);
-			
+			final Button button = new Button(control, SWT.NONE);
+			button.setText("?");
+			final String tooltiptext = metricDetail.metricExplanantion;
+			button.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					final JDialog dialog = new JDialog();
+					//d.setVisible(false);
+					dialog.setBounds(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y, 300, 100);
+			        dialog.setModal(true);
+			        dialog.setTitle("Tip");
+			        dialog.add(new JLabel(tooltiptext));
+			        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			        dialog.pack();
+			        dialog.setVisible(true);
+			        //dialog.setLocationRelativeTo(e);
+					
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
+			});
+		    
 			weightCounter++;
 		}
 			
