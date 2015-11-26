@@ -111,8 +111,9 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
         super();
 
         // performance optimisation:
-        final Map<URI, Resource> cache = new HashMap<URI, Resource>();
-        ((ResourceSetImpl)resourceSet).setURIResourceMap(cache);
+        //final Map<URI, Resource> cache = new HashMap<URI, Resource>();
+        /** Changed by Falko Hansch*/
+        //((ResourceSetImpl)resourceSet).setURIResourceMap(cache);
         idToeObjectMap = new HashMap<String, EObject>();
         xmlNameToFeatureMap = new HashMap<Object,Object>();
         this.somoxConfiguration = somoxConfiguration;
@@ -141,11 +142,14 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
         //FIXME
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
         final String basePath = workspace.getRoot().getRawLocation().toOSString();
-        final String gastModelPath = somoxConfiguration.getFileLocations().getAnalyserInputFile();
-        final URI gastURI = URI.createFileURI(basePath + File.separator + gastModelPath);
-        logger.debug(gastURI);
+        /** Changed by Falko Hansch*/
+        // final String gastModelPath = somoxConfiguration.getFileLocations().getAnalyserInputFile();
+        
+        //final URI gastURI = URI.createFileURI(basePath + File.separator + gastModelPath);
+        //final URI gastURI = URI.createFileURI(gastModelPath);
+        //logger.debug(gastURI);
         //URI gastURI = sammInstanceURI.trimFileExtension().path() + "testsomoxgast2seff_java2kdm.xmi".appendFileExtension(GAST_EXTENSION);
-        this.gastInstance = loadResource(gastURI, true); //FIXME: implement automated search for GAST file
+        //   this.gastInstance = loadResource(gastURI, true); //FIXME: implement automated search for GAST file
         //
         //		this.gastBehaviourRepository = loadResource(gastBehaviourRepositoryURI, false);
         //		this.gastBehaviourRepositoryModel = (GASTBehaviourRepository) this.gastBehaviourRepository.getContents().get(0);
@@ -161,6 +165,7 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
         //		this.sammQosAnnotations = loadResource(sammQosAnnotationsURI, false);
         //		this.sourceCodeDecorator = loadResource(sourceCodeDecoratorURI, false);
 
+  
         final AnalysisResult result = blackboard.getAnalysisResult();
         final org.palladiosimulator.pcm.system.System samm = result.getSystemModel();
         this.gastBehaviourRepositoryModel = result.getSeff2JavaAST();
