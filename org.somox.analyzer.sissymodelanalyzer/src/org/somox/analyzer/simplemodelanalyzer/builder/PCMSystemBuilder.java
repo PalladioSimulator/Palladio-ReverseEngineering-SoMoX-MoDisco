@@ -202,13 +202,14 @@ public class PCMSystemBuilder extends AbstractBuilder {
 
         // required ports not allowed/supported for SAMM system thus capture by
         // dummy component
+        /** Changed by Falko Hansch*/
         // create dummy components for non-connected interfaces and
         // build assembly connectors for the newly created dummy component:
-        final BasicComponent dummyComponent = DummyComponentBuilder
-                .createDummyComponent(subComponentInformationSet, pcmSystem,
-                        resourceEnvironment, analysisResult);
-        this.analysisResult.getInternalArchitectureModel()
-        .getComponents__Repository().add(dummyComponent);
+        //final BasicComponent dummyComponent = DummyComponentBuilder
+        //        .createDummyComponent(subComponentInformationSet, pcmSystem,
+        //                resourceEnvironment, analysisResult);
+        //this.analysisResult.getInternalArchitectureModel()
+        //.getComponents__Repository().add(dummyComponent);
     }
 
     // TODO: Check in the svn history what this method was used for. Maybe
