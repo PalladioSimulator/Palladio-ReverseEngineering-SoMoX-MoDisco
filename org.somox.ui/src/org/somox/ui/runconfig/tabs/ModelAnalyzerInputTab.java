@@ -116,6 +116,8 @@ public class ModelAnalyzerInputTab extends AbstractLaunchConfigurationTab {
 		final GridData gd_inputFile = new GridData(SWT.FILL, SWT.CENTER, true,
 				false);
 		gd_inputFile.widthHint = 200;
+		/** Changed by Falko Hansch*/
+		inputFile.setEditable(false);
 		inputFile.setLayoutData(gd_inputFile);
 		inputFile.addModifyListener(modifyListener);
 		inputFile.addModifyListener(new ModifyListener() {
@@ -130,9 +132,14 @@ public class ModelAnalyzerInputTab extends AbstractLaunchConfigurationTab {
 		Button inputFileWorkspaceButton = new Button(inputFileTypeGroup,
 				SWT.NONE);
 		inputFileWorkspaceButton.setText("Workspace...");
-		inputFileWorkspaceButton.addSelectionListener(new WorkspaceButtonSelectionListener(
+		
+		/*	inputFileWorkspaceButton.addSelectionListener(new WorkspaceButtonSelectionListener(
 				inputFile, false, true, true));
-
+	*/
+		/** Changed by Falko Hansch*/
+		inputFileWorkspaceButton.addSelectionListener(new WorkspaceButtonSelectionListener(
+				inputFile, false, true, false));
+	
 		Composite composite = new Composite(container, SWT.NONE);
 		composite.setLayout(new GridLayout(2, false));
 		{
@@ -191,13 +198,14 @@ public class ModelAnalyzerInputTab extends AbstractLaunchConfigurationTab {
 			updateBlackboard(null);
 			return false;
 		}
-
+		/** Changed by Falko Hansch*/
+		/*
 		if (!ResourcesPlugin.getWorkspace().getRoot().exists(new Path(
 				inputFile.getText()))) {
 			setErrorMessage("Input file " + inputFile.getText() + " does not exist");
 			updateBlackboard(null);
 			return false;
-		}
+		}*/
 		//updateBlackboard(inputFile.getText());
 		return true;
 	}
