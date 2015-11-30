@@ -86,7 +86,7 @@ public class NameResemblance extends AbstractMetric {
     /**
      * Cache the pairwise computed name resemblances for a given pair of strings
      */
-    private Map<NamePair,Double> nameResemblanceMap = new HashMap<NamePair, Double>();
+    private Map<NamePair,Double> nameResemblanceMap;
 
     /**
      * Set with prefix Strings that will be excluded in every metric-computation
@@ -108,7 +108,7 @@ public class NameResemblance extends AbstractMetric {
             final DirectedGraph<Type, ClassAccessGraphEdge> accessGraph,
             final ComponentToImplementingClassesHelper componentToImplementingClassesHelper) {
         super.initialize(gastModel, somoxConfiguration, allMetrics, accessGraph, componentToImplementingClassesHelper);
-
+        nameResemblanceMap = new HashMap<NamePair, Double>();
         this.excludedPrefixes = tokenizeString(somoxConfiguration.getExcludedPrefixesForNameResemblance());
         this.excludedSuffixes = tokenizeString(somoxConfiguration.getExcludedSuffixesForNameResemblance());
 
