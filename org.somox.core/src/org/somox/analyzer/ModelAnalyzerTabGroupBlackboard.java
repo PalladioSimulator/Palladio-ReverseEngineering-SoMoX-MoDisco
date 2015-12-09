@@ -5,6 +5,9 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 import org.apache.log4j.Level;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
@@ -116,8 +119,7 @@ public class ModelAnalyzerTabGroupBlackboard {
 			this.somoxAnalyzerInputFile = somoxAnalyzerInputFile;
 			if (this.somoxAnalyzerInputFile != null) {
 				if (somoxAnalyzerInputFile.endsWith(".xmi")) {
-					/** Changed by Falko Hansch*/
-					//loadModel();
+					loadModel();
 				} else {
 					root = null;
 				}
@@ -129,8 +131,7 @@ public class ModelAnalyzerTabGroupBlackboard {
 			this.somoxAnalyzerInputFile = somoxAnalyzerInputFile;
 			if (this.somoxAnalyzerInputFile != null) {
 				if (somoxAnalyzerInputFile.endsWith(".xmi")) {
-					/** Changed by Falko Hansch*/
-					//loadModel();
+					loadModel();
 				} else {
 					root = null;
 				}
@@ -142,17 +143,22 @@ public class ModelAnalyzerTabGroupBlackboard {
 	}
 
 	private void loadModel() {
-		/** Changed by Falko Hansch*/
-		URI fileURI = URI.createFileURI(somoxAnalyzerInputFile);
-			try {
-			KDMReader.initialize();
-			KDMReader.loadFile(fileURI);
-			root=KDMReader.getRoot();
+		
+		URI fileURI = URI.createPlatformResourceURI(somoxAnalyzerInputFile, true);
+
+		IWorkspaceRoot resRoot = ResourcesPlugin.getWorkspace().getRoot();
+		if(resRoot.findMember(fileURI.toPlatformString(true)) instanceof IFile) {
+		try {
+			KDMReader gastReader = new KDMReader();
+			gastReader.loadFile(fileURI);
+			root=gastReader.getRoot();
 		} catch (IOException e1) {
 			logger.log(new Status(Status.ERROR,Activator.PLUGIN_ID,"Failed to load Model file " + fileURI));
 			e1.printStackTrace();
 		}
-		
+		}else {
+			logger.log(new Status(Status.ERROR,Activator.PLUGIN_ID,"Failed to load Model file " + fileURI));
+		}
 	}
 	
 	/**

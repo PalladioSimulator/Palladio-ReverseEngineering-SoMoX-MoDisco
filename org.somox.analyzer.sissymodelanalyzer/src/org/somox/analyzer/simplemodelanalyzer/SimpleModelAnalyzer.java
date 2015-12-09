@@ -83,17 +83,17 @@ public class SimpleModelAnalyzer implements ModelAnalyzer {
         // TODO: This should be an "extractor" in the SoMoX terminology
         final String platformPath = somoxConfiguration.getFileLocations().getAnalyserInputFile();
         if (platformPath != null) {
-        	/** Changed by Falko Hansch*/
-        	final URI fileURI = URI.createFileURI(platformPath);
+            final URI fileURI = URI.createPlatformResourceURI(platformPath, true);
             if (fileURI.fileExtension().toLowerCase().equals("xmi")) {
+                KDMReader modelReader;
                 try {
-                    KDMReader.initialize();
-                    KDMReader.loadFile(fileURI);
+                    modelReader = new KDMReader();
+                    modelReader.loadFile(fileURI);
                 } catch (final IOException e) {
                     logger.error("Failed to load GAST Model",e);
                     throw new ModelAnalyzerException("Failed to load GAST model",e);
                 }
-                final Root root = KDMReader.getRoot();
+                final Root root = modelReader.getRoot();
                 analysisResult = analyzeGASTModel(root, somoxConfiguration, progressMonitor);
             }
         }

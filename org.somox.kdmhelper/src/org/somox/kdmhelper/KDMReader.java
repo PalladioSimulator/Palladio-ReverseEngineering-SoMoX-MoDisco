@@ -12,93 +12,61 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.gmt.modisco.infra.common.core.internal.utils.ModelUtils;
 import org.eclipse.gmt.modisco.java.Model;
 import org.eclipse.modisco.java.composition.javaapplication.JavaApplication;
 import org.somox.kdmhelper.metamodeladdition.Root;
 
-/** Changed by Falko Hansch*/
 //@SuppressWarnings("restriction")
-public final class KDMReader {
+public class KDMReader {
 
-	private static Root root;
-	private static ResourceSet resourceSet;
+	private Root root;
 
 	private final static Logger logger = Logger.getLogger(KDMReader.class
 			.getName());
 
-	private KDMReader() {
-
+	public KDMReader() {
+		root = new Root();
+		org.eclipse.gmt.modisco.java.emf.JavaPackage.eINSTANCE.eClass();
+		org.eclipse.gmt.modisco.omg.kdm.kdm.KdmPackage.eINSTANCE.eClass();
+		org.eclipse.modisco.java.composition.javaapplication.JavaapplicationPackage.eINSTANCE
+				.eClass();
 	}
 
-	public static Root getRoot() {
+	public Root getRoot() {
 		return root;
 	}
 
-	public static void initialize() {
-		
-		root = new Root();
-		resourceSet = new ResourceSetImpl();
-	}
-	
-	public static  void loadFiles(Collection<String> filesLocationList)
+	public void loadFiles(Collection<String> filesLocationList)
 			throws IOException {
 		for (String fileLocation : filesLocationList) {
 			File file = new File(fileLocation);
 			URI URIfile = URI.createFileURI(file.getAbsolutePath());
 
-			String fileExtension = URIfile.fileExtension();
-			ResourceSet resourceSet = new ResourceSetImpl();
-		    // Obtain a new resource set
-			final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-			final Object resourceFactory = reg.getExtensionToFactoryMap().get(fileExtension);
-			if (resourceFactory != null) {
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-						.put(fileExtension, resourceFactory);
-			} else {
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-						.put(fileExtension, new XMIResourceFactoryImpl());
-			}
-
-		    // create a resource
-		    Resource resource = resourceSet.createResource(URIfile);
+			Resource resource = ModelUtils.loadModel(URIfile);
 			// TODO fix
 			Map<Object, Object> loadOptions = setupLoadOptions(resource);
 			addModelToRoot(resource);
+
 		}
 	}
 
 	// TODO test
-	public static void loadFile(URI file) throws IOException {
-		String fileExtension = file.fileExtension();
-	    // Obtain a new resource set
-		final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		final Object resourceFactory = reg.getExtensionToFactoryMap().get(fileExtension);
-		if (resourceFactory != null) {
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-					.put(fileExtension, resourceFactory);
-		} else {
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-					.put(fileExtension, new XMIResourceFactoryImpl());
-		}
-
-	    // create a resource
-	    Resource resource = resourceSet.createResource(file);
-	    resource.load(null);
-		
+	public void loadFile(URI file) throws IOException {
+		Resource resource;
+		resource = ModelUtils.loadModel(file);
 		addModelToRoot(resource);
+
 	}
 
-	private static void addModelToRoot(Resource resource) {
+	private void addModelToRoot(Resource resource) {
 		root.addModels(getModelsFromResource(resource));
 	}
 
-	private static Collection<Model> getModelsFromResource(Resource resource) {
+	private Collection<Model> getModelsFromResource(Resource resource) {
 		List<Model> modelList = new ArrayList<Model>();
 		for (EObject obj : resource.getContents()) {
 			if (obj instanceof JavaApplication) {
@@ -114,7 +82,7 @@ public final class KDMReader {
 		return modelList;
 	}
 
-	private static Map<Object, Object> setupLoadOptions(Resource resource) {
+	private Map<Object, Object> setupLoadOptions(Resource resource) {
 		Map<Object, Object> loadOptions = ((XMLResourceImpl) resource)
 				.getDefaultLoadOptions();
 		loadOptions.put(XMLResource.OPTION_DEFER_ATTACHMENT, Boolean.TRUE);
