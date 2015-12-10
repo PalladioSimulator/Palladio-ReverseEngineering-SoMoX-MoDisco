@@ -24,7 +24,7 @@ import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.somox.analyzer.AnalysisResult;
 import org.somox.analyzer.simplemodelanalyzer.builder.util.DefaultResourceEnvironment;
 import org.somox.analyzer.simplemodelanalyzer.builder.util.InterfacePortBuilderHelper;
-import org.somox.analyzer.simplemodelanalyzer.builder.util.SubComponentInformation;
+import org.somox.analyzer.simplemodelanalyzer.builder.util.EndpointInformation;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.kdmhelper.metamodeladdition.Root;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
@@ -134,7 +134,7 @@ public class PCMSystemBuilder extends AbstractBuilder {
         // FIXME: currently saving results in invalid serialisation
         // this.analysisResult.getSourceCodeDecoratorRepository().getComponentImplementingClassesLink().add(sammLink);
 
-        final Set<SubComponentInformation> subComponentInformationSet = new HashSet<SubComponentInformation>();
+        final Set<EndpointInformation> subComponentInformationSet = new HashSet<EndpointInformation>();
 
         final ResourceEnvironment resourceEnvironment = DefaultResourceEnvironment
                 .getDefaultResourceEnvironment();
@@ -191,10 +191,10 @@ public class PCMSystemBuilder extends AbstractBuilder {
         .buildAssemblyConnectors(pcmSystem, innerComponents);
 
         // collect information on non-connected interfaces
-        final Iterable<SubComponentInformation> subComponentInformation = InterfacePortBuilderHelper
+        final Iterable<EndpointInformation> subComponentInformation = InterfacePortBuilderHelper
                 .collectInformationOnNonBoundInterfaces(pcmLink, pcmSystem,
                         false); // Link must be SAMM!
-        final Iterator<SubComponentInformation> iterator = subComponentInformation
+        final Iterator<EndpointInformation> iterator = subComponentInformation
                 .iterator();
         while (iterator.hasNext()) {
             subComponentInformationSet.add(iterator.next());

@@ -13,7 +13,7 @@ import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.somox.analyzer.AnalysisResult;
 import org.somox.analyzer.simplemodelanalyzer.builder.util.InstanceComponentTuple;
-import org.somox.analyzer.simplemodelanalyzer.builder.util.SubComponentInformation;
+import org.somox.analyzer.simplemodelanalyzer.builder.util.EndpointInformation;
 
 /**
  * Creates a system level dummy component.
@@ -35,12 +35,12 @@ public class DummyComponentBuilder {
      * @return the newly created component
      */
     public static BasicComponent createDummyComponent(
-            final Set<SubComponentInformation> subComponentInformationOnNonBoundInterfacePorts,
+            final Set<EndpointInformation> subComponentInformationOnNonBoundInterfacePorts,
             final org.palladiosimulator.pcm.system.System pcmSystem, final ResourceEnvironment resourceEnv, final AnalysisResult analysisResult) {
         final InstanceComponentTuple dummyComponentInfo = createDummyComponent(pcmSystem, resourceEnv, analysisResult );
 
         // add all interfaces as provided to component:
-        for(final SubComponentInformation subCompInfo : subComponentInformationOnNonBoundInterfacePorts) {
+        for(final EndpointInformation subCompInfo : subComponentInformationOnNonBoundInterfacePorts) {
 
             final OperationProvidedRole newProvidedRole = RepositoryFactory.eINSTANCE.createOperationProvidedRole();
             newProvidedRole.setEntityName(subCompInfo.getRole().getEntityName() + " (prov dummy)");
