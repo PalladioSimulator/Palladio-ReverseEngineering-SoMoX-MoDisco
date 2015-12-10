@@ -42,43 +42,43 @@ public class OperationBuilder extends AbstractBuilder {
 
     public static final String voidType = "void";
 
-    private static Logger logger = Logger.getLogger(OperationBuilder.class);
+    private final static Logger LOGGER = Logger.getLogger(OperationBuilder.class);
 
-    public OperationBuilder(final Root gastModel,
-            final SoMoXConfiguration somoxConfiguration, final AnalysisResult analysisResult) {
-        super(gastModel, somoxConfiguration, analysisResult);
+    public OperationBuilder(
+            final Root kdmModelRoot,
+            final SoMoXConfiguration somoxConfiguration,
+            final AnalysisResult analysisResult) {
+        super(kdmModelRoot, somoxConfiguration, analysisResult);
     }
 
-    public void createOperations(final Type implementationClass, final Type interfaceClass,
+    public void createOperations(
+            final Type interfaceClass,
             final OperationInterface interf) {
 
         for (final MethodDeclaration method : KDMHelper.getMethods(interfaceClass)) {
 
             if ((KDMHelper.isModifierOfKind(method, VisibilityKind.NONE))
-                    || KDMHelper
-                    .isModifierOfKind(method, VisibilityKind.PUBLIC)) {
+                    || KDMHelper.isModifierOfKind(method, VisibilityKind.PUBLIC)) {
 
-                MethodDeclaration realMethod = method;
+                final MethodDeclaration realMethod = method;
 
+                /*
+                 * StB: I have no idea for what reason this code exists.
+                 * The real method's declaration should be the same or a refinement of the original one.
+                 *
                 if (implementationClass != null) {
                     realMethod = getRealMethod(implementationClass, method);
                     if (realMethod == null) {
                         realMethod = method;
-                        // removelater was for debug reason
-                        if (method.getName().equals("refresh")) {
-                            final int a = 0;
-                        }
-                        // removelater
-                        logger.error("GAST Model misses a method "
+                        LOGGER.error("GAST Model misses a method "
                                 + method.getName());
                     }
                 } else {
-                    logger.warn("no implementation class for method "
+                    LOGGER.warn("no implementation class for method "
                             + method.getName() + " of interface "
                             + interfaceClass.getName());
-                }
-                final OperationSignature op = createOperationSignature(realMethod,
-                        interf);
+                }*/
+                final OperationSignature op = createOperationSignature(realMethod,interf);
                 interf.getSignatures__OperationInterface().add(op);
             }
         }
@@ -92,8 +92,10 @@ public class OperationBuilder extends AbstractBuilder {
      * @return null if no implementation method was found; the queried method
      *         otherwise
      */
-    private MethodDeclaration getRealMethod(final Type implementationClass,
-            final MethodDeclaration inputMethod) {
+    private MethodDeclaration getRealMethod(
+            final Type implementationClass,
+            final MethodDeclaration inputMethod)
+    {
         assert implementationClass != null;
 
         for (final MethodDeclaration methodFromClass : KDMHelper
@@ -161,7 +163,7 @@ public class OperationBuilder extends AbstractBuilder {
                         .getAccessedType(inputParameter.getType()),
                         this.analysisResult.getInternalArchitectureModel()));
             } else {
-                logger.error("Input parameter type was null. Could not set the parameter type \""
+                LOGGER.error("Input parameter type was null. Could not set the parameter type \""
                         + inputParameter.getName()
                         + "\" of method \""
                         + method.getName() + "\"");
@@ -381,12 +383,12 @@ public class OperationBuilder extends AbstractBuilder {
             newType = RepositoryFactory.eINSTANCE.createCollectionDataType();
             ((CollectionDataType)newType).setEntityName(typeName);
             repository.getDataTypes__Repository().add(newType);
-            logger.debug("found collection type " + typeName);
+            LOGGER.debug("found collection type " + typeName);
             // set inner type:
             final DataType innerType = getType(arrayType.getElementType().getType(),
                     repository);
             if (innerType == null) {
-                logger.error("Unsupported inner type: "
+                LOGGER.error("Unsupported inner type: "
                         + arrayType.getElementType().getType());
                 // TODO switch to real type checks!!!
             }
@@ -482,7 +484,7 @@ public class OperationBuilder extends AbstractBuilder {
                 }
             }
         }
-        logger.info("no type found for " + gastTypeName + ". Type will be created.");
+        LOGGER.info("no type found for " + gastTypeName + ". Type will be created.");
         return null;
     }
 }

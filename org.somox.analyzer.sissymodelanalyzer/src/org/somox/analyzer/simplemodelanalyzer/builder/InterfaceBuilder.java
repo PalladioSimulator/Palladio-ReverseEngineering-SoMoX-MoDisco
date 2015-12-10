@@ -357,7 +357,7 @@ public class InterfaceBuilder extends AbstractBuilder {
         compInterface.setEntityName(naming.createInterfaceNameForClass(gastClass));
         //compInterface.setDocumentation(gastClass.getName());
 
-        this.operationBuilder.createOperations(gastClass, gastClass,compInterface);
+        this.operationBuilder.createOperations(gastClass,compInterface);
 
         this.alreadyCreatedInterfaces.put(gastClass, compInterface);
         this.analysisResult.getInternalArchitectureModel().getInterfaces__Repository().add(compInterface);
@@ -398,7 +398,7 @@ public class InterfaceBuilder extends AbstractBuilder {
             operationInterface.setEntityName(naming.createInterfaceName(interfaceClass));
             //result.setDocumentation(KDMHelper.computeFullQualifiedName(interfaceClass));
 
-            operationBuilder.createOperations(implementingClass, interfaceClass, operationInterface);
+            operationBuilder.createOperations(interfaceClass, operationInterface);
 
             this.alreadyCreatedInterfaces.put(interfaceClass, operationInterface);
             this.analysisResult.getInternalArchitectureModel().getInterfaces__Repository()

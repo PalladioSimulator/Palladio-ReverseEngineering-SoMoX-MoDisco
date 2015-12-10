@@ -8,7 +8,9 @@ import java.util.List;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.gmt.modisco.infra.common.core.internal.utils.ModelUtils;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.gmt.modisco.java.Model;
 import org.eclipse.modisco.java.composition.javaapplication.JavaApplication;
 import org.somox.kdmhelper.metamodeladdition.Root;
@@ -22,7 +24,7 @@ public final class KDMReader {
     }
 
     public static final Root loadFile(final URI file) throws IOException {
-        final Resource resource = ModelUtils.loadModel(file);
+        final Resource resource = loadModel(file);
         final Root root = new Root();
         root.addModels(getModelsFromResource(resource));
         return root;
@@ -42,5 +44,29 @@ public final class KDMReader {
             }
         }
         return modelList;
+    }
+
+    private static Resource loadModel(final URI modelURI) throws IOException {
+        final ResourceSet resourceSet = new ResourceSetImpl();
+        String fileExtension = modelURI.fileExtension();
+        if (fileExtension == null || fileExtension.length() == 0) {
+            fileExtension = Resource.Factory.Registry.DEFAULT_EXTENSION;
+        }
+
+        final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+        final Object resourceFactory = reg.getExtensionToFactoryMap().get(fileExtension);
+        if (resourceFactory != null) {
+            resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+            .put(fileExtension, resourceFactory);
+        } else {
+            resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+            .put(fileExtension, new XMIResourceFactoryImpl());
+        }
+
+        final Resource result = resourceSet.createResource(modelURI);
+        if (result != null) {
+            result.load(null);
+        }
+        return result;
     }
 }

@@ -86,18 +86,16 @@ public class Seff2JavaASTBuilder extends AbstractBuilder {
 
         final ResourceDemandingSEFF seff = SeffFactory.eINSTANCE.createResourceDemandingSEFF();
         //TODO burkha 22.05.2013 this can violate a OCL constraint, when there is more than one seff implementing the same signature
-        if(link.getOperation().getEntityName().equals("refresh")){
-            final int a = 0;
-        }
         seff.setDescribedService__SEFF(link.getOperation());
-        final SEFF2MethodMapping seff2MethodMapping = Seff2methodFactory.eINSTANCE.createSEFF2MethodMapping();
         component.getServiceEffectSpecifications__BasicComponent().add(seff);
 
+        final SEFF2MethodMapping seff2MethodMapping = Seff2methodFactory.eINSTANCE.createSEFF2MethodMapping();
+
         // links steems from interface; thus get component-specific implementation:
-        final Block methodBody = getFunctionImplementation(link.getFunction(), findComponenentLink(component));
+        final Block methodBody = getFunctionImplementation(link.getFunction(), findComponentLink(component));
 
         seff2MethodMapping.setBlockstatement(methodBody);
-        if (seff2MethodMapping.getBlockstatement() == null || seff2MethodMapping.getBlockstatement().getStatements().size() == 0) {
+        if (seff2MethodMapping.getBlockstatement() == null) {
             logger.warn("Empty behaviour added for " + seff.getDescribedService__SEFF().getEntityName() +
                     "! Reverse engineering of behaviour will NOT be able to succeed for this method!");
         }
@@ -135,7 +133,7 @@ public class Seff2JavaASTBuilder extends AbstractBuilder {
      * @param component
      * @return ComponentLink for component.
      */
-    private ComponentImplementingClassesLink findComponenentLink(final RepositoryComponent component) {
+    private ComponentImplementingClassesLink findComponentLink(final RepositoryComponent component) {
         for(final ComponentImplementingClassesLink compLink : this.analysisResult.getSourceCodeDecoratorRepository().getComponentImplementingClassesLink()) {
             if(compLink.getComponent().equals(component)) {
                 return compLink;

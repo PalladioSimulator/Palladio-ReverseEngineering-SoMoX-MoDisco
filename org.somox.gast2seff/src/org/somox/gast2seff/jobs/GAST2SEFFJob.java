@@ -3,7 +3,6 @@
  */
 package org.somox.gast2seff.jobs;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,7 +25,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
 import org.eclipse.gmt.modisco.java.Block;
-import org.eclipse.gmt.modisco.java.Statement;
 import org.palladiosimulator.pcm.qosannotations.QoSAnnotations;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.seff.AbstractAction;
@@ -89,7 +87,7 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
      * Resources containing the models
      */
     //	private Resource sammInstance = null;
-    private Resource gastInstance = null; //required to load only
+    private final Resource gastInstance = null; //required to load only
     //	private Resource gastBehaviourRepository = null;
     //	private Resource seffBehaviourRepository = null;
     //	private Resource sammQosAnnotations = null;
@@ -144,7 +142,7 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
         final String basePath = workspace.getRoot().getRawLocation().toOSString();
         /** Changed by Falko Hansch*/
         // final String gastModelPath = somoxConfiguration.getFileLocations().getAnalyserInputFile();
-        
+
         //final URI gastURI = URI.createFileURI(basePath + File.separator + gastModelPath);
         //final URI gastURI = URI.createFileURI(gastModelPath);
         //logger.debug(gastURI);
@@ -165,7 +163,7 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
         //		this.sammQosAnnotations = loadResource(sammQosAnnotationsURI, false);
         //		this.sourceCodeDecorator = loadResource(sourceCodeDecoratorURI, false);
 
-  
+
         final AnalysisResult result = blackboard.getAnalysisResult();
         final org.palladiosimulator.pcm.system.System samm = result.getSystemModel();
         this.gastBehaviourRepositoryModel = result.getSeff2JavaAST();
@@ -332,10 +330,8 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
             final GastStatementVisitor visitor = new GastStatementVisitor(typeVisitor.getAnnotations(), seff,
                     this.sourceCodeDecoratorModel, basicComponent);
 
-            for (final Statement st: body.getStatements()){
-                typeVisitor.doSwitch(st);
-                visitor.doSwitch(st);
-            }
+            typeVisitor.doSwitch(body);
+            visitor.doSwitch(body);
 
         } else {
             logger.warn("Found GAST behaviour (" + seff.getId() + ") without a method body... Skipping it...");
@@ -468,6 +464,5 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
 
     @Override
     public void cleanup(final IProgressMonitor monitor) throws CleanupFailedException {
-        logger.warn("cleanup  called. Should not happen - nothing done.");
     }
 }
