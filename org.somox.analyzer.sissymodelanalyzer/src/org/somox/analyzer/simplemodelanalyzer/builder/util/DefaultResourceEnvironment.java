@@ -144,7 +144,7 @@ public class DefaultResourceEnvironment {
         return (ProcessingResourceType)getResourceRepository().getAvailableResourceTypes_ResourceRepository().get(0);
     }
 
-    protected static Repository getPrimitiveTypesRepository() {
+    public static Repository getPrimitiveTypesRepository() {
         if (primitiveTypesRepository != null) {
             return primitiveTypesRepository;
         }

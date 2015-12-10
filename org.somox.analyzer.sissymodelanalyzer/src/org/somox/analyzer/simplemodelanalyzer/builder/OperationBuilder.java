@@ -1,5 +1,8 @@
 package org.somox.analyzer.simplemodelanalyzer.builder;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmt.modisco.java.ArrayType;
@@ -8,6 +11,7 @@ import org.eclipse.gmt.modisco.java.PrimitiveTypeVoid;
 import org.eclipse.gmt.modisco.java.SingleVariableDeclaration;
 import org.eclipse.gmt.modisco.java.Type;
 import org.eclipse.gmt.modisco.java.VisibilityKind;
+import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.repository.CollectionDataType;
 import org.palladiosimulator.pcm.repository.CompositeDataType;
 import org.palladiosimulator.pcm.repository.DataType;
@@ -347,7 +351,7 @@ public class OperationBuilder extends AbstractBuilder {
      */
     private DataType getType(final Type gastType,
             final Repository repository) {
-        DataType type = getExistingType(gastType, repository);
+        DataType type = getExistingType(gastType, Arrays.asList(repository,DefaultResourceEnvironment.getPrimitiveTypesRepository()));
 
         if (type == null) {
             type = createDataType(repository, gastType);
@@ -372,18 +376,6 @@ public class OperationBuilder extends AbstractBuilder {
         DataType newType = null;
         if (typeName.toLowerCase().equals(voidType)) {
             // do nothing
-        } else if (typeName.toLowerCase().equals("integer")) {
-            return DefaultResourceEnvironment.getPrimitiveDataTypeInteger();
-        } else if (typeName.toLowerCase().equals("double")) {
-            return DefaultResourceEnvironment.getPrimitiveDataTypeDouble();
-        } else if (typeName.toLowerCase().equals("string")) {
-            return DefaultResourceEnvironment.getPrimitiveDataTypeString();
-        } else if (typeName.toLowerCase().equals("boolean")) {
-            return DefaultResourceEnvironment.getPrimitiveDataTypeBool();
-        } else if (typeName.toLowerCase().equals("char")) {
-            return DefaultResourceEnvironment.getPrimitiveDataTypeChar();
-        } else if (typeName.toLowerCase().equals("byte")) {
-            return DefaultResourceEnvironment.getPrimitiveDataTypeByte();
         } else if (gastType instanceof ArrayType) {
             final ArrayType arrayType = (ArrayType) gastType;
             newType = RepositoryFactory.eINSTANCE.createCollectionDataType();
@@ -439,55 +431,55 @@ public class OperationBuilder extends AbstractBuilder {
      * @return
      */
     private String getUnifiedTypeName(String typeName) {
-        if (typeName.toLowerCase().equals("int")
+        if (typeName.toLowerCase().equals("integer")
                 || typeName.toLowerCase().equals("long")) {
             // Do not create 2 datatypes for int and integer
             // maps int and long to integer
-            typeName = "integer";
-        } else if (typeName.toLowerCase().equals("bool")) {
+            typeName = "int";
+        } else if (typeName.toLowerCase().equals("boolean")) {
             // Do not create 2 datatypes for bool and boolean
-            typeName = "boolean";
+            typeName = "bool";
             // } else if (typeName.toLowerCase().equals("char")) {//TODO
             // SAMM2PCM removed
             // typeName = "string"; // map char to string
         } else if (typeName.toLowerCase().equals("float")) {
             typeName = "double"; // map double to float
         }
-        return typeName;
+        return typeName.toLowerCase();
     }
 
     /**
      *
      * @param gastType
-     * @param repository
+     * @param list
      * @return null if not found
      */
     private DataType getExistingType(final Type gastType,
-            final Repository repository) {
-        return getExistingTypeByName(gastType.getName(), repository);
+            final List<Repository> list) {
+        return getExistingTypeByName(gastType.getName(), list);
     }
 
     /**
      *
      * @param gastTypeName
-     * @param repository
+     * @param repositories
      * @return the found data type null if not found
      */
-    private DataType getExistingTypeByName(String gastTypeName,
-            final Repository repository) {
-        gastTypeName = getUnifiedTypeName(gastTypeName);
+    private DataType getExistingTypeByName(final String gastTypeName,
+            final List<Repository> repositories) {
+        final String unifiedGastTypeName = getUnifiedTypeName(gastTypeName);
         //TODO: use hash map to look up instead of iterating over all datatypes
-        for (final DataType currentType : repository.getDataTypes__Repository()) {
-            String pcmTypeName = null;
-            if(currentType instanceof CompositeDataType){
-                pcmTypeName = ((CompositeDataType)currentType).getEntityName();
-            }else if(currentType instanceof CollectionDataType){
-                pcmTypeName = ((CollectionDataType)currentType).getEntityName();
-            }else if(currentType instanceof PrimitiveDataType){
-                pcmTypeName = ((PrimitiveDataType)currentType).getType().getName();
-            }
-            if (gastTypeName.equals(pcmTypeName)){
-                return currentType;
+        for (final Repository repository : repositories) {
+            for (final DataType currentType : repository.getDataTypes__Repository()) {
+                String pcmTypeName = null;
+                if(currentType instanceof Entity){
+                    pcmTypeName = ((Entity)currentType).getEntityName();
+                }else if(currentType instanceof PrimitiveDataType){
+                    pcmTypeName = ((PrimitiveDataType)currentType).getType().getName();
+                }
+                if (unifiedGastTypeName.equals(pcmTypeName.toLowerCase())){
+                    return currentType;
+                }
             }
         }
         logger.info("no type found for " + gastTypeName + ". Type will be created.");

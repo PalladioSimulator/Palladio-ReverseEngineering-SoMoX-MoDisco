@@ -85,16 +85,13 @@ public class SimpleModelAnalyzer implements ModelAnalyzer {
         if (platformPath != null) {
             final URI fileURI = URI.createPlatformResourceURI(platformPath, true);
             if (fileURI.fileExtension().toLowerCase().equals("xmi")) {
-                KDMReader modelReader;
                 try {
-                    modelReader = new KDMReader();
-                    modelReader.loadFile(fileURI);
+                    final Root root = KDMReader.loadFile(fileURI);
+                    analysisResult = analyzeGASTModel(root, somoxConfiguration, progressMonitor);
                 } catch (final IOException e) {
                     logger.error("Failed to load GAST Model",e);
                     throw new ModelAnalyzerException("Failed to load GAST model",e);
                 }
-                final Root root = modelReader.getRoot();
-                analysisResult = analyzeGASTModel(root, somoxConfiguration, progressMonitor);
             }
         }
         this.status = ModelAnalyzer.Status.FINISHED;
