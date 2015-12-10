@@ -42,8 +42,7 @@ public class GraphPrinter {
      */
     public static void cleanOutputFolder(final String outputFolder) {
         if (logger.isTraceEnabled()) { // only run in trace mode
-        	/** Changed by Falko Hansch*/
-        	final String fileURIString = outputFolder;
+            final String fileURIString = getFileURI(outputFolder);
             if (fileURIString != null) {
                 final File baseDirectory = new File(fileURIString+graphFolderSegment);
                 if (baseDirectory.exists()) {
@@ -72,8 +71,7 @@ public class GraphPrinter {
             final int iteration,
             final int subgraphNo) {
 
-    	/** Changed by Falko Hansch*/
-    	final String fileURIString = outputFolder;
+        final String fileURIString = getFileURI(outputFolder);
         if (fileURIString != null) {
             final File baseDirectory = new File(fileURIString+graphFolderSegment);
             if (!baseDirectory.exists()) {
