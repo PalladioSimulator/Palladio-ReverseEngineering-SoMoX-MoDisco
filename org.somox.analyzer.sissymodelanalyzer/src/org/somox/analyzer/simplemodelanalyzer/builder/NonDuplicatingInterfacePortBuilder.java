@@ -22,8 +22,8 @@ import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.repository.Role;
 import org.somox.analyzer.AnalysisResult;
-import org.somox.analyzer.simplemodelanalyzer.builder.util.InterfacePortBuilderHelper;
 import org.somox.analyzer.simplemodelanalyzer.builder.util.EndpointInformation;
+import org.somox.analyzer.simplemodelanalyzer.builder.util.InterfacePortBuilderHelper;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.kdmhelper.metamodeladdition.Root;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
@@ -149,7 +149,7 @@ public class NonDuplicatingInterfacePortBuilder extends AbstractBuilder implemen
             compositeComponentLink.getComponent().getProvidedRoles_InterfaceProvidingEntity().add(providedRole);
 
             createDelegationConnector(compositeComponentLink,
-                    providedRole, subComponentInformation, true);
+                    providedRole, subComponentInformation);
 
             // Source code decorator:
             // Create interface source code link for parent class.
@@ -241,7 +241,7 @@ public class NonDuplicatingInterfacePortBuilder extends AbstractBuilder implemen
         // create required delegation connector -- even for already created required ports (can be used by multiple components)
         if(requiredRole != null) {
             createDelegationConnector(compositeComponentLink,
-                    requiredRole, subComponentInformation, false);
+                    requiredRole, subComponentInformation);
         } else {
             logger.warn("Could not find a required interface port which should have existed.");
         }
@@ -262,14 +262,11 @@ public class NonDuplicatingInterfacePortBuilder extends AbstractBuilder implemen
     private void createDelegationConnector(
             final ComponentImplementingClassesLink compositeComponentLink,
             final OperationProvidedRole outerRole,
-            final EndpointInformation subComponentInformation,
-            final boolean isProvidedDelegationConnector) {
-        // new provides delegation connector:
+            final EndpointInformation subComponentInformation) {
         final ProvidedDelegationConnector delegationConnector = CompositionFactory.eINSTANCE.createProvidedDelegationConnector();
 
         ((CompositeComponent)compositeComponentLink.getComponent()).getConnectors__ComposedStructure().add(delegationConnector);
 
-        //outer:
         delegationConnector.setOuterProvidedRole_ProvidedDelegationConnector(outerRole);
         final Role innerRole = subComponentInformation.getRole();
 
@@ -280,6 +277,7 @@ public class NonDuplicatingInterfacePortBuilder extends AbstractBuilder implemen
         } else {
             logger.warn("Role not supported yet: "+innerRole.getClass().getSimpleName());
         }
+        this.componentTypeNaming.createProvidedDelegationConnectorName(delegationConnector);
     }
 
 
@@ -294,8 +292,7 @@ public class NonDuplicatingInterfacePortBuilder extends AbstractBuilder implemen
     private void createDelegationConnector(
             final ComponentImplementingClassesLink compositeComponentLink,
             final OperationRequiredRole outerRole,
-            final EndpointInformation subComponentInformation,
-            final boolean isProvidedDelegationConnector) {
+            final EndpointInformation subComponentInformation) {
 
         final RequiredDelegationConnector delegationConnector = CompositionFactory.eINSTANCE.createRequiredDelegationConnector();
 
@@ -310,6 +307,7 @@ public class NonDuplicatingInterfacePortBuilder extends AbstractBuilder implemen
         } else {
             logger.warn("Role not supported yet: "+innerRole.getClass().getSimpleName());
         }
+        this.componentTypeNaming.createRequiredDelegationConnectorName(delegationConnector);
 
         ((CompositeComponent)compositeComponentLink.getComponent()).getConnectors__ComposedStructure().add(delegationConnector);
     }

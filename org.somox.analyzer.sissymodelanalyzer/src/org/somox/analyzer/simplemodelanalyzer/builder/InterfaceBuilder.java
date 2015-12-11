@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmt.modisco.java.ASTNode;
+import org.eclipse.gmt.modisco.java.ParameterizedType;
 import org.eclipse.gmt.modisco.java.Type;
 import org.eclipse.gmt.modisco.java.TypeAccess;
 import org.eclipse.gmt.modisco.java.emf.JavaPackage;
@@ -185,7 +186,9 @@ public class InterfaceBuilder extends AbstractBuilder {
 
         for (final Type gastClass : componentCandidate.getImplementingClasses()) {
             for (final Type superType : this.somoxConfiguration.getBlacklistFilter().filter(KDMHelper.getSuperTypes(gastClass))) {
-                createInterfaceForSupertype(componentCandidate, gastClass,
+                createInterfaceForSupertype(
+                        componentCandidate,
+                        gastClass,
                         superType);
             }
         }
@@ -262,13 +265,14 @@ public class InterfaceBuilder extends AbstractBuilder {
 
     private void createInterfaceForSupertype(
             final ComponentImplementingClassesLink componentCandidate,
-            final Type gastClass, final Type superType) {
+            final Type gastClass, final Type rawSuperType) {
 
         // Recursively traverse all supertypes
-        for (final Type ownSuperType : this.somoxConfiguration.getBlacklistFilter().filter(KDMHelper.getSuperTypes(superType))) {
+        for (final Type ownSuperType : this.somoxConfiguration.getBlacklistFilter().filter(KDMHelper.getSuperTypes(rawSuperType))) {
             createInterfaceForSupertype(componentCandidate, gastClass, ownSuperType);
         }
 
+        final Type superType = unpackParametricType(rawSuperType);
         if (interfaceStrategy.isComponentInterface(superType)) {
             logger.debug("Found interface "+KDMHelper.computeFullQualifiedName(superType)+" for component "+
                     componentCandidate.getComponent().getEntityName());
@@ -280,6 +284,18 @@ public class InterfaceBuilder extends AbstractBuilder {
                         providedInterface, superType);
             }
         }
+    }
+
+    /**
+     * @param inputClass
+     * @return
+     */
+    private static Type unpackParametricType(final Type inputClass) {
+        Type classToCheck = inputClass;
+        if (classToCheck instanceof ParameterizedType) {
+            classToCheck = ((ParameterizedType)inputClass).getType().getType();
+        }
+        return classToCheck;
     }
 
     private void createProvidedPortAndBehaviour(
