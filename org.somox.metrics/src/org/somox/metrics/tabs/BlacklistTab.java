@@ -312,7 +312,7 @@ public class BlacklistTab extends MetricTab {
 
 		for (Object currentElement : elements) {
 			if (currentElement instanceof org.eclipse.gmt.modisco.java.Package) {
-				if (wildcardSet.contains(KDMHelper.computeFullQualifiedName(((org.eclipse.gmt.modisco.java.Package) currentElement)))) {
+				if (wildcardSet.contains(KDMHelper.computeFullQualifiedName(((org.eclipse.gmt.modisco.java.Package) currentElement))+".*")) {
 					checkboxTreeViewer.setChecked(currentElement, true);
 				}
 			} else if (currentElement instanceof Type) {
@@ -344,20 +344,13 @@ public class BlacklistTab extends MetricTab {
 
 	private Set<String> getTreeSelection() {
 		Object[] checked = checkboxTreeViewer.getCheckedElements();
-		//String[] wildcards = new String[checked.length];
 		Set<String> wildcards = new HashSet<String>();
-		//int i = 0;
 		for (Object current : checked) {
 			if (current instanceof Type) {
-				//wildcards[i] = ((GASTClass) current).getQualifiedName();
 				wildcards.add(KDMHelper.computeFullQualifiedName(((Type) current)));
 			} else if (current instanceof org.eclipse.gmt.modisco.java.Package) {
-				//wildcards[i] = ((de.fzi.gast.core.Package) current).getQualifiedName()+ ".*";
-
-				// TODO: wildcard for packages conflict with usability
-				wildcards.add(KDMHelper.computeFullQualifiedName(((org.eclipse.gmt.modisco.java.Package) current)));
+				wildcards.add(KDMHelper.computeFullQualifiedName(((org.eclipse.gmt.modisco.java.Package) current))+ ".*");
 			}
-			//i++;
 		}
 
 		return wildcards;
