@@ -40,7 +40,7 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorFactory;
  */
 public class OperationBuilder extends AbstractBuilder {
 
-    public static final String voidType = "void";
+    public static final String VOID_TYPE = "void";
 
     private final static Logger LOGGER = Logger.getLogger(OperationBuilder.class);
 
@@ -371,12 +371,12 @@ public class OperationBuilder extends AbstractBuilder {
      * @return
      */
     private DataType createDataType(
-            final Repository repository, final Type gastType) {
-        String typeName = gastType.getName();
-        typeName = getUnifiedTypeName(typeName);
+            final Repository repository,
+            final Type gastType) {
+        final String typeName = getUnifiedTypeName(gastType.getName());
 
         DataType newType = null;
-        if (typeName.toLowerCase().equals(voidType)) {
+        if (typeName.toLowerCase().equals(VOID_TYPE)) {
             // do nothing
         } else if (gastType instanceof ArrayType) {
             final ArrayType arrayType = (ArrayType) gastType;
@@ -385,15 +385,15 @@ public class OperationBuilder extends AbstractBuilder {
             repository.getDataTypes__Repository().add(newType);
             LOGGER.debug("found collection type " + typeName);
             // set inner type:
-            final DataType innerType = getType(arrayType.getElementType().getType(),
+            final DataType innerType = getType(
+                    arrayType.getElementType().getType(),
                     repository);
             if (innerType == null) {
                 LOGGER.error("Unsupported inner type: "
                         + arrayType.getElementType().getType());
                 // TODO switch to real type checks!!!
             }
-            ((CollectionDataType) newType)
-            .setInnerType_CollectionDataType(innerType);
+            ((CollectionDataType) newType).setInnerType_CollectionDataType(innerType);
         } else {
             // create a complex data type:
             final CompositeDataType compositeDataType = RepositoryFactory.eINSTANCE
@@ -401,24 +401,18 @@ public class OperationBuilder extends AbstractBuilder {
             repository.getDataTypes__Repository().add(compositeDataType);
             compositeDataType.setEntityName(gastType.getName());
             newType = compositeDataType;
-            if (KDMHelper.getAllAccessedClasses(gastType).size() > 1) {
-                // set inner types:
-                for (final Type currentClass : KDMHelper
-                        .getAllAccessedClasses(gastType)) {
-                    // avoid self-references and void as access
-                    if (!currentClass.equals(gastType)
-                            && !currentClass.getName().equals("void")) {
-                        final String tmpInnerTypeName = currentClass.getName();
-                        ;
-                        final InnerDeclaration innerElement = RepositoryFactory.eINSTANCE
-                                .createInnerDeclaration();
-                        innerElement.setDatatype_InnerDeclaration(getType(
-                                currentClass, repository));
-                        innerElement.setEntityName(tmpInnerTypeName);
-                        ((CompositeDataType) newType)
-                        .getInnerDeclaration_CompositeDataType().add(
-                                innerElement);
-                    }
+            for (final Type currentClass : KDMHelper.getAllAccessedClasses(gastType)) {
+                // avoid self-references and void as access
+                if (!currentClass.equals(gastType)
+                        && !currentClass.getName().equals(VOID_TYPE)) {
+                    final String tmpInnerTypeName = currentClass.getName();
+                    final InnerDeclaration innerElement = RepositoryFactory.eINSTANCE
+                            .createInnerDeclaration();
+                    innerElement.setDatatype_InnerDeclaration(getType(
+                            currentClass, repository));
+                    innerElement.setEntityName(tmpInnerTypeName);
+                    ((CompositeDataType) newType).getInnerDeclaration_CompositeDataType().add(
+                            innerElement);
                 }
             }
         }
