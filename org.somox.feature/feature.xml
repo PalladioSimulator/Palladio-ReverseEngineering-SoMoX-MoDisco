@@ -71,7 +71,6 @@ Reverse Engineering of Component-Based Software Architectures
       <import plugin="de.uka.ipd.sdq.workflow.mdsd" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf" version="2.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmt.modisco.java" version="0.10.1" match="greaterOrEqual"/>
-      <import plugin="org.somox.seff2javaast" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext"/>
       <import plugin="org.eclipse.xtext.util"/>
       <import plugin="org.antlr.runtime"/>
