@@ -8,11 +8,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
-import org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.FileLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.PCMSystemImplementatingClassesLink;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorFactory;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
@@ -23,6 +23,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
  * @generated
  */
 public class SourceCodeDecoratorFactoryImpl extends EFactoryImpl implements SourceCodeDecoratorFactory {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -62,8 +69,6 @@ public class SourceCodeDecoratorFactoryImpl extends EFactoryImpl implements Sour
             return this.createFileLevelSourceCodeLink();
         case SourceCodeDecoratorPackage.METHOD_LEVEL_SOURCE_CODE_LINK:
             return this.createMethodLevelSourceCodeLink();
-        case SourceCodeDecoratorPackage.CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK:
-            return this.createControlFlowLevelSourceCodeLink();
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY:
             return this.createSourceCodeDecoratorRepository();
         case SourceCodeDecoratorPackage.INTERFACE_SOURCE_CODE_LINK:
@@ -72,6 +77,8 @@ public class SourceCodeDecoratorFactoryImpl extends EFactoryImpl implements Sour
             return this.createComponentImplementingClassesLink();
         case SourceCodeDecoratorPackage.PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK:
             return this.createPCMSystemImplementatingClassesLink();
+        case SourceCodeDecoratorPackage.SEFF2_METHOD_LINK:
+            return this.createSeff2MethodLink();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -97,17 +104,6 @@ public class SourceCodeDecoratorFactoryImpl extends EFactoryImpl implements Sour
     public MethodLevelSourceCodeLink createMethodLevelSourceCodeLink() {
         final MethodLevelSourceCodeLinkImpl methodLevelSourceCodeLink = new MethodLevelSourceCodeLinkImpl();
         return methodLevelSourceCodeLink;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ControlFlowLevelSourceCodeLink createControlFlowLevelSourceCodeLink() {
-        final ControlFlowLevelSourceCodeLinkImpl controlFlowLevelSourceCodeLink = new ControlFlowLevelSourceCodeLinkImpl();
-        return controlFlowLevelSourceCodeLink;
     }
 
     /**
@@ -152,6 +148,17 @@ public class SourceCodeDecoratorFactoryImpl extends EFactoryImpl implements Sour
     public PCMSystemImplementatingClassesLink createPCMSystemImplementatingClassesLink() {
         final PCMSystemImplementatingClassesLinkImpl pcmSystemImplementatingClassesLink = new PCMSystemImplementatingClassesLinkImpl();
         return pcmSystemImplementatingClassesLink;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Seff2MethodLink createSeff2MethodLink() {
+        final Seff2MethodLinkImpl seff2MethodLink = new Seff2MethodLinkImpl();
+        return seff2MethodLink;
     }
 
     /**

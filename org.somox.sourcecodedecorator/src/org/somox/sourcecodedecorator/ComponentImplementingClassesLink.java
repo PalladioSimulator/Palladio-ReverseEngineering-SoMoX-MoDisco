@@ -37,6 +37,13 @@ import org.palladiosimulator.pcm.repository.RepositoryComponent;
  */
 public interface ComponentImplementingClassesLink extends EObject {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * Returns the value of the '<em><b>Is Composite Component</b></em>' attribute. <!--
      * begin-user-doc -->
      * <p>

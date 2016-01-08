@@ -1,5 +1,4 @@
 package org.somox.analyzer.simplemodelanalyzer.metrics.tabs;
-import java.awt.Dialog;
 import java.awt.MouseInfo;
 /**
  * @author Oliver Burkhardt, Klaus Krogmann

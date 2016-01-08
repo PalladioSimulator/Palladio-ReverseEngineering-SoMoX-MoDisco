@@ -1,7 +1,8 @@
 package org.somox.gast2seff.jobs;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -17,7 +18,7 @@ import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 import org.palladiosimulator.pcm.seff.seff_performance.SeffPerformanceFactory;
 import org.somox.analyzer.simplemodelanalyzer.builder.util.DefaultResourceEnvironment;
-import org.somox.seff2javaast.SEFF2MethodMapping;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 //import org.somox.resources.defaultmodels.DefaultModelLoader;
 
 //import eu.qimpress.qualityannotationdecorator.seffdecorator.BranchProbability;
@@ -62,8 +63,8 @@ public class DefaultQosAnnotationsBuilder {
      * @param listofSEFF2MethodMappings
      *
      */
-    public void buildDefaultQosAnnotations(final EList<SEFF2MethodMapping> listofSEFF2MethodMappings) {
-        for(final SEFF2MethodMapping mapping : listofSEFF2MethodMappings){
+    public void buildDefaultQosAnnotations(final List<Seff2MethodLink> listofSEFF2MethodMappings) {
+        for(final Seff2MethodLink mapping : listofSEFF2MethodMappings){
             final ServiceEffectSpecification seff = mapping.getSeff();
 
             final TreeIterator<Object> elements = EcoreUtil.getAllContents(seff, true);

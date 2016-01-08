@@ -22,10 +22,10 @@ import org.somox.analyzer.simplemodelanalyzer.detection.util.EqualityChecker;
 import org.somox.configuration.SoMoXConfiguration;
 import org.somox.kdmhelper.KDMHelper;
 import org.somox.kdmhelper.metamodeladdition.Root;
-import org.somox.seff2javaast.SEFF2MethodMapping;
-import org.somox.seff2javaast.Seff2methodFactory;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
+import org.somox.sourcecodedecorator.SourceCodeDecoratorFactory;
 
 /**
  * Builder used to add GAST behaviour to methods detected as provided operations of components
@@ -89,7 +89,7 @@ public class Seff2JavaASTBuilder extends AbstractBuilder {
         seff.setDescribedService__SEFF(link.getOperation());
         component.getServiceEffectSpecifications__BasicComponent().add(seff);
 
-        final SEFF2MethodMapping seff2MethodMapping = Seff2methodFactory.eINSTANCE.createSEFF2MethodMapping();
+        final Seff2MethodLink seff2MethodMapping = SourceCodeDecoratorFactory.eINSTANCE.createSeff2MethodLink();
 
         // links steems from interface; thus get component-specific implementation:
         final Block methodBody = getFunctionImplementation(link.getFunction(), findComponentLink(component));
@@ -100,7 +100,7 @@ public class Seff2JavaASTBuilder extends AbstractBuilder {
                     "! Reverse engineering of behaviour will NOT be able to succeed for this method!");
         }
         seff2MethodMapping.setSeff(seff);
-        this.analysisResult.getSeff2JavaAST().getSeff2MethodMappings().add(seff2MethodMapping);
+        this.analysisResult.getSourceCodeDecoratorRepository().getSeff2MethodLink().add(seff2MethodMapping);
 
     }
 

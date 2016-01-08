@@ -51,6 +51,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
  */
 public class ComponentImplementingClassesLinkImpl extends EObjectImpl implements ComponentImplementingClassesLink {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * The default value of the '{@link #isCompositeComponent() <em>Is Composite Component</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -256,7 +263,8 @@ public class ComponentImplementingClassesLinkImpl extends EObjectImpl implements
     public EList<InterfaceSourceCodeLink> getProvidedInterfaces() {
         if (this.providedInterfaces == null) {
             this.providedInterfaces = new EObjectResolvingEList<InterfaceSourceCodeLink>(InterfaceSourceCodeLink.class,
-                    this, SourceCodeDecoratorPackage.COMPONENT_IMPLEMENTING_CLASSES_LINK__PROVIDED_INTERFACES);
+                    this,
+                    SourceCodeDecoratorPackage.COMPONENT_IMPLEMENTING_CLASSES_LINK__PROVIDED_INTERFACES);
         }
         return this.providedInterfaces;
     }
@@ -270,7 +278,8 @@ public class ComponentImplementingClassesLinkImpl extends EObjectImpl implements
     public EList<InterfaceSourceCodeLink> getRequiredInterfaces() {
         if (this.requiredInterfaces == null) {
             this.requiredInterfaces = new EObjectResolvingEList<InterfaceSourceCodeLink>(InterfaceSourceCodeLink.class,
-                    this, SourceCodeDecoratorPackage.COMPONENT_IMPLEMENTING_CLASSES_LINK__REQUIRED_INTERFACES);
+                    this,
+                    SourceCodeDecoratorPackage.COMPONENT_IMPLEMENTING_CLASSES_LINK__REQUIRED_INTERFACES);
         }
         return this.requiredInterfaces;
     }

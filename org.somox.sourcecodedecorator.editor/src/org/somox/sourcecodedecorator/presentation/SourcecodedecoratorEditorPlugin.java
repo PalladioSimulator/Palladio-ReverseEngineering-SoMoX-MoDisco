@@ -22,6 +22,13 @@ import de.uka.ipd.sdq.units.provider.UnitsEditPlugin;
  */
 public final class SourcecodedecoratorEditorPlugin extends EMFPlugin {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -41,8 +48,7 @@ public final class SourcecodedecoratorEditorPlugin extends EMFPlugin {
      * @generated
      */
     public SourcecodedecoratorEditorPlugin() {
-        super(new ResourceLocator[]
-                {
+        super(new ResourceLocator[] {
                 IdentifierEditPlugin.INSTANCE,
                 JavaEditPlugin.INSTANCE,
                 KdmEditPlugin.INSTANCE,
@@ -50,7 +56,7 @@ public final class SourcecodedecoratorEditorPlugin extends EMFPlugin {
                 ProbabilityFunctionEditPlugin.INSTANCE,
                 StoexEditPlugin.INSTANCE,
                 UnitsEditPlugin.INSTANCE,
-                });
+        });
     }
 
     /**

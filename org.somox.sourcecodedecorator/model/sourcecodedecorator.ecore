@@ -16,25 +16,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="function" ordered="false"
         eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.java/model/java.ecore#//AbstractMethodDeclaration"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ControlFlowLevelSourceCodeLink" eSuperTypes="#//MethodLevelSourceCodeLink">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="abstractAction" ordered="false"
-        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//seff/AbstractAction"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="statement" ordered="false"
-        eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.java/model/java.ecore#//Statement"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceCodeDecoratorRepository">
     <eStructuralFeatures xsi:type="ecore:EReference" name="fileLevelSourceCodeLink"
         ordered="false" upperBound="-1" eType="#//FileLevelSourceCodeLink" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methodLevelSourceCodeLink"
         ordered="false" upperBound="-1" eType="#//MethodLevelSourceCodeLink" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="controlFlowLevelSourceCodeLink"
-        ordered="false" upperBound="-1" eType="#//ControlFlowLevelSourceCodeLink"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceSourceCodeLink"
         ordered="false" upperBound="-1" eType="#//InterfaceSourceCodeLink" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="componentImplementingClassesLink"
         ordered="false" upperBound="-1" eType="#//ComponentImplementingClassesLink"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seff2MethodLink" upperBound="-1"
+        eType="#//Seff2MethodLink" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InterfaceSourceCodeLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="interface" ordered="false"
@@ -67,5 +60,10 @@
       eSuperTypes="#//ComponentImplementingClassesLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemModel" ordered="false"
         eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//system/System"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Seff2MethodLink">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blockstatement" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.gmt.modisco.java/model/java.ecore#//Block"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seff" lowerBound="1" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//seff/ServiceEffectSpecification"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -30,6 +30,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
  */
 public class FileLevelSourceCodeLinkImpl extends EObjectImpl implements FileLevelSourceCodeLink {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * The cached value of the '{@link #getRepositoryComponent() <em>Repository Component</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

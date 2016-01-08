@@ -30,6 +30,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
  */
 public class InterfaceSourceCodeLinkImpl extends EObjectImpl implements InterfaceSourceCodeLink {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * The cached value of the '{@link #getInterface() <em>Interface</em>}' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *

@@ -28,6 +28,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 public class InterfaceSourceCodeLinkItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -61,13 +68,21 @@ public class InterfaceSourceCodeLinkItemProvider extends ItemProviderAdapter imp
      * @generated
      */
     protected void addInterfacePropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_InterfaceSourceCodeLink_interface_feature"),
-                this.getString("_UI_PropertyDescriptor_description", "_UI_InterfaceSourceCodeLink_interface_feature",
-                        "_UI_InterfaceSourceCodeLink_type"),
-                SourceCodeDecoratorPackage.Literals.INTERFACE_SOURCE_CODE_LINK__INTERFACE, true, false, true, null,
-                null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_InterfaceSourceCodeLink_interface_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_InterfaceSourceCodeLink_interface_feature",
+                                "_UI_InterfaceSourceCodeLink_type"),
+                        SourceCodeDecoratorPackage.Literals.INTERFACE_SOURCE_CODE_LINK__INTERFACE,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -77,13 +92,21 @@ public class InterfaceSourceCodeLinkItemProvider extends ItemProviderAdapter imp
      * @generated
      */
     protected void addGastClassPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_InterfaceSourceCodeLink_gastClass_feature"),
-                this.getString("_UI_PropertyDescriptor_description", "_UI_InterfaceSourceCodeLink_gastClass_feature",
-                        "_UI_InterfaceSourceCodeLink_type"),
-                SourceCodeDecoratorPackage.Literals.INTERFACE_SOURCE_CODE_LINK__GAST_CLASS, true, false, true, null,
-                null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_InterfaceSourceCodeLink_gastClass_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_InterfaceSourceCodeLink_gastClass_feature",
+                                "_UI_InterfaceSourceCodeLink_type"),
+                        SourceCodeDecoratorPackage.Literals.INTERFACE_SOURCE_CODE_LINK__GAST_CLASS,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**

@@ -6,11 +6,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
-import org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.FileLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.PCMSystemImplementatingClassesLink;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
 
@@ -25,6 +25,12 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
  * @generated
  */
 public class SourceCodeDecoratorSwitch<T> extends Switch<T> {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -86,20 +92,6 @@ public class SourceCodeDecoratorSwitch<T> extends Switch<T> {
             }
             return result;
         }
-        case SourceCodeDecoratorPackage.CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK: {
-            final ControlFlowLevelSourceCodeLink controlFlowLevelSourceCodeLink = (ControlFlowLevelSourceCodeLink) theEObject;
-            T result = this.caseControlFlowLevelSourceCodeLink(controlFlowLevelSourceCodeLink);
-            if (result == null) {
-                result = this.caseMethodLevelSourceCodeLink(controlFlowLevelSourceCodeLink);
-            }
-            if (result == null) {
-                result = this.caseFileLevelSourceCodeLink(controlFlowLevelSourceCodeLink);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
-            return result;
-        }
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY: {
             final SourceCodeDecoratorRepository sourceCodeDecoratorRepository = (SourceCodeDecoratorRepository) theEObject;
             T result = this.caseSourceCodeDecoratorRepository(sourceCodeDecoratorRepository);
@@ -130,6 +122,14 @@ public class SourceCodeDecoratorSwitch<T> extends Switch<T> {
             if (result == null) {
                 result = this.caseComponentImplementingClassesLink(pcmSystemImplementatingClassesLink);
             }
+            if (result == null) {
+                result = this.defaultCase(theEObject);
+            }
+            return result;
+        }
+        case SourceCodeDecoratorPackage.SEFF2_METHOD_LINK: {
+            final Seff2MethodLink seff2MethodLink = (Seff2MethodLink) theEObject;
+            T result = this.caseSeff2MethodLink(seff2MethodLink);
             if (result == null) {
                 result = this.defaultCase(theEObject);
             }
@@ -169,22 +169,6 @@ public class SourceCodeDecoratorSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseMethodLevelSourceCodeLink(final MethodLevelSourceCodeLink object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Control Flow Level Source Code Link</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Control Flow Level Source Code Link</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseControlFlowLevelSourceCodeLink(final ControlFlowLevelSourceCodeLink object) {
         return null;
     }
 
@@ -248,6 +232,21 @@ public class SourceCodeDecoratorSwitch<T> extends Switch<T> {
      * @generated
      */
     public T casePCMSystemImplementatingClassesLink(final PCMSystemImplementatingClassesLink object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Seff2 Method Link</em>'.
+     * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
+     * terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Seff2 Method Link</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSeff2MethodLink(final Seff2MethodLink object) {
         return null;
     }
 

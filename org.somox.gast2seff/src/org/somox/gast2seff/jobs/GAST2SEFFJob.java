@@ -40,8 +40,7 @@ import org.somox.configuration.SoMoXConfiguration;
 import org.somox.gast2seff.visitors.BasicFunctionClassificationStrategy;
 import org.somox.gast2seff.visitors.FunctionCallClassificationVisitor;
 import org.somox.gast2seff.visitors.GastStatementVisitor;
-import org.somox.seff2javaast.SEFF2JavaAST;
-import org.somox.seff2javaast.SEFF2MethodMapping;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
 
 import de.uka.ipd.sdq.workflow.jobs.CleanupFailedException;
@@ -91,7 +90,6 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
     //	private Resource gastBehaviourRepository = null;
     //	private Resource seffBehaviourRepository = null;
     //	private Resource sammQosAnnotations = null;
-    private SEFF2JavaAST gastBehaviourRepositoryModel = null;
     private final Resource sourceCodeDecorator = null;
     private SourceCodeDecoratorRepository sourceCodeDecoratorModel = null;
     private QoSAnnotations sammQosAnnotationsModel = null;
@@ -166,7 +164,6 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
 
         final AnalysisResult result = blackboard.getAnalysisResult();
         final org.palladiosimulator.pcm.system.System samm = result.getSystemModel();
-        this.gastBehaviourRepositoryModel = result.getSeff2JavaAST();
         this.sammQosAnnotationsModel = result.getQosAnnotationModel();
         this.sourceCodeDecoratorModel = result.getSourceCodeDecoratorRepository();
 
@@ -179,9 +176,9 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
         subMonitor.setTaskName("Creating SEFF behaviour");
         // TreeIterator<EObject> iterator = sammInstance.getAllContents();
         //		TreeIterator<EObject> iterator = samm.eAllContents();
-        final Iterator<SEFF2MethodMapping> iterator = this.gastBehaviourRepositoryModel.getSeff2MethodMappings().iterator();
+        final Iterator<Seff2MethodLink> iterator = this.sourceCodeDecoratorModel.getSeff2MethodLink().iterator();
         while (iterator.hasNext()) {
-            final SEFF2MethodMapping astBehaviour = iterator.next();
+            final Seff2MethodLink astBehaviour = iterator.next();
             final ResourceDemandingSEFF seff = (ResourceDemandingSEFF) astBehaviour.getSeff();
             //TODO SAMM2PCM????
             final String name = seff.getId();
@@ -205,7 +202,7 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
         // Create default annotations
         final DefaultQosAnnotationsBuilder qosAnnotationBuilder = new DefaultQosAnnotationsBuilder(
                 this.sammQosAnnotationsModel);
-        qosAnnotationBuilder.buildDefaultQosAnnotations(this.gastBehaviourRepositoryModel.getSeff2MethodMappings());
+        qosAnnotationBuilder.buildDefaultQosAnnotations(this.sourceCodeDecoratorModel.getSeff2MethodLink());
 
         subMonitor.done();
 
@@ -354,9 +351,9 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
 
         //		assert onlyOnceAsGastBehaviour(this.gastBehaviourRepositoryModel.getSeff2MethodMappings(), seff);
         //TODO burkha 16.05.2013 remove this after checking
-        onlyOnceAsGastBehaviour(this.gastBehaviourRepositoryModel.getSeff2MethodMappings(), seff);
+        onlyOnceAsGastBehaviour(this.sourceCodeDecoratorModel.getSeff2MethodLink(), seff);
 
-        for (final SEFF2MethodMapping behaviour : this.gastBehaviourRepositoryModel.getSeff2MethodMappings()) {
+        for (final Seff2MethodLink behaviour : this.sourceCodeDecoratorModel.getSeff2MethodLink()) {
             if (((ResourceDemandingSEFF)behaviour.getSeff()).getId().equals(seff.getId())) {
                 logger.debug("Matching SEFF found "+ seff.getId());
                 return behaviour.getBlockstatement();
@@ -374,10 +371,10 @@ public class GAST2SEFFJob  implements IBlackboardInteractingJob<SoMoXBlackboard>
      * @param seff
      * @return
      */
-    private boolean onlyOnceAsGastBehaviour(final EList<SEFF2MethodMapping> seff2MethodMappings,
+    private boolean onlyOnceAsGastBehaviour(final EList<Seff2MethodLink> seff2MethodMappings,
             final ServiceEffectSpecification seff) {
         int i = 0;
-        for (final SEFF2MethodMapping mapping : seff2MethodMappings) {
+        for (final Seff2MethodLink mapping : seff2MethodMappings) {
             final ResourceDemandingSEFF seffMapping= (ResourceDemandingSEFF) mapping.getSeff();
             final ResourceDemandingSEFF seffInput = (ResourceDemandingSEFF) seff;
             if (seffMapping.getId().equals(seffInput.getId())) {

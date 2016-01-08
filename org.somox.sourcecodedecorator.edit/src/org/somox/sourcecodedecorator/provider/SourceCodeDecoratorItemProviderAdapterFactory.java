@@ -33,6 +33,13 @@ import org.somox.sourcecodedecorator.util.SourceCodeDecoratorAdapterFactory;
 public class SourceCodeDecoratorItemProviderAdapterFactory extends SourceCodeDecoratorAdapterFactory
         implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -115,31 +122,6 @@ public class SourceCodeDecoratorItemProviderAdapterFactory extends SourceCodeDec
         }
 
         return this.methodLevelSourceCodeLinkItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected ControlFlowLevelSourceCodeLinkItemProvider controlFlowLevelSourceCodeLinkItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createControlFlowLevelSourceCodeLinkAdapter() {
-        if (this.controlFlowLevelSourceCodeLinkItemProvider == null) {
-            this.controlFlowLevelSourceCodeLinkItemProvider = new ControlFlowLevelSourceCodeLinkItemProvider(this);
-        }
-
-        return this.controlFlowLevelSourceCodeLinkItemProvider;
     }
 
     /**
@@ -240,6 +222,30 @@ public class SourceCodeDecoratorItemProviderAdapterFactory extends SourceCodeDec
         }
 
         return this.pcmSystemImplementatingClassesLinkItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.somox.sourcecodedecorator.Seff2MethodLink} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected Seff2MethodLinkItemProvider seff2MethodLinkItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.somox.sourcecodedecorator.Seff2MethodLink}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createSeff2MethodLinkAdapter() {
+        if (this.seff2MethodLinkItemProvider == null) {
+            this.seff2MethodLinkItemProvider = new Seff2MethodLinkItemProvider(this);
+        }
+
+        return this.seff2MethodLinkItemProvider;
     }
 
     /**
@@ -351,9 +357,6 @@ public class SourceCodeDecoratorItemProviderAdapterFactory extends SourceCodeDec
         if (this.methodLevelSourceCodeLinkItemProvider != null) {
             this.methodLevelSourceCodeLinkItemProvider.dispose();
         }
-        if (this.controlFlowLevelSourceCodeLinkItemProvider != null) {
-            this.controlFlowLevelSourceCodeLinkItemProvider.dispose();
-        }
         if (this.sourceCodeDecoratorRepositoryItemProvider != null) {
             this.sourceCodeDecoratorRepositoryItemProvider.dispose();
         }
@@ -365,6 +368,9 @@ public class SourceCodeDecoratorItemProviderAdapterFactory extends SourceCodeDec
         }
         if (this.pcmSystemImplementatingClassesLinkItemProvider != null) {
             this.pcmSystemImplementatingClassesLinkItemProvider.dispose();
+        }
+        if (this.seff2MethodLinkItemProvider != null) {
+            this.seff2MethodLinkItemProvider.dispose();
         }
     }
 

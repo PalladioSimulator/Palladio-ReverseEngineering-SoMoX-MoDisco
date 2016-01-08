@@ -25,11 +25,11 @@ import org.palladiosimulator.pcm.repository.RepositoryPackage;
 import org.palladiosimulator.pcm.seff.SeffPackage;
 import org.palladiosimulator.pcm.system.SystemPackage;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
-import org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.FileLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.PCMSystemImplementatingClassesLink;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorFactory;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
@@ -45,6 +45,13 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      *
      * @generated
      */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     private EClass fileLevelSourceCodeLinkEClass = null;
 
     /**
@@ -53,13 +60,6 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      * @generated
      */
     private EClass methodLevelSourceCodeLinkEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    private EClass controlFlowLevelSourceCodeLinkEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -88,6 +88,13 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      * @generated
      */
     private EClass pcmSystemImplementatingClassesLinkEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass seff2MethodLinkEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -237,36 +244,6 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      * @generated
      */
     @Override
-    public EClass getControlFlowLevelSourceCodeLink() {
-        return this.controlFlowLevelSourceCodeLinkEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getControlFlowLevelSourceCodeLink_AbstractAction() {
-        return (EReference) this.controlFlowLevelSourceCodeLinkEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getControlFlowLevelSourceCodeLink_Statement() {
-        return (EReference) this.controlFlowLevelSourceCodeLinkEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EClass getSourceCodeDecoratorRepository() {
         return this.sourceCodeDecoratorRepositoryEClass;
     }
@@ -297,7 +274,7 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      * @generated
      */
     @Override
-    public EReference getSourceCodeDecoratorRepository_ControlFlowLevelSourceCodeLink() {
+    public EReference getSourceCodeDecoratorRepository_InterfaceSourceCodeLink() {
         return (EReference) this.sourceCodeDecoratorRepositoryEClass.getEStructuralFeatures().get(2);
     }
 
@@ -307,7 +284,7 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      * @generated
      */
     @Override
-    public EReference getSourceCodeDecoratorRepository_InterfaceSourceCodeLink() {
+    public EReference getSourceCodeDecoratorRepository_ComponentImplementingClassesLink() {
         return (EReference) this.sourceCodeDecoratorRepositoryEClass.getEStructuralFeatures().get(3);
     }
 
@@ -317,7 +294,7 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      * @generated
      */
     @Override
-    public EReference getSourceCodeDecoratorRepository_ComponentImplementingClassesLink() {
+    public EReference getSourceCodeDecoratorRepository_Seff2MethodLink() {
         return (EReference) this.sourceCodeDecoratorRepositoryEClass.getEStructuralFeatures().get(4);
     }
 
@@ -457,6 +434,36 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
      * @generated
      */
     @Override
+    public EClass getSeff2MethodLink() {
+        return this.seff2MethodLinkEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getSeff2MethodLink_Blockstatement() {
+        return (EReference) this.seff2MethodLinkEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getSeff2MethodLink_Seff() {
+        return (EReference) this.seff2MethodLinkEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public SourceCodeDecoratorFactory getSourceCodeDecoratorFactory() {
         return (SourceCodeDecoratorFactory) this.getEFactoryInstance();
     }
@@ -489,23 +496,17 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
         this.createEReference(this.methodLevelSourceCodeLinkEClass, METHOD_LEVEL_SOURCE_CODE_LINK__OPERATION);
         this.createEReference(this.methodLevelSourceCodeLinkEClass, METHOD_LEVEL_SOURCE_CODE_LINK__FUNCTION);
 
-        this.controlFlowLevelSourceCodeLinkEClass = this.createEClass(CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK);
-        this.createEReference(this.controlFlowLevelSourceCodeLinkEClass,
-                CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__ABSTRACT_ACTION);
-        this.createEReference(this.controlFlowLevelSourceCodeLinkEClass,
-                CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__STATEMENT);
-
         this.sourceCodeDecoratorRepositoryEClass = this.createEClass(SOURCE_CODE_DECORATOR_REPOSITORY);
         this.createEReference(this.sourceCodeDecoratorRepositoryEClass,
                 SOURCE_CODE_DECORATOR_REPOSITORY__FILE_LEVEL_SOURCE_CODE_LINK);
         this.createEReference(this.sourceCodeDecoratorRepositoryEClass,
                 SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK);
         this.createEReference(this.sourceCodeDecoratorRepositoryEClass,
-                SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK);
-        this.createEReference(this.sourceCodeDecoratorRepositoryEClass,
                 SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK);
         this.createEReference(this.sourceCodeDecoratorRepositoryEClass,
                 SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK);
+        this.createEReference(this.sourceCodeDecoratorRepositoryEClass,
+                SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK);
 
         this.interfaceSourceCodeLinkEClass = this.createEClass(INTERFACE_SOURCE_CODE_LINK);
         this.createEReference(this.interfaceSourceCodeLinkEClass, INTERFACE_SOURCE_CODE_LINK__INTERFACE);
@@ -530,6 +531,10 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
         this.pcmSystemImplementatingClassesLinkEClass = this.createEClass(PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK);
         this.createEReference(this.pcmSystemImplementatingClassesLinkEClass,
                 PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK__SYSTEM_MODEL);
+
+        this.seff2MethodLinkEClass = this.createEClass(SEFF2_METHOD_LINK);
+        this.createEReference(this.seff2MethodLinkEClass, SEFF2_METHOD_LINK__BLOCKSTATEMENT);
+        this.createEReference(this.seff2MethodLinkEClass, SEFF2_METHOD_LINK__SEFF);
     }
 
     /**
@@ -562,9 +567,9 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
         final SourcePackage theSourcePackage = (SourcePackage) EPackage.Registry.INSTANCE
                 .getEPackage(SourcePackage.eNS_URI);
         final JavaPackage theJavaPackage = (JavaPackage) EPackage.Registry.INSTANCE.getEPackage(JavaPackage.eNS_URI);
-        final SeffPackage theSeffPackage = (SeffPackage) EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
         final SystemPackage theSystemPackage = (SystemPackage) EPackage.Registry.INSTANCE
                 .getEPackage(SystemPackage.eNS_URI);
+        final SeffPackage theSeffPackage = (SeffPackage) EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
 
         // Create type parameters
 
@@ -572,106 +577,118 @@ public class SourceCodeDecoratorPackageImpl extends EPackageImpl implements Sour
 
         // Add supertypes to classes
         this.methodLevelSourceCodeLinkEClass.getESuperTypes().add(this.getFileLevelSourceCodeLink());
-        this.controlFlowLevelSourceCodeLinkEClass.getESuperTypes().add(this.getMethodLevelSourceCodeLink());
         this.pcmSystemImplementatingClassesLinkEClass.getESuperTypes().add(this.getComponentImplementingClassesLink());
 
         // Initialize classes and features; add operations and parameters
         this.initEClass(this.fileLevelSourceCodeLinkEClass, FileLevelSourceCodeLink.class, "FileLevelSourceCodeLink",
                 !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEReference(this.getFileLevelSourceCodeLink_RepositoryComponent(),
-                theRepositoryPackage.getRepositoryComponent(), null, "repositoryComponent", null, 0, 1,
-                FileLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                theRepositoryPackage.getRepositoryComponent(),
+                null, "repositoryComponent", null, 0, 1, FileLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
         this.initEReference(this.getFileLevelSourceCodeLink_File(), theSourcePackage.getSourceFile(), null, "file",
-                null, 0, 1, FileLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+                null, 0, 1,
+                FileLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
         this.initEClass(this.methodLevelSourceCodeLinkEClass, MethodLevelSourceCodeLink.class,
-                "MethodLevelSourceCodeLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+                "MethodLevelSourceCodeLink",
+                !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEReference(this.getMethodLevelSourceCodeLink_Operation(), theRepositoryPackage.getSignature(), null,
-                "operation", null, 0, 1, MethodLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                "operation",
+                null, 0, 1, MethodLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
         this.initEReference(this.getMethodLevelSourceCodeLink_Function(), theJavaPackage.getAbstractMethodDeclaration(),
-                null, "function", null, 0, 1, MethodLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-
-        this.initEClass(this.controlFlowLevelSourceCodeLinkEClass, ControlFlowLevelSourceCodeLink.class,
-                "ControlFlowLevelSourceCodeLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        this.initEReference(this.getControlFlowLevelSourceCodeLink_AbstractAction(), theSeffPackage.getAbstractAction(),
-                null, "abstractAction", null, 0, 1, ControlFlowLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-        this.initEReference(this.getControlFlowLevelSourceCodeLink_Statement(), theJavaPackage.getStatement(), null,
-                "statement", null, 0, 1, ControlFlowLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                null,
+                "function", null, 0, 1, MethodLevelSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
         this.initEClass(this.sourceCodeDecoratorRepositoryEClass, SourceCodeDecoratorRepository.class,
                 "SourceCodeDecoratorRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEReference(this.getSourceCodeDecoratorRepository_FileLevelSourceCodeLink(),
-                this.getFileLevelSourceCodeLink(), null, "fileLevelSourceCodeLink", null, 0, -1,
-                SourceCodeDecoratorRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                this.getFileLevelSourceCodeLink(),
+                null, "fileLevelSourceCodeLink", null, 0, -1, SourceCodeDecoratorRepository.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+                !IS_ORDERED);
         this.initEReference(this.getSourceCodeDecoratorRepository_MethodLevelSourceCodeLink(),
                 this.getMethodLevelSourceCodeLink(), null, "methodLevelSourceCodeLink", null, 0, -1,
                 SourceCodeDecoratorRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-        this.initEReference(this.getSourceCodeDecoratorRepository_ControlFlowLevelSourceCodeLink(),
-                this.getControlFlowLevelSourceCodeLink(), null, "controlFlowLevelSourceCodeLink", null, 0, -1,
-                SourceCodeDecoratorRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
         this.initEReference(this.getSourceCodeDecoratorRepository_InterfaceSourceCodeLink(),
-                this.getInterfaceSourceCodeLink(), null, "interfaceSourceCodeLink", null, 0, -1,
-                SourceCodeDecoratorRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                this.getInterfaceSourceCodeLink(),
+                null, "interfaceSourceCodeLink", null, 0, -1, SourceCodeDecoratorRepository.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+                !IS_ORDERED);
         this.initEReference(this.getSourceCodeDecoratorRepository_ComponentImplementingClassesLink(),
                 this.getComponentImplementingClassesLink(), null, "componentImplementingClassesLink", null, 0, -1,
                 SourceCodeDecoratorRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+        this.initEReference(this.getSourceCodeDecoratorRepository_Seff2MethodLink(), this.getSeff2MethodLink(), null,
+                "seff2MethodLink", null, 0, -1, SourceCodeDecoratorRepository.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         this.initEClass(this.interfaceSourceCodeLinkEClass, InterfaceSourceCodeLink.class, "InterfaceSourceCodeLink",
                 !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEReference(this.getInterfaceSourceCodeLink_Interface(), theRepositoryPackage.getInterface(), null,
-                "interface", null, 0, 1, InterfaceSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-        this.initEReference(this.getInterfaceSourceCodeLink_GastClass(), theJavaPackage.getType(), null, "gastClass",
+                "interface",
                 null, 0, 1, InterfaceSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+        this.initEReference(this.getInterfaceSourceCodeLink_GastClass(), theJavaPackage.getType(), null, "gastClass",
+                null, 0, 1,
+                InterfaceSourceCodeLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
         this.initEClass(this.componentImplementingClassesLinkEClass, ComponentImplementingClassesLink.class,
                 "ComponentImplementingClassesLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEAttribute(this.getComponentImplementingClassesLink_IsCompositeComponent(),
-                this.ecorePackage.getEBoolean(), "isCompositeComponent", null, 1, 1,
-                ComponentImplementingClassesLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE,
-                !IS_ID, !IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
+                this.ecorePackage.getEBoolean(),
+                "isCompositeComponent", null, 1, 1, ComponentImplementingClassesLink.class, IS_TRANSIENT, IS_VOLATILE,
+                !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
         this.initEReference(this.getComponentImplementingClassesLink_Component(),
-                theRepositoryPackage.getRepositoryComponent(), null, "component", null, 1, 1,
-                ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                theRepositoryPackage.getRepositoryComponent(),
+                null, "component", null, 1, 1, ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
         this.initEReference(this.getComponentImplementingClassesLink_ImplementingClasses(), theJavaPackage.getType(),
-                null, "implementingClasses", null, 1, -1, ComponentImplementingClassesLink.class, !IS_TRANSIENT,
+                null,
+                "implementingClasses", null, 1, -1, ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+        this.initEReference(this.getComponentImplementingClassesLink_SubComponents(),
+                this.getComponentImplementingClassesLink(),
+                null, "subComponents", null, 0, -1, ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+        this.initEReference(this.getComponentImplementingClassesLink_ProvidedInterfaces(),
+                this.getInterfaceSourceCodeLink(),
+                null, "providedInterfaces", null, 0, -1, ComponentImplementingClassesLink.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
                 !IS_ORDERED);
-        this.initEReference(this.getComponentImplementingClassesLink_SubComponents(),
-                this.getComponentImplementingClassesLink(), null, "subComponents", null, 0, -1,
-                ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-        this.initEReference(this.getComponentImplementingClassesLink_ProvidedInterfaces(),
-                this.getInterfaceSourceCodeLink(), null, "providedInterfaces", null, 0, -1,
-                ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
         this.initEReference(this.getComponentImplementingClassesLink_RequiredInterfaces(),
-                this.getInterfaceSourceCodeLink(), null, "requiredInterfaces", null, 0, -1,
-                ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                this.getInterfaceSourceCodeLink(),
+                null, "requiredInterfaces", null, 0, -1, ComponentImplementingClassesLink.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+                !IS_ORDERED);
         this.initEAttribute(this.getComponentImplementingClassesLink_IsInitialComponent(),
-                this.ecorePackage.getEBoolean(), "isInitialComponent", null, 1, 1,
-                ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+                this.ecorePackage.getEBoolean(),
+                "isInitialComponent", null, 1, 1, ComponentImplementingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
         this.initEClass(this.pcmSystemImplementatingClassesLinkEClass, PCMSystemImplementatingClassesLink.class,
                 "PCMSystemImplementatingClassesLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEReference(this.getPCMSystemImplementatingClassesLink_SystemModel(), theSystemPackage.getSystem(),
-                null, "systemModel", null, 0, 1, PCMSystemImplementatingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE,
+                null,
+                "systemModel", null, 0, 1, PCMSystemImplementatingClassesLink.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+
+        this.initEClass(this.seff2MethodLinkEClass, Seff2MethodLink.class, "Seff2MethodLink", !IS_ABSTRACT,
+                !IS_INTERFACE,
+                IS_GENERATED_INSTANCE_CLASS);
+        this.initEReference(this.getSeff2MethodLink_Blockstatement(), theJavaPackage.getBlock(), null, "blockstatement",
+                null, 1,
+                1, Seff2MethodLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEReference(this.getSeff2MethodLink_Seff(), theSeffPackage.getServiceEffectSpecification(), null,
+                "seff", null, 1,
+                1, Seff2MethodLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource
         this.createResource(eNS_URI);

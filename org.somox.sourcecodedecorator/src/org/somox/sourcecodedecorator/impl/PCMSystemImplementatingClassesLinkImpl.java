@@ -27,6 +27,12 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 public class PCMSystemImplementatingClassesLinkImpl extends ComponentImplementingClassesLinkImpl
         implements PCMSystemImplementatingClassesLink {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+    /**
      * The cached value of the '{@link #getSystemModel() <em>System Model</em>}' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *

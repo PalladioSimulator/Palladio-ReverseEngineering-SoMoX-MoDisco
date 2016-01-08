@@ -16,6 +16,13 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  */
 public class SourceCodeDecoratorResourceFactoryImpl extends ResourceFactoryImpl {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * Creates an instance of the resource factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated

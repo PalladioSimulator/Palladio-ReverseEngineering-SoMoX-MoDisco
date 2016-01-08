@@ -19,10 +19,10 @@ import org.palladiosimulator.pcm.repository.SinkRole;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.somox.analyzer.simplemodelanalyzer.SimpleAnalysisResult;
 import org.somox.configuration.SoMoXConfiguration;
-import org.somox.seff2javaast.SEFF2MethodMapping;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 import org.somox.sourcecodedecorator.FileLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 
 import de.uka.ipd.sdq.workflow.ExecutionTimeLoggingProgressMonitor;
 
@@ -144,8 +144,8 @@ IPostComponentDetectionStrategy {
     private void cleanUpGastBehaviour(final SimpleAnalysisResult analysisResult,
             final Set<ComponentImplementingClassesLink> componentLinksToDelete) {
 
-        final Set<SEFF2MethodMapping> mappingsToDelete = new HashSet<SEFF2MethodMapping>();
-        for(final SEFF2MethodMapping seff2MethodMapping : analysisResult.getSeff2JavaAST().getSeff2MethodMappings()) {
+        final Set<Seff2MethodLink> mappingsToDelete = new HashSet<Seff2MethodLink>();
+        for(final Seff2MethodLink seff2MethodMapping : analysisResult.getSourceCodeDecoratorRepository().getSeff2MethodLink()) {
             final Signature signature = seff2MethodMapping.getSeff().getDescribedService__SEFF();
 
             outer:
@@ -193,7 +193,7 @@ IPostComponentDetectionStrategy {
                 }
         }
 
-        for(final SEFF2MethodMapping seff2MethodMapping : mappingsToDelete) {
+        for(final Seff2MethodLink seff2MethodMapping : mappingsToDelete) {
             final ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seff2MethodMapping.getSeff();
             //TODO burkha 16.05.2013 check if this make sense in logging
             logger.trace("deleting Seff2MethodMapping in decorator: " + seff.getId() + ": "+ seff.getDescribedService__SEFF().getEntityName() + " " + seff2MethodMapping);

@@ -24,6 +24,13 @@ import org.eclipse.emf.ecore.EReference;
  */
 public interface SourceCodeDecoratorPackage extends EPackage {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -147,81 +154,6 @@ public interface SourceCodeDecoratorPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.somox.sourcecodedecorator.impl.ControlFlowLevelSourceCodeLinkImpl
-     * <em>Control Flow Level Source Code Link</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @see org.somox.sourcecodedecorator.impl.ControlFlowLevelSourceCodeLinkImpl
-     * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getControlFlowLevelSourceCodeLink()
-     * @generated
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK = 2;
-
-    /**
-     * The feature id for the '<em><b>Repository Component</b></em>' reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__REPOSITORY_COMPONENT = METHOD_LEVEL_SOURCE_CODE_LINK__REPOSITORY_COMPONENT;
-
-    /**
-     * The feature id for the '<em><b>File</b></em>' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__FILE = METHOD_LEVEL_SOURCE_CODE_LINK__FILE;
-
-    /**
-     * The feature id for the '<em><b>Operation</b></em>' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__OPERATION = METHOD_LEVEL_SOURCE_CODE_LINK__OPERATION;
-
-    /**
-     * The feature id for the '<em><b>Function</b></em>' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__FUNCTION = METHOD_LEVEL_SOURCE_CODE_LINK__FUNCTION;
-
-    /**
-     * The feature id for the '<em><b>Abstract Action</b></em>' reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__ABSTRACT_ACTION = METHOD_LEVEL_SOURCE_CODE_LINK_FEATURE_COUNT + 0;
-
-    /**
-     * The feature id for the '<em><b>Statement</b></em>' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__STATEMENT = METHOD_LEVEL_SOURCE_CODE_LINK_FEATURE_COUNT + 1;
-
-    /**
-     * The number of structural features of the '<em>Control Flow Level Source Code Link</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK_FEATURE_COUNT = METHOD_LEVEL_SOURCE_CODE_LINK_FEATURE_COUNT + 2;
-
-    /**
-     * The meta object id for the '
      * {@link org.somox.sourcecodedecorator.impl.SourceCodeDecoratorRepositoryImpl
      * <em>Repository</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -229,7 +161,7 @@ public interface SourceCodeDecoratorPackage extends EPackage {
      * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getSourceCodeDecoratorRepository()
      * @generated
      */
-    int SOURCE_CODE_DECORATOR_REPOSITORY = 3;
+    int SOURCE_CODE_DECORATOR_REPOSITORY = 2;
 
     /**
      * The feature id for the '<em><b>File Level Source Code Link</b></em>' containment reference
@@ -250,22 +182,13 @@ public interface SourceCodeDecoratorPackage extends EPackage {
     int SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK = 1;
 
     /**
-     * The feature id for the '<em><b>Control Flow Level Source Code Link</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK = 2;
-
-    /**
      * The feature id for the '<em><b>Interface Source Code Link</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK = 3;
+    int SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK = 2;
 
     /**
      * The feature id for the '<em><b>Component Implementing Classes Link</b></em>' containment
@@ -274,7 +197,16 @@ public interface SourceCodeDecoratorPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK = 4;
+    int SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK = 3;
+
+    /**
+     * The feature id for the '<em><b>Seff2 Method Link</b></em>' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK = 4;
 
     /**
      * The number of structural features of the '<em>Repository</em>' class. <!-- begin-user-doc -->
@@ -294,7 +226,7 @@ public interface SourceCodeDecoratorPackage extends EPackage {
      * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getInterfaceSourceCodeLink()
      * @generated
      */
-    int INTERFACE_SOURCE_CODE_LINK = 4;
+    int INTERFACE_SOURCE_CODE_LINK = 3;
 
     /**
      * The feature id for the '<em><b>Interface</b></em>' reference. <!-- begin-user-doc --> <!--
@@ -333,7 +265,7 @@ public interface SourceCodeDecoratorPackage extends EPackage {
      * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getComponentImplementingClassesLink()
      * @generated
      */
-    int COMPONENT_IMPLEMENTING_CLASSES_LINK = 5;
+    int COMPONENT_IMPLEMENTING_CLASSES_LINK = 4;
 
     /**
      * The feature id for the '<em><b>Is Composite Component</b></em>' attribute. <!--
@@ -417,7 +349,7 @@ public interface SourceCodeDecoratorPackage extends EPackage {
      * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getPCMSystemImplementatingClassesLink()
      * @generated
      */
-    int PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK = 6;
+    int PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK = 5;
 
     /**
      * The feature id for the '<em><b>Is Composite Component</b></em>' attribute. <!--
@@ -501,6 +433,43 @@ public interface SourceCodeDecoratorPackage extends EPackage {
     int PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK_FEATURE_COUNT = COMPONENT_IMPLEMENTING_CLASSES_LINK_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the '{@link org.somox.sourcecodedecorator.impl.Seff2MethodLinkImpl
+     * <em>Seff2 Method Link</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.somox.sourcecodedecorator.impl.Seff2MethodLinkImpl
+     * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getSeff2MethodLink()
+     * @generated
+     */
+    int SEFF2_METHOD_LINK = 6;
+
+    /**
+     * The feature id for the '<em><b>Blockstatement</b></em>' reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEFF2_METHOD_LINK__BLOCKSTATEMENT = 0;
+
+    /**
+     * The feature id for the '<em><b>Seff</b></em>' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEFF2_METHOD_LINK__SEFF = 1;
+
+    /**
+     * The number of structural features of the '<em>Seff2 Method Link</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEFF2_METHOD_LINK_FEATURE_COUNT = 2;
+
+    /**
      * Returns the meta object for class '
      * {@link org.somox.sourcecodedecorator.FileLevelSourceCodeLink
      * <em>File Level Source Code Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -572,41 +541,6 @@ public interface SourceCodeDecoratorPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink
-     * <em>Control Flow Level Source Code Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for class '<em>Control Flow Level Source Code Link</em>'.
-     * @see org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink
-     * @generated
-     */
-    EClass getControlFlowLevelSourceCodeLink();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink#getAbstractAction
-     * <em>Abstract Action</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the reference '<em>Abstract Action</em>'.
-     * @see org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink#getAbstractAction()
-     * @see #getControlFlowLevelSourceCodeLink()
-     * @generated
-     */
-    EReference getControlFlowLevelSourceCodeLink_AbstractAction();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink#getStatement
-     * <em>Statement</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the reference '<em>Statement</em>'.
-     * @see org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink#getStatement()
-     * @see #getControlFlowLevelSourceCodeLink()
-     * @generated
-     */
-    EReference getControlFlowLevelSourceCodeLink_Statement();
-
-    /**
-     * Returns the meta object for class '
      * {@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository <em>Repository</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -644,19 +578,6 @@ public interface SourceCodeDecoratorPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getControlFlowLevelSourceCodeLink
-     * <em>Control Flow Level Source Code Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the containment reference list '
-     *         <em>Control Flow Level Source Code Link</em>'.
-     * @see org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getControlFlowLevelSourceCodeLink()
-     * @see #getSourceCodeDecoratorRepository()
-     * @generated
-     */
-    EReference getSourceCodeDecoratorRepository_ControlFlowLevelSourceCodeLink();
-
-    /**
-     * Returns the meta object for the containment reference list '
      * {@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getInterfaceSourceCodeLink
      * <em>Interface Source Code Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -680,6 +601,18 @@ public interface SourceCodeDecoratorPackage extends EPackage {
      * @generated
      */
     EReference getSourceCodeDecoratorRepository_ComponentImplementingClassesLink();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getSeff2MethodLink
+     * <em>Seff2 Method Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '<em>Seff2 Method Link</em>'.
+     * @see org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getSeff2MethodLink()
+     * @see #getSourceCodeDecoratorRepository()
+     * @generated
+     */
+    EReference getSourceCodeDecoratorRepository_Seff2MethodLink();
 
     /**
      * Returns the meta object for class '
@@ -836,6 +769,40 @@ public interface SourceCodeDecoratorPackage extends EPackage {
     EReference getPCMSystemImplementatingClassesLink_SystemModel();
 
     /**
+     * Returns the meta object for class '{@link org.somox.sourcecodedecorator.Seff2MethodLink
+     * <em>Seff2 Method Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Seff2 Method Link</em>'.
+     * @see org.somox.sourcecodedecorator.Seff2MethodLink
+     * @generated
+     */
+    EClass getSeff2MethodLink();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.somox.sourcecodedecorator.Seff2MethodLink#getBlockstatement
+     * <em>Blockstatement</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Blockstatement</em>'.
+     * @see org.somox.sourcecodedecorator.Seff2MethodLink#getBlockstatement()
+     * @see #getSeff2MethodLink()
+     * @generated
+     */
+    EReference getSeff2MethodLink_Blockstatement();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.somox.sourcecodedecorator.Seff2MethodLink#getSeff <em>Seff</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Seff</em>'.
+     * @see org.somox.sourcecodedecorator.Seff2MethodLink#getSeff()
+     * @see #getSeff2MethodLink()
+     * @generated
+     */
+    EReference getSeff2MethodLink_Seff();
+
+    /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -916,36 +883,6 @@ public interface SourceCodeDecoratorPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.somox.sourcecodedecorator.impl.ControlFlowLevelSourceCodeLinkImpl
-         * <em>Control Flow Level Source Code Link</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
-         * @see org.somox.sourcecodedecorator.impl.ControlFlowLevelSourceCodeLinkImpl
-         * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getControlFlowLevelSourceCodeLink()
-         * @generated
-         */
-        EClass CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK = eINSTANCE.getControlFlowLevelSourceCodeLink();
-
-        /**
-         * The meta object literal for the '<em><b>Abstract Action</b></em>' reference feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EReference CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__ABSTRACT_ACTION = eINSTANCE
-                .getControlFlowLevelSourceCodeLink_AbstractAction();
-
-        /**
-         * The meta object literal for the '<em><b>Statement</b></em>' reference feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EReference CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK__STATEMENT = eINSTANCE
-                .getControlFlowLevelSourceCodeLink_Statement();
-
-        /**
-         * The meta object literal for the '
          * {@link org.somox.sourcecodedecorator.impl.SourceCodeDecoratorRepositoryImpl
          * <em>Repository</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -974,15 +911,6 @@ public interface SourceCodeDecoratorPackage extends EPackage {
                 .getSourceCodeDecoratorRepository_MethodLevelSourceCodeLink();
 
         /**
-         * The meta object literal for the '<em><b>Control Flow Level Source Code Link</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EReference SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK = eINSTANCE
-                .getSourceCodeDecoratorRepository_ControlFlowLevelSourceCodeLink();
-
-        /**
          * The meta object literal for the '<em><b>Interface Source Code Link</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -999,6 +927,15 @@ public interface SourceCodeDecoratorPackage extends EPackage {
          */
         EReference SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK = eINSTANCE
                 .getSourceCodeDecoratorRepository_ComponentImplementingClassesLink();
+
+        /**
+         * The meta object literal for the '<em><b>Seff2 Method Link</b></em>' containment reference
+         * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK = eINSTANCE
+                .getSourceCodeDecoratorRepository_Seff2MethodLink();
 
         /**
          * The meta object literal for the '
@@ -1123,6 +1060,33 @@ public interface SourceCodeDecoratorPackage extends EPackage {
          */
         EReference PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK__SYSTEM_MODEL = eINSTANCE
                 .getPCMSystemImplementatingClassesLink_SystemModel();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.somox.sourcecodedecorator.impl.Seff2MethodLinkImpl <em>Seff2 Method Link</em>}
+         * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.somox.sourcecodedecorator.impl.Seff2MethodLinkImpl
+         * @see org.somox.sourcecodedecorator.impl.SourceCodeDecoratorPackageImpl#getSeff2MethodLink()
+         * @generated
+         */
+        EClass SEFF2_METHOD_LINK = eINSTANCE.getSeff2MethodLink();
+
+        /**
+         * The meta object literal for the '<em><b>Blockstatement</b></em>' reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SEFF2_METHOD_LINK__BLOCKSTATEMENT = eINSTANCE.getSeff2MethodLink_Blockstatement();
+
+        /**
+         * The meta object literal for the '<em><b>Seff</b></em>' reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SEFF2_METHOD_LINK__SEFF = eINSTANCE.getSeff2MethodLink_Seff();
 
     }
 

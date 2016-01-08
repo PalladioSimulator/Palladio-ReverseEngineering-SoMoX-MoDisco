@@ -32,6 +32,13 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
         IItemLabelProvider, IItemPropertySource {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -70,14 +77,21 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
      * @generated
      */
     protected void addIsCompositeComponentPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ComponentImplementingClassesLink_isCompositeComponent_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ComponentImplementingClassesLink_isCompositeComponent_feature",
-                        "_UI_ComponentImplementingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__IS_COMPOSITE_COMPONENT, true,
-                false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_ComponentImplementingClassesLink_isCompositeComponent_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_ComponentImplementingClassesLink_isCompositeComponent_feature",
+                                "_UI_ComponentImplementingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__IS_COMPOSITE_COMPONENT,
+                        true,
+                        false,
+                        false,
+                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                        null,
+                        null));
     }
 
     /**
@@ -87,14 +101,21 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
      * @generated
      */
     protected void addComponentPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ComponentImplementingClassesLink_component_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ComponentImplementingClassesLink_component_feature",
-                        "_UI_ComponentImplementingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__COMPONENT, true, false, true,
-                null, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_ComponentImplementingClassesLink_component_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_ComponentImplementingClassesLink_component_feature",
+                                "_UI_ComponentImplementingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__COMPONENT,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -104,14 +125,21 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
      * @generated
      */
     protected void addImplementingClassesPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ComponentImplementingClassesLink_implementingClasses_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ComponentImplementingClassesLink_implementingClasses_feature",
-                        "_UI_ComponentImplementingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__IMPLEMENTING_CLASSES, true,
-                false, true, null, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_ComponentImplementingClassesLink_implementingClasses_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_ComponentImplementingClassesLink_implementingClasses_feature",
+                                "_UI_ComponentImplementingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__IMPLEMENTING_CLASSES,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -121,14 +149,21 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
      * @generated
      */
     protected void addSubComponentsPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ComponentImplementingClassesLink_subComponents_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ComponentImplementingClassesLink_subComponents_feature",
-                        "_UI_ComponentImplementingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__SUB_COMPONENTS, true, false,
-                true, null, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_ComponentImplementingClassesLink_subComponents_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_ComponentImplementingClassesLink_subComponents_feature",
+                                "_UI_ComponentImplementingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__SUB_COMPONENTS,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -138,14 +173,21 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
      * @generated
      */
     protected void addProvidedInterfacesPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ComponentImplementingClassesLink_providedInterfaces_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ComponentImplementingClassesLink_providedInterfaces_feature",
-                        "_UI_ComponentImplementingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__PROVIDED_INTERFACES, true,
-                false, true, null, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_ComponentImplementingClassesLink_providedInterfaces_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_ComponentImplementingClassesLink_providedInterfaces_feature",
+                                "_UI_ComponentImplementingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__PROVIDED_INTERFACES,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -155,14 +197,21 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
      * @generated
      */
     protected void addRequiredInterfacesPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ComponentImplementingClassesLink_requiredInterfaces_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ComponentImplementingClassesLink_requiredInterfaces_feature",
-                        "_UI_ComponentImplementingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__REQUIRED_INTERFACES, true,
-                false, true, null, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_ComponentImplementingClassesLink_requiredInterfaces_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_ComponentImplementingClassesLink_requiredInterfaces_feature",
+                                "_UI_ComponentImplementingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__REQUIRED_INTERFACES,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -172,14 +221,21 @@ public class ComponentImplementingClassesLinkItemProvider extends ItemProviderAd
      * @generated
      */
     protected void addIsInitialComponentPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ComponentImplementingClassesLink_isInitialComponent_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ComponentImplementingClassesLink_isInitialComponent_feature",
-                        "_UI_ComponentImplementingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__IS_INITIAL_COMPONENT, true,
-                false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_ComponentImplementingClassesLink_isInitialComponent_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_ComponentImplementingClassesLink_isInitialComponent_feature",
+                                "_UI_ComponentImplementingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.COMPONENT_IMPLEMENTING_CLASSES_LINK__IS_INITIAL_COMPONENT,
+                        true,
+                        false,
+                        false,
+                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                        null,
+                        null));
     }
 
     /**

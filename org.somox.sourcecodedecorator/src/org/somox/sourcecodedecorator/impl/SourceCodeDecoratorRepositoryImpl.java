@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
-import org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.FileLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
 
@@ -33,19 +33,26 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
  * {@link org.somox.sourcecodedecorator.impl.SourceCodeDecoratorRepositoryImpl#getMethodLevelSourceCodeLink
  * <em>Method Level Source Code Link</em>}</li>
  * <li>
- * {@link org.somox.sourcecodedecorator.impl.SourceCodeDecoratorRepositoryImpl#getControlFlowLevelSourceCodeLink
- * <em>Control Flow Level Source Code Link</em>}</li>
- * <li>
  * {@link org.somox.sourcecodedecorator.impl.SourceCodeDecoratorRepositoryImpl#getInterfaceSourceCodeLink
  * <em>Interface Source Code Link</em>}</li>
  * <li>
  * {@link org.somox.sourcecodedecorator.impl.SourceCodeDecoratorRepositoryImpl#getComponentImplementingClassesLink
  * <em>Component Implementing Classes Link</em>}</li>
+ * <li>
+ * {@link org.somox.sourcecodedecorator.impl.SourceCodeDecoratorRepositoryImpl#getSeff2MethodLink
+ * <em>Seff2 Method Link</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements SourceCodeDecoratorRepository {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
     /**
      * The cached value of the '{@link #getFileLevelSourceCodeLink()
      * <em>File Level Source Code Link</em>}' containment reference list. <!-- begin-user-doc -->
@@ -69,17 +76,6 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
     protected EList<MethodLevelSourceCodeLink> methodLevelSourceCodeLink;
 
     /**
-     * The cached value of the '{@link #getControlFlowLevelSourceCodeLink()
-     * <em>Control Flow Level Source Code Link</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getControlFlowLevelSourceCodeLink()
-     * @generated
-     * @ordered
-     */
-    protected EList<ControlFlowLevelSourceCodeLink> controlFlowLevelSourceCodeLink;
-
-    /**
      * The cached value of the '{@link #getInterfaceSourceCodeLink()
      * <em>Interface Source Code Link</em>}' containment reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -100,6 +96,16 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
      * @ordered
      */
     protected EList<ComponentImplementingClassesLink> componentImplementingClassesLink;
+
+    /**
+     * The cached value of the '{@link #getSeff2MethodLink() <em>Seff2 Method Link</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getSeff2MethodLink()
+     * @generated
+     * @ordered
+     */
+    protected EList<Seff2MethodLink> seff2MethodLink;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -156,21 +162,6 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
      * @generated
      */
     @Override
-    public EList<ControlFlowLevelSourceCodeLink> getControlFlowLevelSourceCodeLink() {
-        if (this.controlFlowLevelSourceCodeLink == null) {
-            this.controlFlowLevelSourceCodeLink = new EObjectContainmentEList<ControlFlowLevelSourceCodeLink>(
-                    ControlFlowLevelSourceCodeLink.class, this,
-                    SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK);
-        }
-        return this.controlFlowLevelSourceCodeLink;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EList<InterfaceSourceCodeLink> getInterfaceSourceCodeLink() {
         if (this.interfaceSourceCodeLink == null) {
             this.interfaceSourceCodeLink = new EObjectContainmentEList<InterfaceSourceCodeLink>(
@@ -201,6 +192,20 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
      * @generated
      */
     @Override
+    public EList<Seff2MethodLink> getSeff2MethodLink() {
+        if (this.seff2MethodLink == null) {
+            this.seff2MethodLink = new EObjectContainmentEList<Seff2MethodLink>(Seff2MethodLink.class, this,
+                    SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK);
+        }
+        return this.seff2MethodLink;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
             final NotificationChain msgs) {
         switch (featureID) {
@@ -208,12 +213,12 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
             return ((InternalEList<?>) this.getFileLevelSourceCodeLink()).basicRemove(otherEnd, msgs);
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK:
             return ((InternalEList<?>) this.getMethodLevelSourceCodeLink()).basicRemove(otherEnd, msgs);
-        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK:
-            return ((InternalEList<?>) this.getControlFlowLevelSourceCodeLink()).basicRemove(otherEnd, msgs);
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK:
             return ((InternalEList<?>) this.getInterfaceSourceCodeLink()).basicRemove(otherEnd, msgs);
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK:
             return ((InternalEList<?>) this.getComponentImplementingClassesLink()).basicRemove(otherEnd, msgs);
+        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK:
+            return ((InternalEList<?>) this.getSeff2MethodLink()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -230,12 +235,12 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
             return this.getFileLevelSourceCodeLink();
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK:
             return this.getMethodLevelSourceCodeLink();
-        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK:
-            return this.getControlFlowLevelSourceCodeLink();
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK:
             return this.getInterfaceSourceCodeLink();
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK:
             return this.getComponentImplementingClassesLink();
+        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK:
+            return this.getSeff2MethodLink();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -257,11 +262,6 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
             this.getMethodLevelSourceCodeLink().clear();
             this.getMethodLevelSourceCodeLink().addAll((Collection<? extends MethodLevelSourceCodeLink>) newValue);
             return;
-        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK:
-            this.getControlFlowLevelSourceCodeLink().clear();
-            this.getControlFlowLevelSourceCodeLink()
-                    .addAll((Collection<? extends ControlFlowLevelSourceCodeLink>) newValue);
-            return;
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK:
             this.getInterfaceSourceCodeLink().clear();
             this.getInterfaceSourceCodeLink().addAll((Collection<? extends InterfaceSourceCodeLink>) newValue);
@@ -270,6 +270,10 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
             this.getComponentImplementingClassesLink().clear();
             this.getComponentImplementingClassesLink()
                     .addAll((Collection<? extends ComponentImplementingClassesLink>) newValue);
+            return;
+        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK:
+            this.getSeff2MethodLink().clear();
+            this.getSeff2MethodLink().addAll((Collection<? extends Seff2MethodLink>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -289,14 +293,14 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK:
             this.getMethodLevelSourceCodeLink().clear();
             return;
-        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK:
-            this.getControlFlowLevelSourceCodeLink().clear();
-            return;
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK:
             this.getInterfaceSourceCodeLink().clear();
             return;
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK:
             this.getComponentImplementingClassesLink().clear();
+            return;
+        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK:
+            this.getSeff2MethodLink().clear();
             return;
         }
         super.eUnset(featureID);
@@ -314,12 +318,12 @@ public class SourceCodeDecoratorRepositoryImpl extends EObjectImpl implements So
             return this.fileLevelSourceCodeLink != null && !this.fileLevelSourceCodeLink.isEmpty();
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK:
             return this.methodLevelSourceCodeLink != null && !this.methodLevelSourceCodeLink.isEmpty();
-        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK:
-            return this.controlFlowLevelSourceCodeLink != null && !this.controlFlowLevelSourceCodeLink.isEmpty();
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK:
             return this.interfaceSourceCodeLink != null && !this.interfaceSourceCodeLink.isEmpty();
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK:
             return this.componentImplementingClassesLink != null && !this.componentImplementingClassesLink.isEmpty();
+        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK:
+            return this.seff2MethodLink != null && !this.seff2MethodLink.isEmpty();
         }
         return super.eIsSet(featureID);
     }

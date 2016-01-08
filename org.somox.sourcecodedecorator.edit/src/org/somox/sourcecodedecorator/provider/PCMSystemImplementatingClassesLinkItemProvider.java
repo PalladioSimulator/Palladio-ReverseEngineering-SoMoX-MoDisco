@@ -21,6 +21,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
  */
 public class PCMSystemImplementatingClassesLinkItemProvider extends ComponentImplementingClassesLinkItemProvider {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -53,14 +60,21 @@ public class PCMSystemImplementatingClassesLinkItemProvider extends ComponentImp
      * @generated
      */
     protected void addSystemModelPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_PCMSystemImplementatingClassesLink_systemModel_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_PCMSystemImplementatingClassesLink_systemModel_feature",
-                        "_UI_PCMSystemImplementatingClassesLink_type"),
-                SourceCodeDecoratorPackage.Literals.PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK__SYSTEM_MODEL, true, false,
-                true, null, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_PCMSystemImplementatingClassesLink_systemModel_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_PCMSystemImplementatingClassesLink_systemModel_feature",
+                                "_UI_PCMSystemImplementatingClassesLink_type"),
+                        SourceCodeDecoratorPackage.Literals.PCM_SYSTEM_IMPLEMENTATING_CLASSES_LINK__SYSTEM_MODEL,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**

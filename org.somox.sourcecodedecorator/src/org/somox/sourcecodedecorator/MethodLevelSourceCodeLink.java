@@ -25,6 +25,13 @@ import org.palladiosimulator.pcm.repository.Signature;
  */
 public interface MethodLevelSourceCodeLink extends FileLevelSourceCodeLink {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * Returns the value of the '<em><b>Operation</b></em>' reference. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Operation</em>' reference isn't clear, there really should be more

@@ -32,6 +32,13 @@ public class SourceCodeDecoratorRepositoryItemProvider extends ItemProviderAdapt
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
         IItemLabelProvider, IItemPropertySource {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -74,11 +81,11 @@ public class SourceCodeDecoratorRepositoryItemProvider extends ItemProviderAdapt
             this.childrenFeatures.add(
                     SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK);
             this.childrenFeatures.add(
-                    SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK);
-            this.childrenFeatures.add(
                     SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK);
             this.childrenFeatures.add(
                     SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK);
+            this.childrenFeatures
+                    .add(SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK);
         }
         return this.childrenFeatures;
     }
@@ -132,9 +139,9 @@ public class SourceCodeDecoratorRepositoryItemProvider extends ItemProviderAdapt
         switch (notification.getFeatureID(SourceCodeDecoratorRepository.class)) {
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__FILE_LEVEL_SOURCE_CODE_LINK:
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK:
-        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK:
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK:
         case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK:
+        case SourceCodeDecoratorPackage.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK:
             this.fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -160,20 +167,8 @@ public class SourceCodeDecoratorRepositoryItemProvider extends ItemProviderAdapt
                 SourceCodeDecoratorFactory.eINSTANCE.createMethodLevelSourceCodeLink()));
 
         newChildDescriptors.add(this.createChildParameter(
-                SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__FILE_LEVEL_SOURCE_CODE_LINK,
-                SourceCodeDecoratorFactory.eINSTANCE.createControlFlowLevelSourceCodeLink()));
-
-        newChildDescriptors.add(this.createChildParameter(
                 SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK,
                 SourceCodeDecoratorFactory.eINSTANCE.createMethodLevelSourceCodeLink()));
-
-        newChildDescriptors.add(this.createChildParameter(
-                SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK,
-                SourceCodeDecoratorFactory.eINSTANCE.createControlFlowLevelSourceCodeLink()));
-
-        newChildDescriptors.add(this.createChildParameter(
-                SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK,
-                SourceCodeDecoratorFactory.eINSTANCE.createControlFlowLevelSourceCodeLink()));
 
         newChildDescriptors.add(this.createChildParameter(
                 SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__INTERFACE_SOURCE_CODE_LINK,
@@ -186,6 +181,10 @@ public class SourceCodeDecoratorRepositoryItemProvider extends ItemProviderAdapt
         newChildDescriptors.add(this.createChildParameter(
                 SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__COMPONENT_IMPLEMENTING_CLASSES_LINK,
                 SourceCodeDecoratorFactory.eINSTANCE.createPCMSystemImplementatingClassesLink()));
+
+        newChildDescriptors.add(this.createChildParameter(
+                SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__SEFF2_METHOD_LINK,
+                SourceCodeDecoratorFactory.eINSTANCE.createSeff2MethodLink()));
     }
 
     /**
@@ -201,12 +200,13 @@ public class SourceCodeDecoratorRepositoryItemProvider extends ItemProviderAdapt
         final Object childObject = child;
 
         final boolean qualify = childFeature == SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__FILE_LEVEL_SOURCE_CODE_LINK
-                || childFeature == SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK
-                || childFeature == SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__CONTROL_FLOW_LEVEL_SOURCE_CODE_LINK;
+                ||
+                childFeature == SourceCodeDecoratorPackage.Literals.SOURCE_CODE_DECORATOR_REPOSITORY__METHOD_LEVEL_SOURCE_CODE_LINK;
 
         if (qualify) {
-            return this.getString("_UI_CreateChild_text2", new Object[] { this.getTypeText(childObject),
-                    this.getFeatureText(childFeature), this.getTypeText(owner) });
+            return this.getString("_UI_CreateChild_text2",
+                    new Object[] { this.getTypeText(childObject), this.getFeatureText(childFeature),
+                            this.getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

@@ -13,6 +13,12 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface SourceCodeDecoratorFactory extends EFactory {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+    /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -36,15 +42,6 @@ public interface SourceCodeDecoratorFactory extends EFactory {
      * @generated
      */
     MethodLevelSourceCodeLink createMethodLevelSourceCodeLink();
-
-    /**
-     * Returns a new object of class '<em>Control Flow Level Source Code Link</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return a new object of class '<em>Control Flow Level Source Code Link</em>'.
-     * @generated
-     */
-    ControlFlowLevelSourceCodeLink createControlFlowLevelSourceCodeLink();
 
     /**
      * Returns a new object of class '<em>Repository</em>'. <!-- begin-user-doc --> <!--
@@ -81,6 +78,15 @@ public interface SourceCodeDecoratorFactory extends EFactory {
      * @generated
      */
     PCMSystemImplementatingClassesLink createPCMSystemImplementatingClassesLink();
+
+    /**
+     * Returns a new object of class '<em>Seff2 Method Link</em>'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return a new object of class '<em>Seff2 Method Link</em>'.
+     * @generated
+     */
+    Seff2MethodLink createSeff2MethodLink();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->

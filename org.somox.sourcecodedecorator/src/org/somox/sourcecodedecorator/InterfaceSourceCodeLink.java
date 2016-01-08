@@ -26,6 +26,13 @@ import org.palladiosimulator.pcm.repository.Interface;
  */
 public interface InterfaceSourceCodeLink extends EObject {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * Returns the value of the '<em><b>Interface</b></em>' reference. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Interface</em>' reference isn't clear, there really should be more

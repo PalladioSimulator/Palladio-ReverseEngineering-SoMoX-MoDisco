@@ -6,6 +6,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.gmt.modisco.java.emf.provider.JavaEditPlugin;
 import org.eclipse.gmt.modisco.omg.kdm.core.provider.KdmEditPlugin;
+import org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierEditPlugin;
 import de.uka.ipd.sdq.probfunction.provider.ProbabilityFunctionEditPlugin;
@@ -19,6 +20,13 @@ import de.uka.ipd.sdq.units.provider.UnitsEditPlugin;
  * @generated
  */
 public final class SourcecodedecoratorEditPlugin extends EMFPlugin {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -39,9 +47,15 @@ public final class SourcecodedecoratorEditPlugin extends EMFPlugin {
      * @generated
      */
     public SourcecodedecoratorEditPlugin() {
-        super(new ResourceLocator[] { IdentifierEditPlugin.INSTANCE, JavaEditPlugin.INSTANCE, KdmEditPlugin.INSTANCE,
-                org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin.INSTANCE,
-                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE, });
+        super(new ResourceLocator[] {
+                IdentifierEditPlugin.INSTANCE,
+                JavaEditPlugin.INSTANCE,
+                KdmEditPlugin.INSTANCE,
+                PalladioComponentModelEditPlugin.INSTANCE,
+                ProbabilityFunctionEditPlugin.INSTANCE,
+                StoexEditPlugin.INSTANCE,
+                UnitsEditPlugin.INSTANCE,
+        });
     }
 
     /**

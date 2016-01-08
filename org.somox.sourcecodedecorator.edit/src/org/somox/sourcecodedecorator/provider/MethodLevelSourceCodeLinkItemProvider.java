@@ -20,6 +20,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
  */
 public class MethodLevelSourceCodeLinkItemProvider extends FileLevelSourceCodeLinkItemProvider {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -53,13 +60,21 @@ public class MethodLevelSourceCodeLinkItemProvider extends FileLevelSourceCodeLi
      * @generated
      */
     protected void addOperationPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_MethodLevelSourceCodeLink_operation_feature"),
-                this.getString("_UI_PropertyDescriptor_description", "_UI_MethodLevelSourceCodeLink_operation_feature",
-                        "_UI_MethodLevelSourceCodeLink_type"),
-                SourceCodeDecoratorPackage.Literals.METHOD_LEVEL_SOURCE_CODE_LINK__OPERATION, true, false, true, null,
-                null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_MethodLevelSourceCodeLink_operation_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_MethodLevelSourceCodeLink_operation_feature",
+                                "_UI_MethodLevelSourceCodeLink_type"),
+                        SourceCodeDecoratorPackage.Literals.METHOD_LEVEL_SOURCE_CODE_LINK__OPERATION,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -69,13 +84,20 @@ public class MethodLevelSourceCodeLinkItemProvider extends FileLevelSourceCodeLi
      * @generated
      */
     protected void addFunctionPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_MethodLevelSourceCodeLink_function_feature"),
-                this.getString("_UI_PropertyDescriptor_description", "_UI_MethodLevelSourceCodeLink_function_feature",
-                        "_UI_MethodLevelSourceCodeLink_type"),
-                SourceCodeDecoratorPackage.Literals.METHOD_LEVEL_SOURCE_CODE_LINK__FUNCTION, true, false, true, null,
-                null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_MethodLevelSourceCodeLink_function_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_MethodLevelSourceCodeLink_function_feature", "_UI_MethodLevelSourceCodeLink_type"),
+                        SourceCodeDecoratorPackage.Literals.METHOD_LEVEL_SOURCE_CODE_LINK__FUNCTION,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**

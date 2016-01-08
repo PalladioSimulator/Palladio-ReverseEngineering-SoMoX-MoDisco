@@ -16,7 +16,6 @@ import org.palladiosimulator.pcm.qosannotations.QoSAnnotations;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.somox.analyzer.AnalysisResult;
 import org.somox.configuration.SoMoXConfiguration;
-import org.somox.seff2javaast.SEFF2JavaAST;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
 
 import de.uka.ipd.sdq.workflow.jobs.CleanupFailedException;
@@ -39,7 +38,6 @@ IBlackboardInteractingJob<SoMoXBlackboard> {
     // ---------------------------------
 
     /** The path inside the project to store the internal architecture model */
-    private static final String PATH_SEFF2JAVAAST_REPOSITORY = "/internal_architecture_model.seff2javaast";
     private static final String PATH_SOURCECODE_DECORATOR_REPOSITORY = "/internal_architecture_model.sourcecodedecorator";
     private static final String PATH_SYSTEM_MODEL = "/internal_architecture_model.system";
     private static final String PATH_QOS_ANNOTATIONS_MODEL = "/internal_architecture_model.samm_qosannotation";
@@ -94,8 +92,6 @@ IBlackboardInteractingJob<SoMoXBlackboard> {
             saveSourceCodeDecoratorRepository(
                     result.getSourceCodeDecoratorRepository(),
                     projectIdentifier, outputFolder);
-            saveSEFF2JavaASTModel(result.getSeff2JavaAST(),
-                    projectIdentifier, outputFolder);
             saveSammModel(result.getSystemModel(),
                     projectIdentifier, outputFolder);
             saveQoSAnnotationsModel(result.getQosAnnotationModel(),
@@ -105,13 +101,6 @@ IBlackboardInteractingJob<SoMoXBlackboard> {
             throw new JobFailedException("Unable to save SoMoX Models", e);
         }
 
-    }
-
-    private void saveSEFF2JavaASTModel(
-            final SEFF2JavaAST repository, final String projectIdentifier,
-            final String outputFolder) throws IOException {
-        save(repository, projectIdentifier, outputFolder
-                + PATH_SEFF2JAVAAST_REPOSITORY);
     }
 
     private void saveSourceCodeDecoratorRepository(

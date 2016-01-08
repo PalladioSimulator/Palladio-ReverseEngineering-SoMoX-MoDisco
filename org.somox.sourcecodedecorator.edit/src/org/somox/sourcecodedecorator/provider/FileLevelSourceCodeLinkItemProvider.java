@@ -28,6 +28,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 public class FileLevelSourceCodeLinkItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -61,13 +68,21 @@ public class FileLevelSourceCodeLinkItemProvider extends ItemProviderAdapter imp
      * @generated
      */
     protected void addRepositoryComponentPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_FileLevelSourceCodeLink_repositoryComponent_feature"),
-                this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_FileLevelSourceCodeLink_repositoryComponent_feature", "_UI_FileLevelSourceCodeLink_type"),
-                SourceCodeDecoratorPackage.Literals.FILE_LEVEL_SOURCE_CODE_LINK__REPOSITORY_COMPONENT, true, false,
-                true, null, null, null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_FileLevelSourceCodeLink_repositoryComponent_feature"),
+                        this.getString("_UI_PropertyDescriptor_description",
+                                "_UI_FileLevelSourceCodeLink_repositoryComponent_feature",
+                                "_UI_FileLevelSourceCodeLink_type"),
+                        SourceCodeDecoratorPackage.Literals.FILE_LEVEL_SOURCE_CODE_LINK__REPOSITORY_COMPONENT,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**
@@ -77,13 +92,20 @@ public class FileLevelSourceCodeLinkItemProvider extends ItemProviderAdapter imp
      * @generated
      */
     protected void addFilePropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_FileLevelSourceCodeLink_file_feature"),
-                this.getString("_UI_PropertyDescriptor_description", "_UI_FileLevelSourceCodeLink_file_feature",
-                        "_UI_FileLevelSourceCodeLink_type"),
-                SourceCodeDecoratorPackage.Literals.FILE_LEVEL_SOURCE_CODE_LINK__FILE, true, false, true, null, null,
-                null));
+        this.itemPropertyDescriptors
+                .add(this.createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(),
+                        this.getString("_UI_FileLevelSourceCodeLink_file_feature"),
+                        this.getString("_UI_PropertyDescriptor_description", "_UI_FileLevelSourceCodeLink_file_feature",
+                                "_UI_FileLevelSourceCodeLink_type"),
+                        SourceCodeDecoratorPackage.Literals.FILE_LEVEL_SOURCE_CODE_LINK__FILE,
+                        true,
+                        false,
+                        true,
+                        null,
+                        null,
+                        null));
     }
 
     /**

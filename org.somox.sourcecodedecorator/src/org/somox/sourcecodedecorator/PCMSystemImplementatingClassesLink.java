@@ -20,6 +20,13 @@ package org.somox.sourcecodedecorator;
  */
 public interface PCMSystemImplementatingClassesLink extends ComponentImplementingClassesLink {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * Returns the value of the '<em><b>System Model</b></em>' reference. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>System Model</em>' reference isn't clear, there really should be

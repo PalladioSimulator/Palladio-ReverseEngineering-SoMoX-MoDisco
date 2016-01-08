@@ -18,14 +18,13 @@ import org.eclipse.emf.ecore.EObject;
  * <li>
  * {@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getMethodLevelSourceCodeLink
  * <em>Method Level Source Code Link</em>}</li>
- * <li>
- * {@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getControlFlowLevelSourceCodeLink
- * <em>Control Flow Level Source Code Link</em>}</li>
  * <li>{@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getInterfaceSourceCodeLink
  * <em>Interface Source Code Link</em>}</li>
  * <li>
  * {@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getComponentImplementingClassesLink
  * <em>Component Implementing Classes Link</em>}</li>
+ * <li>{@link org.somox.sourcecodedecorator.SourceCodeDecoratorRepository#getSeff2MethodLink
+ * <em>Seff2 Method Link</em>}</li>
  * </ul>
  *
  * @see org.somox.sourcecodedecorator.SourceCodeDecoratorPackage#getSourceCodeDecoratorRepository()
@@ -33,6 +32,13 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface SourceCodeDecoratorRepository extends EObject {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
     /**
      * Returns the value of the '<em><b>File Level Source Code Link</b></em>' containment reference
      * list. The list contents are of type
@@ -66,24 +72,6 @@ public interface SourceCodeDecoratorRepository extends EObject {
      * @generated
      */
     EList<MethodLevelSourceCodeLink> getMethodLevelSourceCodeLink();
-
-    /**
-     * Returns the value of the '<em><b>Control Flow Level Source Code Link</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Control Flow Level Source Code Link</em>' containment reference
-     * list isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Control Flow Level Source Code Link</em>' containment reference
-     *         list.
-     * @see org.somox.sourcecodedecorator.SourceCodeDecoratorPackage#getSourceCodeDecoratorRepository_ControlFlowLevelSourceCodeLink()
-     * @model containment="true" ordered="false"
-     * @generated
-     */
-    EList<ControlFlowLevelSourceCodeLink> getControlFlowLevelSourceCodeLink();
 
     /**
      * Returns the value of the '<em><b>Interface Source Code Link</b></em>' containment reference
@@ -120,5 +108,22 @@ public interface SourceCodeDecoratorRepository extends EObject {
      * @generated
      */
     EList<ComponentImplementingClassesLink> getComponentImplementingClassesLink();
+
+    /**
+     * Returns the value of the '<em><b>Seff2 Method Link</b></em>' containment reference list. The
+     * list contents are of type {@link org.somox.sourcecodedecorator.Seff2MethodLink}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Seff2 Method Link</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Seff2 Method Link</em>' containment reference list.
+     * @see org.somox.sourcecodedecorator.SourceCodeDecoratorPackage#getSourceCodeDecoratorRepository_Seff2MethodLink()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Seff2MethodLink> getSeff2MethodLink();
 
 } // SourceCodeDecoratorRepository

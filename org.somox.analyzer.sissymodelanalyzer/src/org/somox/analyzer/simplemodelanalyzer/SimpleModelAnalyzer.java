@@ -26,8 +26,6 @@ import org.somox.configuration.SoMoXConfiguration;
 import org.somox.extractor.ExtractionResult;
 import org.somox.kdmhelper.KDMReader;
 import org.somox.kdmhelper.metamodeladdition.Root;
-import org.somox.seff2javaast.SEFF2JavaAST;
-import org.somox.seff2javaast.Seff2methodFactory;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorFactory;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
@@ -227,14 +225,12 @@ public class SimpleModelAnalyzer implements ModelAnalyzer {
     private SimpleAnalysisResult initializeAnalysisResult() {
         final SimpleAnalysisResult analysisResult = new SimpleAnalysisResult(this);
         final SourceCodeDecoratorRepository sourceCodeDecoratorRepository = SourceCodeDecoratorFactory.eINSTANCE.createSourceCodeDecoratorRepository();
-        final SEFF2JavaAST seff2JavaAST = Seff2methodFactory.eINSTANCE.createSEFF2JavaAST();
         final org.palladiosimulator.pcm.system.System system = SystemFactory.eINSTANCE.createSystem();
         final QoSAnnotations qosAnnotationModel = QosannotationsFactory.eINSTANCE.createQoSAnnotations();
         final Repository newInternalArchitectureModel = RepositoryFactory.eINSTANCE.createRepository();
         final Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
 
         analysisResult.setInternalArchitectureModel(newInternalArchitectureModel);
-        analysisResult.setSEFF2JavaAST(seff2JavaAST);
         analysisResult.setSourceCodeDecoratorRepository(sourceCodeDecoratorRepository);
         analysisResult.setSystemModel(system);
         analysisResult.setQosAnnotationModel(qosAnnotationModel);

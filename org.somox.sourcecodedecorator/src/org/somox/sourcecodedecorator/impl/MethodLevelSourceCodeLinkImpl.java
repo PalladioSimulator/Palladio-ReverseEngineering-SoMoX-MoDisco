@@ -29,6 +29,13 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
  */
 public class MethodLevelSourceCodeLinkImpl extends FileLevelSourceCodeLinkImpl implements MethodLevelSourceCodeLink {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *

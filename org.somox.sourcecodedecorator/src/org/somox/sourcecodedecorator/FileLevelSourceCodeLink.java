@@ -28,6 +28,13 @@ import org.palladiosimulator.pcm.repository.RepositoryComponent;
  */
 public interface FileLevelSourceCodeLink extends EObject {
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    String copyright = "Copyright by palladiosimulator.org, 2008-2016";
+
+    /**
      * Returns the value of the '<em><b>Repository Component</b></em>' reference. <!--
      * begin-user-doc -->
      * <p>

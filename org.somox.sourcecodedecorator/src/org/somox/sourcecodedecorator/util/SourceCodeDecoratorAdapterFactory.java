@@ -7,11 +7,11 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.somox.sourcecodedecorator.ComponentImplementingClassesLink;
-import org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.FileLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.InterfaceSourceCodeLink;
 import org.somox.sourcecodedecorator.MethodLevelSourceCodeLink;
 import org.somox.sourcecodedecorator.PCMSystemImplementatingClassesLink;
+import org.somox.sourcecodedecorator.Seff2MethodLink;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorPackage;
 import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
 
@@ -23,6 +23,12 @@ import org.somox.sourcecodedecorator.SourceCodeDecoratorRepository;
  * @generated
  */
 public class SourceCodeDecoratorAdapterFactory extends AdapterFactoryImpl {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static final String copyright = "Copyright by palladiosimulator.org, 2008-2016";
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -78,11 +84,6 @@ public class SourceCodeDecoratorAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseControlFlowLevelSourceCodeLink(final ControlFlowLevelSourceCodeLink object) {
-            return SourceCodeDecoratorAdapterFactory.this.createControlFlowLevelSourceCodeLinkAdapter();
-        }
-
-        @Override
         public Adapter caseSourceCodeDecoratorRepository(final SourceCodeDecoratorRepository object) {
             return SourceCodeDecoratorAdapterFactory.this.createSourceCodeDecoratorRepositoryAdapter();
         }
@@ -100,6 +101,11 @@ public class SourceCodeDecoratorAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter casePCMSystemImplementatingClassesLink(final PCMSystemImplementatingClassesLink object) {
             return SourceCodeDecoratorAdapterFactory.this.createPCMSystemImplementatingClassesLinkAdapter();
+        }
+
+        @Override
+        public Adapter caseSeff2MethodLink(final Seff2MethodLink object) {
+            return SourceCodeDecoratorAdapterFactory.this.createSeff2MethodLinkAdapter();
         }
 
         @Override
@@ -148,21 +154,6 @@ public class SourceCodeDecoratorAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createMethodLevelSourceCodeLinkAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink
-     * <em>Control Flow Level Source Code Link</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
-     * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
-     * @return the new adapter.
-     * @see org.somox.sourcecodedecorator.ControlFlowLevelSourceCodeLink
-     * @generated
-     */
-    public Adapter createControlFlowLevelSourceCodeLinkAdapter() {
         return null;
     }
 
@@ -223,6 +214,21 @@ public class SourceCodeDecoratorAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createPCMSystemImplementatingClassesLinkAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.somox.sourcecodedecorator.Seff2MethodLink <em>Seff2 Method Link</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.somox.sourcecodedecorator.Seff2MethodLink
+     * @generated
+     */
+    public Adapter createSeff2MethodLinkAdapter() {
         return null;
     }
 
