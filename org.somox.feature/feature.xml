@@ -178,27 +178,6 @@ Reverse Engineering of Component-Based Software Architectures
          unpack="false"/>
 
    <plugin
-         id="org.somox.seff2javaast"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.somox.seff2javaast.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.somox.seff2javaast.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.somox.metrics.dsl"
          download-size="0"
          install-size="0"
