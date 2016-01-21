@@ -2,7 +2,7 @@
 <feature
       id="org.somox.feature"
       label="Palladio Software Model Extractor (SoMoX)"
-      version="1.1.0.qualifier"
+      version="1.2.0.qualifier"
       license-feature="org.palladiosimulator.license"
       license-feature-version="1.0.0">
 
