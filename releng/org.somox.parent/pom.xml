@@ -145,12 +145,6 @@
 			      </goals>
 		      </execution>
 	      </executions>
-        <configuration>
-          <excludes>
-            <plugin id="org.jgrapht" />
-            <plugin id="net.sourceforge.secondstring" />
-          </excludes>
-        </configuration>
       </plugin>
       <!-- Correctly handles source features on p2 update site -->
       <plugin>

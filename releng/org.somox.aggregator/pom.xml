@@ -11,10 +11,8 @@
   <artifactId>org.somox.aggregator</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>../../bundles/net.sourceforge.secondstring</module>
     <module>../../bundles/org.eclipse.gmt.modisco.java.edit</module>
     <module>../../bundles/org.eclipse.gmt.modisco.omg.kdm.edit</module>
-    <module>../../bundles/org.jgrapht</module>
     <module>../../bundles/org.somox.analyzer.sissymodelanalyzer</module>
     <module>../../bundles/org.somox.analyzer.sissymodelanalyzer.ui</module>
     <module>../../bundles/org.somox.core</module>
