@@ -18,7 +18,7 @@
    <feature id="org.somox.modisco.feature.source" version="1.1.0.qualifier">
       <category name="somox"/>
    </feature>
-   <category-def name="somox" label="SoMoX">
+   <category-def name="somox-modisco" label="SoMoX MoDisco">
       <description>
 	<!-- TODO add a category description for the update site and make the label above nicer -->
       </description>
