@@ -14,4 +14,5 @@
     <module>releng/org.somox.updatesite</module>
     <module>releng/org.somox.updatesite.aggregated</module>
   </modules>
+<version>5.0.0-SNAPSHOT</version>
 </project>

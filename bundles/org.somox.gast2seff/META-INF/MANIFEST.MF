@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Gast2seff
 Bundle-SymbolicName: org.somox.gast2seff;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.somox.gast2seff.Activator
 Bundle-Vendor: Q-ImPrESS Consortium
 Require-Bundle: org.eclipse.ui,

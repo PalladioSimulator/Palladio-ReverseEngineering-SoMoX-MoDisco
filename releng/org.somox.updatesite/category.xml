@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.somox.feature-1.2.0.qualifier.jar" id="org.somox.feature" version="1.2.0.qualifier">
+   <feature url="features/org.somox.feature-5.0.0.qualifier.jar" id="org.somox.feature" version="5.0.0.qualifier">
       <category name="somox-modisco"/>
    </feature>
-   <feature id="org.somox.feature.source" version="1.2.0.qualifier">
+   <feature id="org.somox.feature.source" version="5.0.0.qualifier">
       <category name="somox-modisco"/>
    </feature>
-   <feature url="features/org.somox.metrics.dsl.sdk-1.0.0.qualifier.jar" id="org.somox.metrics.dsl.sdk" version="1.0.0.qualifier">
+   <feature url="features/org.somox.metrics.dsl.sdk-5.0.0.qualifier.jar" id="org.somox.metrics.dsl.sdk" version="5.0.0.qualifier">
       <category name="somox-modisco"/>
    </feature>
-   <feature id="org.somox.metrics.dsl.sdk.source" version="1.0.0.qualifier">
+   <feature id="org.somox.metrics.dsl.sdk.source" version="5.0.0.qualifier">
       <category name="somox-modisco"/>
    </feature>
-   <feature url="features/org.somox.modisco.feature-1.1.0.qualifier.jar" id="org.somox.modisco.feature" version="1.1.0.qualifier">
+   <feature url="features/org.somox.modisco.feature-5.0.0.qualifier.jar" id="org.somox.modisco.feature" version="5.0.0.qualifier">
       <category name="somox-modisco"/>
    </feature>
-   <feature id="org.somox.modisco.feature.source" version="1.1.0.qualifier">
+   <feature id="org.somox.modisco.feature.source" version="5.0.0.qualifier">
       <category name="somox-modisco"/>
    </feature>
    <category-def name="somox-modisco" label="SoMoX MoDisco">
